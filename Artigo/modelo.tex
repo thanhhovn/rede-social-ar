@@ -1,0 +1,245 @@
+\NeedsTeXFormat{LaTeX2e}
+%-----------------------------------------------------------
+\documentclass[a4paper,12pt]{monografia}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage[mathcal]{eucal}
+\usepackage{latexsym}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{bm}
+\usepackage[all]{xy}
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{axiom}{Axioma}[section]
+\newtheorem{corollary}{Corolário}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{proposition}{Proposição}[section]
+%-----------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{example}{Exemplo}[section]
+%-----------------------------------------------------------
+\theoremstyle{remark}
+\newtheorem{remark}{Observação}[section]
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{{\cal V}}
+%-----------------------------------------------------------
+\def\ind{\hbox{ ind }}
+%-----------------------------------------------------------
+\begin{document}
+%
+%----------------- Título e Dados do Autor -----------------
+\titulo{Rede Social usando Realidade Aumentada}
+%\subtitulo{- Fazendo uso da classe MONOGRAFIA -} % opcional
+\autor{Lucas Fernandes de Almeida} \nome{Lucas} \ultimonome{Almeida}
+%
+%---------- Informe o Curso e Grau -----
+\bacharelado \curso{Sistemas de Informação} \ano{2012}
+\data{15 de Dezembro de 2012} % data da aprovação
+\cidade{Itabaiana}
+%
+%----------Informações sobre a Instituição -----------------
+\instituicao{Universidade Federal de Sergipe} \sigla{UFS}
+\unidadeacademica{Centro de Ciências Exatas e Tecnologia}
+%
+%-------- Informações obtidas na Biblioteca ----------------
+%
+\CDU{536.21} \areas{1.Realidade Aumentada  2. Geoprocessamento.}
+\npaginas{xx}  % total de páginas do trabalho
+%------Nomes do Orientador, 1o. Examinador e 2o. Examinador-
+\orientador{Andrés Menéndez }
+%
+%\coorientador{Nome do Co-orientador} % opcional
+%
+\examinadorum{Nome do Examinador 1}
+%
+\examinadordois{Nome do Examinador 2}
+%
+%\examinadortres{Nome do Examinador 3}
+%
+%\examinadorquatro{Nome do Examinador 4}
+%--------- Títulos do Orientador 1o. e 2o. Examinadores ----
+\ttorientador{Graduado em Ciências da Computação - Unit}
+%
+%\ttcoorientador{Título do Co-orientador} % se digitado \coorientador
+%
+\ttexaminadorum{Título do Examinador 1}
+%
+\ttexaminadordois{Título do Examinador 2}
+%
+%\ttexaminadortres{Título do Examinador 3}
+%
+%\ttexaminadorquatro{Título do Examinador 4}
+%
+\maketitle
+%----------------------------dedicatória  opcional--------------
+\begin{dedicatoria}
+Aos meus pais e irmã.\\
+Aos amigos, pelo apoio e companheirismo.\\
+\end{dedicatoria}
+%--------Digite aqui o seu resumo em Português--------------
+\resumo{Resumo} 
+% Digite aqui
+
+\noindent Palavras-chaves: AR, Geoprocessamento.
+%-----------Digite aqui o seu resumo em Inglês--------------
+\resumo{Abstract} 
+% Digite aqui
+
+\noindent Keywords: AR, GIS.
+%-----------Ou digite aqui o seu resumo em Frances----------
+%\resumo{Résumé} C'est un modèle de la monographie dans \LaTeX et
+%5utilise la classe monografia.cls, avec le but de aider dans le
+%maniement des travaux de conclusion des plusieurs cours de
+%l'Université Fédérale de Maranhão.
+%-----------------------------------------------------------
+\agradecimento{Agradecimentos}
+
+\indent\indent A todos os meus parentes, pelo encorajamento e
+apoio.
+
+Ao professor Andrés Menéndez pela orientação, amizade e
+principalmente, pela paciência, sem a qual este trabalho não se
+realizaria.
+
+
+Aos professores do Departamento de Sistemas de Informação pelos seus
+ensinamentos e aos funcionários do curso, que durante esses anos,
+contribuíram de algum modo para o nosso enriquecimento pessoal e
+profissional.
+\newpage
+%---------------------- EPÍGRAFE I (OPCIONAL)--------------
+\begin{epigrafe}
+``Lembra que o sono é sagrado e alimenta de horizontes o tempo acordado de viver''.\\
+\hfill Beto Guedes (Amor de Índio)
+\end{epigrafe}
+%----Sumário, lista de figura e de tabela ------------
+\tableofcontents \thispagestyle{empty} %\listoffigures
+%\thispagestyle{empty} \listoftables \thispagestyle{empty}
+%---------------------
+%--------------Início do Conteúdo---------------------------
+\pagestyle{ruledheader}
+\chapter{Introdução}
+\chapter{Conjuntos}
+\section{Noção de Conjunto}
+\indent\indent Nesta monografia, 
+
+\begin{description}
+    \item[$\Z$ -] O conjunto dos números inteiros,
+\end{description}
+
+\section{A Álgebra dos Conjuntos}
+\subsection{Inclusão}
+\indent\indent Se $A$ 
+
+\begin{example} Vale as seguintes inclusões:
+
+\end{example}
+
+\begin{proposition}
+Se $A$ 
+\end{proposition}
+
+\begin{proof}
+Para que. 
+\end{proof}
+
+\subsection{Igualdade}
+\begin{definition}\label{A=B}
+Dados dois conjuntos 
+\end{definition}
+
+As seguintes propriedades são conseqüências diretas da definição
+\ref{A=B}.
+
+\begin{enumerate}
+    \item 
+    \item 
+    \item 
+\end{enumerate}
+
+\subsection{Interseção e União}
+
+\begin{definition}
+Dados dois conjuntos
+\end{definition}
+
+\begin{definition}
+Dados dois conjuntos
+\end{definition}
+
+
+\begin{proposition}\label{inter-uniao}
+Se 
+\begin{enumerate}
+    \item 
+    \item 
+    \item  
+\end{enumerate}
+
+\end{proposition}
+\begin{proof} Iremos provar 
+\end{proof}
+
+O item (\emph{3.}) da proposição (\ref{inter-uniao}) nos permite,
+
+
+\subsection{O complementar}
+
+\begin{definition}\label{cmplemento}
+Dados dois conjuntos 
+\end{definition}
+
+A
+
+\begin{proposition}
+Sejam $A$ e $B$ 
+\end{proposition}
+\begin{proof}
+Se 
+\end{proof}
+\begin{proposition}
+Sejam $A$, $B$ e $C$ conjuntos quaisquer.
+\end{proposition}
+\begin{proof}
+Vamos mostrar apenas a segunda igualdade.
+\end{proof}
+
+Se $A$ é o conjunto universo $\mathcal{U}$ então $\mathcal{U}-B$ é
+chamado simplesmente de \textsc{complementar} de $B$ e será
+denotado por $\complement B$.
+
+
+\begin{theorem}[Leis de Morgan]\label{morgan}
+Sejam $A$ e $B$ conjuntos quaisquer. 
+\begin{enumerate}
+    \item 
+    \item 
+\end{enumerate}
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+
+\bibitem[ ]{el}Callioli, Carlos A., {\em Álgebra Linear e
+Aplicações}, Atual, São Paulo, 1990.
+\bibitem[ ]{Ta}
+
+\bibitem[ ]{To}
+
+\bibitem[ ]{W}
+
+\bibitem[ ]{Z}
+\end{thebibliography}
+\end{document}
