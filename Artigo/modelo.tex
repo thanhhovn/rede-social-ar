@@ -9,6 +9,9 @@
 \usepackage{bm}
 \usepackage[all]{xy}
 %-----------------------------------------------------------
+
+
+
 %-----------------------------------------------------------
 \theoremstyle{plain}
 \newtheorem{theorem}{Teorema}[section]
@@ -37,6 +40,11 @@
 %-----------------------------------------------------------
 \def\ind{\hbox{ ind }}
 %-----------------------------------------------------------
+\includeonly{Capt1/AR}
+%% Comandos para facilitar a edição 
+\newcommand{\cpp}{\texttt{C$++$}}
+\newcommand{\latex}{\LaTeX}
+
 \begin{document}
 %
 %----------------- Título e Dados do Autor -----------------
@@ -92,7 +100,7 @@ Aos amigos, pelo apoio e companheirismo.\\
 \resumo{Resumo} 
 % Digite aqui
 
-\noindent Palavras-chaves: AR, Geoprocessamento.
+\noindent Palavras-chaves: RA, Geoprocessamento.
 %-----------Digite aqui o seu resumo em Inglês--------------
 \resumo{Abstract} 
 % Digite aqui
@@ -125,42 +133,100 @@ profissional.
 \hfill Beto Guedes (Amor de Índio)
 \end{epigrafe}
 %----Sumário, lista de figura e de tabela ------------
-\tableofcontents \thispagestyle{empty} %\listoffigures
+\tableofcontents 
+\thispagestyle{empty} %\listoffigures
 %\thispagestyle{empty} \listoftables \thispagestyle{empty}
 %---------------------
 %--------------Início do Conteúdo---------------------------
 \pagestyle{ruledheader}
+%\chapter{Realidade Aumentada}
+
 \chapter{Introdução}
-\chapter{Conjuntos}
-\section{Noção de Conjunto}
-\indent\indent Nesta monografia, 
+%% Cap. 1 - AR
+%\include{Capt1/AR}
+
+%% Inicio Capitulo de realidade aumentada
+
+\chapter{Realidade Aumentada}
+\label{Cap:ar}
+\section{Introdução}
+	\indent A realidade aumentada teve seus primeiros passos na década de 60, com o pesquisador Ivan Sutherland, com duas principais contribuições:
+	
+	\begin{enumerate}
+    	\item A escrita de um artigo, vislumbrando a evolução da realidade virtual e seus reflexos no mundo real [Sutherland 1965];
+    	\item Desenvolveu um capacete de visão ótica direta rastreado para visualização de objetos 3D no ambiente real [Sutherland 1968].
+	\end{enumerate}
+	
+  	 \indent Mas foi somente na decada de 80 que surgiu o primeiro projeto de realidade aumentada. Foi a Força Aéria Americana que desenvolveu este projeto, consistindo em um simulador de cockpit de avião, com visão ótica direta, misturando elementos virtuais com o ambiente físico do usuário [Kirner 2008].
+  	 
+  	 
+\section{Conceitos básicos}  	 
+	\indent \indent A Realidade Aumentada é caracterizada pela inserção
+	 de objetos virtuais no ambiente físico, mostrada ao usuário, em tempo, real, com o apoio de algum dispositivo tecnológico, usando a interface do ambiente real, adaptada para visualizar e manipular os objetos reais e virtuais [Kirner]. A RA pode ser aplicada a todos os sentidos humanos [Azuma] e propocionar ao usuário uma interação segura, sem necessidade de treinamento, uma vez que a RA permite trazer para o seu ambiente real objetos virtuais, incrementando e aumentando a visão que ele tem do mundo real [Kirner and Zorzal]. Para proporcionar essa experiência ao usuário a RA faz uso de uma câmera, seja ela qual for, técnicas de Visão Computacional e de Computação Gráfica/Realidade Virtual.
+	 
+	\indent O Conceito de conteúdo visual sobreposto ao visualizar o mundo real através de uma câmera. De jogos a mídia e marketing interativo, passando por instruções e módulo de ajuda, a realidade aumentada abre espaço para novos aplicativos e serviços móveis [retirado da Qualcomm].
+  	 
+	\indent Existem várias definições para a Realidade Virtual. Alguns autores 
+tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um 
+ambiente), interatividade e feedback sensorial (visual, auditivo e táctil)[Sherman e Craig 2003]. Outros descreve a realidade virtual de forma geral, como uma técnica 
+avançada de interface, onde o usuário pode navegar e interagir em um ambiente 
+sintético tridimensional gerado por computador, estando completa ou parcialmente 
+presente ou imerso pela sensação gerada por canais multi-sensoriais, sendo o principal a visão [Krueger 1991], [Burdea and Coiffet 1994]. 
+
+	\indent Assim como a RV a RA também possui várias definições. Aqui citarei algumas delas:
+	
+	\indent \indent	
+	"Uma variante da Realidade Virtual [...]. As tecnologias de Realidade Virtual submergem completamente ao usuário em um ambiente sintético ou virtual e, enquanto imerso nesse ambiente, o usuário não pode ver o mundo real que o rodeia. Pelo contrário, a RA permite ver o mundo real com objetos virtuais sobrepostos ou integrados nesse mundo real. Desta forma, a RA complementa a realidade ao invez de substituí-la. [...]" [Azuma].
+	
+	\indent \indent
+	"A realidade aumentada adiciona um pouco mais de mágica à realidade, criando 
+novas maneiras de interagir com o mundo físico e permitindo o acesso a dados extremamente valiosos de uma maneira natural", diz David Helgason, CEO da Unity Technologies.
+
+	\indent \indent
+	"A realidade aumentada permite que as pessoas visualizem o espaço virtual como parte integral do mundo físico ao seu redor, fazendo com que o mundo real possa ser acessado efetivamente por cliques e links". - Paul E. Jacobs, presidente e diretor executivo da Qualcomm.
+	
+	\indent \indent
+	Além disso, Azuma define três características fundamentais e distintivas para um sistema ser considerado de RA:
+	\begin{enumerate}
+		\item Combinar o mundo real com o virtual;
+		\item Interagir em tempo real;
+		\item Ajustar os objetos virtuais no ambiente 3D.
+	\end{enumerate}
+	
+	\indent \indent
+	Com a RA qualquer superfície é um display em potencial, qualquer superfície 
+pode ser um novo dispositivo de entrada.
+
+%% Fim de RA
+
+\chapter{Plataforma Android}
+\section{...}
+\indent\indent ..., 
 
 \begin{description}
-    \item[$\Z$ -] O conjunto dos números inteiros,
+    \item[$\Z$ -] ...,
 \end{description}
 
-\section{A Álgebra dos Conjuntos}
-\subsection{Inclusão}
-\indent\indent Se $A$ 
+\section{...}
+\subsection{...}
+\indent\indent ... 
 
-\begin{example} Vale as seguintes inclusões:
+\begin{example} ... :
 
 \end{example}
 
 \begin{proposition}
-Se $A$ 
+...
 \end{proposition}
 
 \begin{proof}
-Para que. 
+...
 \end{proof}
 
-\subsection{Igualdade}
-\begin{definition}\label{A=B}
-Dados dois conjuntos 
+\subsection{....}
+\begin{definition}\label{...}
+....
 \end{definition}
-
-As seguintes propriedades são conseqüências diretas da definição
 \ref{A=B}.
 
 \begin{enumerate}
@@ -169,19 +235,14 @@ As seguintes propriedades são conseqüências diretas da definição
     \item 
 \end{enumerate}
 
-\subsection{Interseção e União}
+\subsection{...}
 
 \begin{definition}
-Dados dois conjuntos
+....
 \end{definition}
 
-\begin{definition}
-Dados dois conjuntos
-\end{definition}
-
-
-\begin{proposition}\label{inter-uniao}
-Se 
+\begin{proposition}\label{...}
+...
 \begin{enumerate}
     \item 
     \item 
@@ -189,36 +250,15 @@ Se
 \end{enumerate}
 
 \end{proposition}
-\begin{proof} Iremos provar 
-\end{proof}
 
-O item (\emph{3.}) da proposição (\ref{inter-uniao}) nos permite,
+O item (\emph{...}) da proposição (\ref{...}) nos permite,
 
 
-\subsection{O complementar}
+\subsection{...}
 
-\begin{definition}\label{cmplemento}
-Dados dois conjuntos 
+\begin{definition}\label{...}
+...
 \end{definition}
-
-A
-
-\begin{proposition}
-Sejam $A$ e $B$ 
-\end{proposition}
-\begin{proof}
-Se 
-\end{proof}
-\begin{proposition}
-Sejam $A$, $B$ e $C$ conjuntos quaisquer.
-\end{proposition}
-\begin{proof}
-Vamos mostrar apenas a segunda igualdade.
-\end{proof}
-
-Se $A$ é o conjunto universo $\mathcal{U}$ então $\mathcal{U}-B$ é
-chamado simplesmente de \textsc{complementar} de $B$ e será
-denotado por $\complement B$.
 
 
 \begin{theorem}[Leis de Morgan]\label{morgan}
@@ -232,8 +272,7 @@ Sejam $A$ e $B$ conjuntos quaisquer.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{thebibliography}{99}
 
-\bibitem[ ]{el}Callioli, Carlos A., {\em Álgebra Linear e
-Aplicações}, Atual, São Paulo, 1990.
+\bibitem[ ]{el}Callioli, Carlos A., {\em Emerging Technologies of Augmented Reality}, Atual, São Paulo, 1990.
 \bibitem[ ]{Ta}
 
 \bibitem[ ]{To}
