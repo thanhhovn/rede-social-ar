@@ -8,9 +8,13 @@
 \usepackage[latin1]{inputenc}
 \usepackage{bm}
 \usepackage[all]{xy}
+\usepackage{graphicx}
+
 %-----------------------------------------------------------
 
-
+%-----------------------------------------------------------
+\usepackage{cite}  % pacote para fazer referências usando arquivo .bib
+%-----------------------------------------------------------
 
 %-----------------------------------------------------------
 \theoremstyle{plain}
@@ -150,52 +154,148 @@ profissional.
 \chapter{Realidade Aumentada}
 \label{Cap:ar}
 \section{Introdução}
-	\indent A realidade aumentada teve seus primeiros passos na década de 60, com o pesquisador Ivan Sutherland, com duas principais contribuições:
+	\indent \indent A realidade aumentada (RA) teve seus primeiros passos na década de 60, com o pesquisador Ivan Sutherland, com duas principais contribuições:
 	
 	\begin{enumerate}
-    	\item A escrita de um artigo, vislumbrando a evolução da realidade virtual e seus reflexos no mundo real [Sutherland 1965];
-    	\item Desenvolveu um capacete de visão ótica direta rastreado para visualização de objetos 3D no ambiente real [Sutherland 1968].
+    	\item A escrita de um artigo, vislumbrando a evolução da realidade virtual (RV) e seus reflexos no mundo real ~\cite{} [Sutherland 1965];
+    	\item Desenvolveu um capacete de visão ótica direta rastreado para visualização de objetos 3D no ambiente real ~\cite{} [Sutherland 1968].
 	\end{enumerate}
 	
-  	 \indent Mas foi somente na decada de 80 que surgiu o primeiro projeto de realidade aumentada. Foi a Força Aéria Americana que desenvolveu este projeto, consistindo em um simulador de cockpit de avião, com visão ótica direta, misturando elementos virtuais com o ambiente físico do usuário [Kirner 2008].
+  	 \indent Mas foi somente na decada de 80 que surgiu o primeiro projeto de realidade aumentada. Este projeto foi desenvolvido pela Força Aérea Americana que tratava-se de um simulador de cockpit de avião, com visão ótica direta, misturando elementos virtuais com o ambiente físico do usuário ~\cite{} [Kirner 2008].
   	 
   	 
-\section{Conceitos básicos}  	 
-	\indent \indent A Realidade Aumentada é caracterizada pela inserção
-	 de objetos virtuais no ambiente físico, mostrada ao usuário, em tempo, real, com o apoio de algum dispositivo tecnológico, usando a interface do ambiente real, adaptada para visualizar e manipular os objetos reais e virtuais [Kirner]. A RA pode ser aplicada a todos os sentidos humanos [Azuma] e propocionar ao usuário uma interação segura, sem necessidade de treinamento, uma vez que a RA permite trazer para o seu ambiente real objetos virtuais, incrementando e aumentando a visão que ele tem do mundo real [Kirner and Zorzal]. Para proporcionar essa experiência ao usuário a RA faz uso de uma câmera, seja ela qual for, técnicas de Visão Computacional e de Computação Gráfica/Realidade Virtual.
-	 
-	\indent O Conceito de conteúdo visual sobreposto ao visualizar o mundo real através de uma câmera. De jogos a mídia e marketing interativo, passando por instruções e módulo de ajuda, a realidade aumentada abre espaço para novos aplicativos e serviços móveis [retirado da Qualcomm].
-  	 
-	\indent Existem várias definições para a Realidade Virtual. Alguns autores 
-tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um 
-ambiente), interatividade e feedback sensorial (visual, auditivo e táctil)[Sherman e Craig 2003]. Outros descreve a realidade virtual de forma geral, como uma técnica 
-avançada de interface, onde o usuário pode navegar e interagir em um ambiente 
-sintético tridimensional gerado por computador, estando completa ou parcialmente 
-presente ou imerso pela sensação gerada por canais multi-sensoriais, sendo o principal a visão [Krueger 1991], [Burdea and Coiffet 1994]. 
+\section{Conceitos e Definições}  	 
+	\indent \indent 
+	 A RA é caracterizada pela inserção de objetos virtuais no ambiente físico, mostrada ao usuário, em tempo real, com o apoio de algum dispositivo tecnológico, usando a interface do ambiente real, adaptada para visualizar e manipular os objetos reais e virtuais  ~\cite{} [Kirner 2008]. 
 
-	\indent Assim como a RV a RA também possui várias definições. Aqui citarei algumas delas:
+	 \indent
+	 A RA pode ser aplicada a todos os sentidos humanos ~\cite{} [Azuma 2001] e propocionar ao usuário uma interação segura, sem necessidade de treinamento, uma vez que a RA permite trazer para o seu ambiente real objetos virtuais, incrementando e aumentando a visão que o usuário tem do mundo real ~\cite{}[Zambiasi]. Para proporcionar essa experiência ao usuário a RA faz uso de uma câmera, técnicas de Visão Computacional e de Computação Gráfica/RV.
+	  	 
+	\indent
+	Existem várias definições para a RV. Alguns autores tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um ambiente), interatividade e \textit{feedback} sensorial (visual, auditivo e táctil)[Sherman e Craig 2003]. Outros descrevem a RV de forma geral, como uma técnica avançada de interface, onde o usuário pode navegar e interagir em um ambiente sintético tridimensional gerado por computador, estando completa ou parcialmente presente ou imerso pela sensação gerada por canais multi-sensoriais, sendo o principal a visão [Krueger 1991], [Burdea and Coiffet 1994]. 
+
+	\indent Assim como a RV a RA também possui várias definições. Segue abaixo algumas delas:	
 	
-	\indent \indent	
-	"Uma variante da Realidade Virtual [...]. As tecnologias de Realidade Virtual submergem completamente ao usuário em um ambiente sintético ou virtual e, enquanto imerso nesse ambiente, o usuário não pode ver o mundo real que o rodeia. Pelo contrário, a RA permite ver o mundo real com objetos virtuais sobrepostos ou integrados nesse mundo real. Desta forma, a RA complementa a realidade ao invez de substituí-la. [...]" [Azuma].
+	\begin{citacao}
+"Uma variante da RV [...]. As tecnologias de RV submergem completamente ao usuário em um ambiente sintético ou virtual e, enquanto imerso nesse ambiente, o usuário não pode ver o mundo real que o rodeia. Pelo contrário, a RA permite ver o mundo real com objetos virtuais sobrepostos ou integrados nesse mundo real. Desta forma, a RA complementa a realidade ao invez de substituí-la. [...]" [Azuma].
+	\end{citacao}		
 	
-	\indent \indent
+	\begin{citacao}
 	"A realidade aumentada adiciona um pouco mais de mágica à realidade, criando 
-novas maneiras de interagir com o mundo físico e permitindo o acesso a dados extremamente valiosos de uma maneira natural", diz David Helgason, CEO da Unity Technologies.
+novas maneiras de interagir com o mundo físico e permitindo o acesso a dados extremamente valiosos de uma maneira natural", diz David Helgason, CEO da Unity Technologies. (Dúvida)
+	\end{citacao}
 
-	\indent \indent
-	"A realidade aumentada permite que as pessoas visualizem o espaço virtual como parte integral do mundo físico ao seu redor, fazendo com que o mundo real possa ser acessado efetivamente por cliques e links". - Paul E. Jacobs, presidente e diretor executivo da Qualcomm.
+	\begin{citacao}
+	"A realidade aumentada permite que as pessoas visualizem o espaço virtual como parte integral do mundo físico ao seu redor, fazendo com que o mundo real possa ser acessado efetivamente por cliques e links". - Paul E. Jacobs, presidente e diretor executivo da Qualcomm. (Dúvida)
+	\end{citacao}
 	
-	\indent \indent
-	Além disso, Azuma define três características fundamentais e distintivas para um sistema ser considerado de RA:
+	\indent
+	Além disso, \cite{}[Azuma 1997] define três características fundamentais e distintivas para um sistema ser considerado de RA:
 	\begin{enumerate}
 		\item Combinar o mundo real com o virtual;
 		\item Interagir em tempo real;
-		\item Ajustar os objetos virtuais no ambiente 3D.
+
+	\item Ajustar os objetos virtuais no ambiente 3D.
 	\end{enumerate}
 	
+	\indent
+	 A RA trás o conceito de conteúdo visual sobreposto ao visualizar o mundo real através de uma câmera.  
+	 
+	 \indent
+	 Para que a RA seja possível é utilizado duas técnicas para localização do ambiente real que será usado para projetar o elemento virtual, são elas: Com marcação (mark) e sem marcação (markless). Sendo a primeira técnica a mais difundida. Para este projeto será utilizado a técnica sem marcação. Esta técnica utiliza de dados de posição, orientação, dados georeferenciados para localizar o local que será usado para projetar o elemento virtual. Na figura 01 e na figura 02 podemos ver exemplos de aplicações usando RA com marcação e sem marcação respectivamente.
+	 
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/marcacao.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/sem_marcador.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+	
+	 \indent
+	 A RA é utilizada em muitas soluções desde jogos a mídia e marketing interativo, passando por instruções e módulo de ajuda, a realidade aumentada abre espaço para novos aplicativos e serviços móveis [retirado da Qualcomm]. Indo mais fundo, essa tecnologia deverá ter grande impacto no relacionamento das pessoas, através de novas maneiras de realizar visualização, comunicação e interação com pessoas e informação.  
+
+\section{Tipos de Sistemas de Realidade Aumentada}
 	\indent \indent
-	Com a RA qualquer superfície é um display em potencial, qualquer superfície 
-pode ser um novo dispositivo de entrada.
+	A depender do tipo de display utilizado ~\cite{}[Azuma 2001], seja envolvendo visão ótica ou por vídeo, os sistemas de RA podem ser classificados em quatro tipos.
+	
+	\begin{enumerate}
+		\item sistema de visão ótica direta;
+		\item sistema de visão direta por vídeo;
+		\item sistema de visão ótica por projeção;
+		\item sistema de visão por vídeo baseado em monitor.
+	\end{enumerate}
+	
+	O sistema de visão ótica direta necessita do uso de óculos ou capacetes, com lentes que permitam o recebimento direto da imagem real, ao mesmo tempo em que permitam a projeção de imagens virtuais devidamente ajustadas com a cena real nós olhos do usuário [referenciar]. Veja um exemplo desse sistema na figura 03. 
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/fig_3_sistema_otico.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+	
+	Por sua vez, o sistema de visão direta por vídeo utiliza capacetes com microcâmeras de vídeo acopladas. A cena real capturada pela microcâmera é misturada com os elementos virtuais gerados por computador e apresentadas diretamente nos olhos do usuário, através de pequenos monitores montados no capacete [referenciar]. Veja um exemplo desse sistema na figura 04.
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/fig_04_sistema_por_video.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+	
+	O sistema de visão ótica por projeção utiliza superfícies do ambiente real. Nessa superfície são projetadas as imagens dos objetos virtuais, cujo conjunto é apresentado ao usuário que o visualiza sem a necessidade de nenhum equipamento auxiliar. O limitante desse sistema é sua necessidade com superfícies de projeção [referenciar]. Veja um exemplo desse sistema na figura 05.
+
+% A imagem está ficando entre o texto.
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/fig_05_sistema_por_video_baseado_em_monitor.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+	
+	Já o sistema de visão por vídeo baseado em monitor utiliza uma webcam para capturar a cena real. Depois de capturada, a cena real é misturada com os objetos virtuais gerados por computador e apresentada no monitor. O ponto de vista do usuário normalmente é fixo e depende do posicionamento da webcam [referenciar]. Veja um exemplo desse sistema na figura 06.
+	
+	%%Adicionar figura 06. [Modelagem do sistema de RA utilizando vídeo baseado em monitor AZUMA 97] 
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/fig_06_sistema_de_projecao.png}
+% falta colocar o rotulo	 
+		\end{center}
+	\end{figure}
+	
+	Como a intenção deste projeto é a criação de uma rede social para dispositivos móveis usando a RA, dar-se-á maior destaque para o sistema de visão direta por vídeo baseado em monitor. Isso se deve ao fato dessa técnica não necessitar de nenhum equipamento auxiliar, sendo necessária somente a câmera (a do próprio dispositivo móvel) e de um software específico que fará a analise dos dados recebidos e a sobreposição dos elementos virtuais no ambiente real que será mostrado no display do dispositivo móvel do usuário.
+	
+\section{Realidade Aumentada Movel}
+	\indent \indent
+	Os dispositivos móveis eram conhecidos por possuir um Hardware limitado com pouca memória e baixo poder de processamento. Essas características inviabilizavam o uso da realidade aumentada nos dispositivos móveis já que a RA demanda de recursos computacionais. 
+	
+	Porém, com o rápido avanço tecnológico dos dispositivos móveis ao longo dos últimos anos essas restrições da utilização da RA foram sanadas. Hoje, praticamente todo dispositivo móvel dá suporte a aplicações baseadas em RA.
+	
+	Com o número de vendas de celulares aumentando a cada ano, por exemplo o ebay (refenciar) arrecadou  US\$ 5 bilhões de faturamento em 2011 gerados por um único dispositivo móvel e a tendência é arrecadar mais nó ano de 2012, isso mostra que o mercado para dispositivos móveis é bastante rentável, desde que a experiência de uso no celular seja boa.  [referenciar o site].
+	
+	Atualmente existem inúmeras aplicações que usam técnicas de realidade aumentada para dispositivos móveis, desde aplicações para localização, área da saúde, marketing, jogos, etc. O limite do uso da RA para atender nossas necessidades vai da imaginação de quem cria a aplicação. Veja abaixo um dos exemplos da utilização da RA em dispositivos móveis.
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=10cm,height=6cm,angle=0]{Figuras/fig_07_RA_dispostivo_movel.png}
+% falta colocar o rotulo
+		\end{center}
+	\end{figure}
+	
+	Este projeto tem como finalidade criar uma aplicação que facilite a comunicação, localização entre os usuários do aplicativo usando a RA. Detalhes serão mostrados na seção (ainda ser definida).
+	
+	
+\section{Projetos Relacionados}
+	\indent \indent
+	
+
 
 %% Fim de RA
 
@@ -254,31 +354,15 @@ pode ser um novo dispositivo de entrada.
 O item (\emph{...}) da proposição (\ref{...}) nos permite,
 
 
-\subsection{...}
 
-\begin{definition}\label{...}
-...
-\end{definition}
+% chamando uma referência
+%  ~\cite{RA}
 
 
-\begin{theorem}[Leis de Morgan]\label{morgan}
-Sejam $A$ e $B$ conjuntos quaisquer. 
-\begin{enumerate}
-    \item 
-    \item 
-\end{enumerate}
-\end{theorem}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{thebibliography}{99}
-
-\bibitem[ ]{el}Callioli, Carlos A., {\em Emerging Technologies of Augmented Reality}, Atual, São Paulo, 1990.
-\bibitem[ ]{Ta}
-
-\bibitem[ ]{To}
-
-\bibitem[ ]{W}
-
-\bibitem[ ]{Z}
-\end{thebibliography}
+% Minhas referências.  
+%\bibliography{}{}  
+%\bibliographystyle{plain} 
 \end{document}
