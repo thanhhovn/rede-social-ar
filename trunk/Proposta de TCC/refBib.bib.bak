@@ -1,0 +1,87 @@
+% This file was created with JabRef 2.7.2.
+% Encoding: Cp1252
+
+@BOOK{Haller2007,
+  title = {Emerging technologies of augmented reality : interfaces and design},
+  publisher = {Idea Group Publishing},
+  year = {2007},
+  author = {Michael Haller and Mark Billinghurst and Bruce Thomas},
+  owner = {fernandes},
+  timestamp = {2012.03.24}
+}
+
+@BOOK{MonteLima2007,
+  title = {UM FRAMEWORK DE REALIDADE AUMENTADA PARA O DESENVOLVIMENTO DE APLICAÇÕES PORTÁVEIS PARA A PLATAFORMA POCKET PC},
+  publisher = {Idea Group Publishing},
+  year = {2007},
+  editor = {UNIVERSIDADE FEDERAL DE PERNAMBUCO},
+  author = {João Paulo Silva do Monte Lima},
+  owner = {fernandes},
+  timestamp = {2012.03.24}
+}
+
+@MISC{MySQL,
+  author = {MySQL},
+  title = {MySQL},
+  note = {Disponível em:},
+  owner = {fernandes},
+  timestamp = {2012.03.24},
+  url = {http://dev.mysql.com/downloads/}
+}
+
+@MISC{Eclipse,
+  title = {IDE Eclipse},
+  note = {Disponível em: www.eclipse.org/downloads/},
+  owner = {fernandes},
+  timestamp = {2012.03.24}
+}
+
+@MISC{FaceBook,
+  title = {FaceBook},
+  note = {Disponível em: www.facebook.com},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{Google+,
+  title = {Google+},
+  note = {Disponível em: plus.google.com},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{Orkut,
+  title = {Orkut},
+  note = {Disponível em: www.orkut.com},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{PluginAndroidEclipse,
+  title = {Plugin do Android Para a IDE Eclipse},
+  note = {Disponível em: developer.android.com/sdk/eclipse-adt.html},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{Postgis,
+  title = {Postgis},
+  note = {Disponível em: www.postgis.refractions.net/},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{Postgresql,
+  title = {Postgresql},
+  note = {Disponível em: www.postgresql.org.br/},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
+@MISC{rwiki,
+  title = {Rede Social},
+  note = {Disponível em: pt.wikipedia.org/wiki/Rede_social},
+  owner = {fernandes},
+  timestamp = {2012.04.05}
+}
+
