@@ -1,0 +1,218 @@
+\NeedsTeXFormat{LaTeX2e}
+%-----------------------------------------------------------
+\documentclass[a4paper,12pt]{monografia}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage[mathcal]{eucal}
+\usepackage{latexsym}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{bm}
+\usepackage[all]{xy}
+
+\usepackage{cite}  % Needed to use citations.  
+\usepackage [table]{xcolor}
+
+%-----------------------------------------------------------
+
+%-----------------------------------------------------------
+\usepackage{cite}  % pacote para fazer referências uando arquivo .bib
+%-----------------------------------------------------------
+
+%-----------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{axiom}{Axioma}[section]
+\newtheorem{corollary}{Corolário}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{proposition}{Proposição}[section]
+%-----------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{example}{Exemplo}[section]
+%-----------------------------------------------------------
+\theoremstyle{remark}
+\newtheorem{remark}{Observação}[section]
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{{\cal V}}
+%-----------------------------------------------------------
+\def\ind{\hbox{ ind }}
+%-----------------------------------------------------------
+%% Comandos para facilitar a edição 
+\newcommand{\cpp}{\texttt{C$++$}}
+\newcommand{\latex}{\LaTeX}
+
+\begin{document}
+%
+%----------------- Título e Dados do Autor -----------------
+%\titulo{Desenvolvimento de sistema para o gerenciamento de Testes Exploratórios}
+%\subtitulo{- Fazendo uso da classe MONOGRAFIA -} % opcional
+%\autor{Lucas da Cunha Machado} \nome{Lucas} \ultimonome{Machado}
+%
+%---------- Informe o Curso e Grau -----
+%\bacharelado \curso{Sistemas de Informação} \ano{2012}
+%\data{15 de Dezembro de 2012} % data da aprovação
+%\cidade{Itabaiana}
+%
+%----------Informações sobre a Instituição -----------------
+%\instituicao{UNIVERSIDADE FEDERAL DE SERGIPE CAMPUS PROF. ALBERTO CARVALHO} \sigla{UFS}
+%\unidadeacademica{DEPARTAMENTO DE SISTEMAS DE INFORMAÇÃO}
+%
+%-------- Informações obtidas na Biblioteca ----------------
+
+%\orientador{Andrés Ignácio Martínez Menéndez }
+%
+%\coorientador{Marcos Barbosa Dósea} % opcional
+
+
+%\maketitle
+
+\begin{center}
+\textbf{
+UNIVERSIDADE FEDERAL DE SERGIPE \\
+CAMPUS PROF. ALBERTO CARVALHO \\ 
+DEPARTAMENTO DE SISTEMAS DE INFORMAÇÃO}
+\end{center}
+
+\textbf{\\Título do Projeto}
+
+\begin{center}
+\textbf{
+Desenvolvimento de uma rede social para dispositivos móveis usando a Realidade Aumentada.}
+\end{center}
+
+\textbf{\\Orientador}: Andrés Ignácio Martínez Menéndez \\
+%\textbf{Co-Orientador}: Marcos Barbosa Dósea \\
+\textbf{Aluno}: Lucas Fernandes de Almeida
+
+
+%--------------Início do Conteúdo---------------------------
+\pagestyle{ruledheader}
+
+
+\chapter{INTRODUÇÃO}
+\label{ITD}
+    \indent \indent Nossa sociedade com o passar dos anos vem demonstrando forte apego a sites de relacionamento, a exemplo do facebook~\cite{FaceBook}, orkut~\cite{Orkut}, google+~\cite{Google+}. Esses sites proporcionam aos seus usuários a troca de informações, contatos, ou seja, a interação entre eles. O que a maioria dos usuários buscam nesses sites são informações a respeito dos outros usuários, por exemplo: Onde esta/esteve, com quem conversou e o que andou fazendo. 
+    
+    Todas essas redes sociais tem em comum a forma utilizada para prover a interação entre os usuários, através da troca de mensagens, compartilhamento de fotos, vídeos e músicas, porém nenhuma dessas redes sociais oferece ao usuário o serviço de localizar usuários e o uso da Realidade Aumentada nas aplicações. 
+
+    
+    A Realidade Aumentada~\cite{Haller2007} é uma técnica que permite a sobreposição, em tempo real, de imagens virtuais geradas por computador em um ambiente real. Essa técnica fornece ao usuário uma maneira totalmente diferente de interação enriquecendo o ambiente a qual ele está inserido com novas informações.
+    
+	Existem duas formas de interação usando a Realidade aumentada~\cite{Haller2007}, com marcação e sem marcação: 
+	
+   \begin{enumerate}
+   		\item A interação da Realidade Aumentada~\cite{Haller2007} com marcação exige a utilização de uma câmera, código impresso e um software. A câmera é utilizada pelo software para reconhecer o código impresso. Caso este código tenha associado a ele um elemento virtual, seja uma imagem animada, um jogo. Este elemento será mostrado na superfície que o código foi impresso. 
+   		
+   		 % {pensar no por que não usar a RA com marcador}.
+   		
+   		\item 	Assim como a Realidade Aumentada~\cite{Haller2007} com marcação, a sem marcação faz o uso de uma câmera e de um software, porém não utiliza código impresso para permitir a interação. Em substituição do código impresso é utilizado informações obtidas a partir de sensores de movimento, orientação, e localização (\textit{Global Positioning System}) disponíveis em alguns dispositivos. Essas informações serão analisadas pelo software que fará a sobreposição dos elementos virtuais alinhado ao ambiente real indicado pelas coordenadas fornecidas pelos sensores e exibido na tela do dispositivo móvel do usuário.
+
+	\end{enumerate}      			
+	
+Como já foi mencionado, a Realidade Aumentada permite enriquecer o ambiente real (o que está sendo visualizado pelo usuário no seu dispositivo) com novas informações (informações virtuais). Com isso, em se tratando de dispositivos móveis a Realidade Aumentada tem um vasto campo de aplicabilidade.	Veja algumas aplicações da Realidade Aumentada em ~\cite{MonteLima2007}.
+
+Para este projeto, a Realidade Aumentada terá o papel de permitir a visualização de informações, na tela do dispositivo, sobre outros usuários da rede que estejam próximos, coexistindo o real e o virtual na tela do dispositivo do usuário. E para que isso aconteça os usuários da rede terão sua localização guardadas em um banco de dados espacial~\cite{Obe_Hsu_2011} (PostgreSQL~\cite{Postgresql} com a extenção PostGis~\cite{Postgis}). 
+
+O geoprocessamento em conjunto com a Realidade aumentada (usando a técnica sem marcação), irá permitir que apartir do momento que o usuário passar a câmera do dispositivo móvel (usando as informações obtidas pelos sensores do dispositivo) por um determinado lugar que possua coordenadas (latitude e longitude) de algum usuário da rede, será exibido na tela do dispositivo informações sobre este usuário. Com isso, oferecendo aos usuários desta rede uma maneira totalmente diferente de interação.
+
+	Neste trabalho, abordaremos a criação de uma Rede Social usando técnicas da Realidade Aumentada~\cite{Haller2007}, em específico a técnica sem marcação por permitir obter dados dinâmicos, com o intuito de prover a comunicação e localização entre os usuários dessa rede.
+	
+\chapter{OBJETIVOS DO PROJETO}
+\label{Cap:OBJ}
+\section{Objetivo Geral}	
+O objetivo desse projeto é o desenvolvimento de uma Rede Social usando-se de técnicas da Realidade Aumentada para proporcionar aos usuários uma maneira diferente de interação.
+
+\section{Objetivos específicos}
+	\begin{enumerate}
+    	\item Realizar pesquisa bibliográfica sobre Geoprocessamento, Realidade Aumentada e suas técnicas, com o foco principal na técnica de visão direta por video baseada em monitor sem a utilização de marcadores ~\cite{Haller2007};
+    	\item Desenvolver um sistema baseado em Realidade Aumentada para dispositivos móveis da plataforma Android que terá como objetivo a criação de uma Rede Social que possibilitará uma maneira totalmente diferente de interação (reveja a introdução) entre os usuários;
+    	\item Validar o sistema atribuindo elementos virtuais e dados georreferenciados verificando como essas informações se comportam na sobreposição dos elementos virtuais sobre o ambiente real ao qual o usuário está inserido.
+	\end{enumerate} 
+	
+\chapter{METODOLOGIA}
+\label{Cap:MTD}
+
+     \indent \indent 
+     O projeto será bibliográfico, prático e experimental. 
+\begin{itemize}
+	 \item  Bibliográfico porque serão estudados materiais (livros,  artigos) e ferramentas disponíveis para o público em geral.
+	 \item  Prático, pois será implementado um sistema baseado em Realidade Aumentada para dispositivos móveis da plataforma Android.
+	 \item Experimental, pois serão feitos testes para verificar se a sobreposição dos objetivos virtuais sobre o ambiente real está se comportanto como deveria e se os dados georreferenciados estão retornando valores condizentes com o ambiente ao qual o usuário está inserido.
+\end{itemize}
+
+\section{Fases do Projeto}
+    \indent\indent  
+    A fase inicial do projeto será uma revisão bibliográfica sobre geoprocessamento e técnicas de Realidade Aumentada, com o foco principal na técnica de Visão Direta baseada em monitor sem a utilização de marcadores. 
+
+	Em seguida, será implementado o software que fará uso da Realidade Aumentada e dos dados georeferenciados para prover a comunicação e localização dos usuários pertencentes a Rede Social que será desenvolvida nesse projeto.  
+	
+	Por fim, será disponibilizado uma ferramenta de Realidade Aumentada no uso de uma Rede Social que possibilita aos usuários uma maneira totalmente diferente de interação (reveja a introdução).
+
+\section{Cronograma de Atividades}
+\begin{tabular}{|p{5cm}|l|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Atividade/Mês & Mar & Abr & Mai & Jun & Jul & Ago & Set & Out & Nov & Dez \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Pesquisa Bibliográfica sobre Geoprocessamento e Realidade Aumentada e
+suas técnicas & X &  &  &  &  &  &  &  &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Escrita do relatório final do TCC1 &  & X &  &  &  &  &  &  &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Entrega do relatório final do TCC1 &  & X &  &  &  &  &  &  &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Defesa da Proposta do Trabalho &  &  &  & X &  &  &  &  &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Construção da Aplicação        &  &  & X & X & X & X & X & X &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Validar Aplicação              &  &  &  &  &  & X & X & X &  &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Escrita de TCC                 &  &  & X & X & X & X & X & X & X &  \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Apresentar Projeto &  &  &  &  &  &  &  &  &  & X \\ 
+\hline 
+
+
+
+\end{tabular} 
+
+
+\section{Recursos}
+\label{RCS}
+  \indent \indent
+   Os recursos que serão utilizados no projeto são: 
+   \begin{itemize}
+	 \item  IDE Eclipse~\cite{Eclipse}; 
+	 \item  Extenção do Android~\cite{PluginAndroidEclipse} para o Eclipse~\cite{Eclipse};
+     \item  PostgreSQL~\cite{Postgresql};  
+     \item  Extenção PostGIS~\cite{Postgis} para o PostgreSQL~\cite{Postgresql}.
+\end{itemize}
+
+   
+
+%O item (\emph{...}) da proposição (\ref{...}) nos permite,
+
+
+
+% chamando uma referência
+%  ~\cite{Nemeth2007}
+
+% link para Referência da rede social 
+% http://pt.wikipedia.org/wiki/Rede_social
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Minhas referências.  
+\bibliography{refBib}  
+\bibliographystyle{plain}  
+
+% Estilos de Bibliografia
+%% apalike, plain, phiaea
+\end{document}
