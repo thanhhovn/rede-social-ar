@@ -203,17 +203,21 @@ novas maneiras de interagir com o mundo físico e permitindo o acesso a dados ext
 	 A RA trás o conceito de conteúdo visual sobreposto ao visualizar o mundo real através de uma câmera.  
 	 
 	 \indent
-	 Para que a RA seja possível é utilizado duas técnicas para localização do ambiente real que será usado para projetar o elemento virtual, são elas: Com marcação (mark) e sem marcação (markless). Sendo a primeira técnica a mais difundida. Para este projeto será utilizado a técnica sem marcação. Esta técnica utiliza de dados de posição, orientação, dados georeferenciados para localizar o local que será usado para projetar o elemento virtual. Na figura 01 e na figura 02 podemos ver exemplos de aplicações usando RA com marcação e sem marcação respectivamente.
+	 Para que a RA seja possível é utilizado duas técnicas para localização do ambiente real que será usado para projetar o elemento virtual, são elas: Com marcação (mark) e sem marcação (markless). Sendo a primeira técnica a mais difundida. Para este projeto será utilizado a técnica sem marcação. Esta técnica utiliza de dados de posição, orientação, dados georeferenciados para localizar o local que será usado para projetar o elemento virtual. Na figura ~\ref{fig_marcacao} e na figura ~\ref{fig_sem_marcacao} podemos ver exemplos de aplicações usando RA com marcação e sem marcação respectivamente.
 	 
 	\begin{figure}[h]
 		\begin{center}
-			\includegraphics{Figuras/marcacao.png} 
+			\includegraphics{Figuras/marcacao.png}
+			\caption{Aparência de um museu virtual.}
+			\label{fig_marcacao}			
 		\end{center}
 	\end{figure}
 
 	\begin{figure}[h]
 		\begin{center}
 			\includegraphics{Figuras/sem_marcador.png} 
+			\caption{Sistema de RA com registro do ambiente virtual e real usando GPS.}
+			\label{fig_sem_marcacao}
 		\end{center}
 	\end{figure}
 	
@@ -231,37 +235,45 @@ novas maneiras de interagir com o mundo físico e permitindo o acesso a dados ext
 		\item sistema de visão por vídeo baseado em monitor.
 	\end{enumerate}
 	
-	O sistema de visão ótica direta necessita do uso de óculos ou capacetes, com lentes que permitam o recebimento direto da imagem real, ao mesmo tempo em que permitam a projeção de imagens virtuais devidamente ajustadas com a cena real nós olhos do usuário [referenciar]. Veja um exemplo desse sistema na figura 03. 
+	O sistema de visão ótica direta necessita do uso de óculos ou capacetes, com lentes que permitam o recebimento direto da imagem real, ao mesmo tempo em que permitam a projeção de imagens virtuais devidamente ajustadas com a cena real nós olhos do usuário [referenciar]. Veja um exemplo desse sistema na figura ~\ref{fig_otico}. 
 
 	\begin{figure}[h]
 		\begin{center}
-			\includegraphics{Figuras/fig_3_sistema_otico.png} 
+			\includegraphics{Figuras/fig_3_sistema_otico.png}
+			\caption{Modelagem do sistema de RA ótico. AZUMA 97}	 
+			\label{fig_otico}			
 		\end{center}
 	\end{figure}
 	
-	Por sua vez, o sistema de visão direta por vídeo utiliza capacetes com microcâmeras de vídeo acopladas. A cena real capturada pela microcâmera é misturada com os elementos virtuais gerados por computador e apresentadas diretamente nos olhos do usuário, através de pequenos monitores montados no capacete [referenciar]. Veja um exemplo desse sistema na figura 04.
+	Por sua vez, o sistema de visão direta por vídeo utiliza capacetes com microcâmeras de vídeo acopladas. A cena real capturada pela microcâmera é misturada com os elementos virtuais gerados por computador e apresentadas diretamente nos olhos do usuário, através de pequenos monitores montados no capacete [referenciar]. Veja um exemplo desse sistema na figura ~\ref{fig_video}.
 
 	\begin{figure}[h]
 		\begin{center}
 			\includegraphics{Figuras/fig_04_sistema_por_video.png} 
+			\caption{Modelagem do sistema de RA utilizando vídeo. AZUMA 97}	 
+			\label{fig_video}
 		\end{center}
 	\end{figure}
 	
-	O sistema de visão ótica por projeção utiliza superfícies do ambiente real. Nessa superfície são projetadas as imagens dos objetos virtuais, cujo conjunto é apresentado ao usuário que o visualiza sem a necessidade de nenhum equipamento auxiliar. O limitante desse sistema é sua necessidade com superfícies de projeção [referenciar]. Veja um exemplo desse sistema na figura 05.
+	O sistema de visão ótica por projeção utiliza superfícies do ambiente real. Nessa superfície são projetadas as imagens dos objetos virtuais, cujo conjunto é apresentado ao usuário que o visualiza sem a necessidade de nenhum equipamento auxiliar. O limitante desse sistema é sua necessidade com superfícies de projeção [referenciar]. Veja um exemplo desse sistema na figura ~\ref{fig_projecao}.
 
 	\begin{figure}[h]
 		\begin{center}
 			\includegraphics{Figuras/fig_06_sistema_de_projecao.png} 
+			\caption{Projeção}
+			\label{fig_projecao}
 		\end{center}
 	\end{figure}
 
 	
-	Já o sistema de visão por vídeo baseado em monitor utiliza uma webcam para capturar a cena real. Depois de capturada, a cena real é misturada com os objetos virtuais gerados por computador e apresentada no monitor. O ponto de vista do usuário normalmente é fixo e depende do posicionamento da webcam [referenciar]. Veja um exemplo desse sistema na figura 06.
+	Já o sistema de visão por vídeo baseado em monitor utiliza uma webcam para capturar a cena real. Depois de capturada, a cena real é misturada com os objetos virtuais gerados por computador e apresentada no monitor. O ponto de vista do usuário normalmente é fixo e depende do posicionamento da webcam [referenciar]. Veja um exemplo desse sistema na figura ~\ref{fig_monitor}.
 	
 	%%Adicionar figura 06. [Modelagem do sistema de RA utilizando vídeo baseado em monitor AZUMA 97] 
 		\begin{figure}[h]
 		\begin{center}
 			\includegraphics{Figuras/fig_05_sistema_por_video_baseado_em_monitor.png} 
+			\caption{} 
+			\label{fig_monitor}
 		\end{center}
 	\end{figure}
 	
@@ -280,7 +292,8 @@ novas maneiras de interagir com o mundo físico e permitindo o acesso a dados ext
 	\begin{figure}[!htb]
 		\begin{center}
 			\includegraphics[scale=1]{Figuras/fig_07_RA_dispostivo_movel.png} 
-% falta colocar o rotulo
+			\caption{}
+			\label{fig_dMovel1}
 		\end{center}
 	\end{figure}
 	
