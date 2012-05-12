@@ -372,15 +372,45 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 	\indent \indent
 	\subsection{Ciclo de vida}
 	\indent \indent
-	\subsection{Leiautes}
+	Entender como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criarmos aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). O SO quando necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciado.
+	
+A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados para cada faze do ciclo.
+
+Os principais métodos do ciclo de vida de uma \textit{Activity} são: onCreat, onStart, onResume, onPause, onStop, onRestart e onDestroy. 
+
+		\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/ciclodeVidaActivity3.png} 
+			\caption{Ciclo de Vida de uma \textit{Activity}.}
+			\label{fig_cicloVidaAtivity}
+		\end{center}
+	\end{figure}
+	
+	O método onCreat, é o responsável por criar a \textit{Activity} e é executada somente uma única vez, ele pode ser utilizado para abrir arquivos que serão utilizados pela \textit{Activity}, por exemplo. No momento da chamada do método onStart, já deve existir a \textit{Activity} e seus componentes visuais, então ele tem a função de exibir a \textit{Activity} ao usuário, porem sem oferecer a interação com a mesma. A partir do método onResume que a \textit{Activity} pode interagir com o usuário, ou seja, nesta faze dizemos que a \textit{Activity} está em execução.
+	
+Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa faze a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
+	
+É importante notar que o SO pode, nas fazes ?Parada? e ?Interrompida? do ciclo, finalizar alguma \textit{Activity} que está muito tempo sem ser executada, para liberar recursos. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
+
+	
+	\subsection{\textit{Layout}}
 	\indent \indent
 	\subsection{Classe R} 
 	\indent \indent
+	É uma classe JAVA, que ao criar um novo projeto, é gerada automaticamente pela ferramenta de desenvolvimento (plugin ADT ou MOTODEV) e gerenciada pela mesma. A classe R nunca deve ser alterada manualmente. Sua atualização acontece quando um novo arquivo, não importando o seu tipo, é adicionado em alguma das seguintes pastas: drawable, layout e values. Essas pastas contêm respectivamente, imagens, arquivos XML que representam as telas da aplicação e arquivos XML que contém as mensagens da aplicação. Então, ao adicionar um novo recurso em uma dessas pastas, é gerada automaticamente uma nova constante na classe R.
+	
+Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois, nela são guardadas constantes, do tipo int e de valor único dentro do projeto, que são utilizadas para referenciar algum recurso do projeto, que pode ser: uma imagem, botão ou um arquivo XML que define alguma tela da aplicação.
+
+O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem ?android.png? que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
 	\subsection{Arquivo Manifest}
 	\indent \indent
 	
 \section{Ferramentas}
 \indent \indent
+As ferramentas de programação ou IDEs, são úteis para auxiliar o desenvolvedor em suas tarefas, proporcionando aumento da produtividade, reduzindo o tempo de desenvolvimento. 
+Para o desenvolvimento de aplicações para a o ambiente Android tem-se o plugin ADT. Este é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
+
+Outra alternativa seria, o MOTODEV Studio. O MOTODEV Studio é uma versão modificada do Eclipse criada pela Motorola. Já vem com tudo configurado e com mais recursos, pronto para o desenvolvedor começar a criar suas aplicações sem se preocupar com a configuração. Além disso, o MOTODEV tem mecanismo de detectar problemas na aplicação como é o caso do validador de aplicativo, que tem o papel de detectar problemas na aplicação para garantir que a aplicação irá funcionar como deveria. Por exemplo, fazendo buscas no código por condições impróprias, permissões faltantes ou layouts impróprios.
 
 
 %O item (\emph{...}) da proposição (\ref{...}) nos permite,
