@@ -374,7 +374,7 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 	\indent \indent
 	Entender como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criarmos aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). O SO quando necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciado.
 	
-A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados para cada faze do ciclo.
+A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada faze do ciclo.
 
 Os principais métodos do ciclo de vida de uma \textit{Activity} são: onCreat, onStart, onResume, onPause, onStop, onRestart e onDestroy. 
 
@@ -402,8 +402,24 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois, nela são guardadas constantes, do tipo int e de valor único dentro do projeto, que são utilizadas para referenciar algum recurso do projeto, que pode ser: uma imagem, botão ou um arquivo XML que define alguma tela da aplicação.
 
 O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem ?android.png? que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
-	\subsection{Arquivo Manifest}
+	\subsection{ Arquivo AndroidManifest}
 	\indent \indent
+	O Arquivo AndroidManifest é a base de toda aplicação Android. Ele é um arquivo de configuração, obrigatório em todo o projeto Android, contendo permissões de acesso ao Hardware, como, sensores e câmera, assim como o acesso a internet. Além disso, é necessário que toda Activity do projeto esteja declarada nesse arquivo, caso contrário não será possível utilizá-la.
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/exemploArquivoManifest.png} 
+			\caption{Exemplo de um Arquivo AndroidManifest}
+			\label{fig_exAndroidManifest}
+		\end{center}
+	\end{figure}
+	
+Na figura \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
+
+Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag <manifest> tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
+
+Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
+
 	
 \section{Ferramentas}
 \indent \indent
