@@ -1,0 +1,446 @@
+\NeedsTeXFormat{LaTeX2e}
+%-----------------------------------------------------------
+\documentclass[a4paper,12pt]{monografia}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage[mathcal]{eucal}
+\usepackage{latexsym}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{bm}
+\usepackage[all]{xy}
+\usepackage{graphicx,color}
+%\usepackage[pdftex]{graphicx}
+
+%-----------------------------------------------------------
+
+%-----------------------------------------------------------
+\usepackage{cite}  % pacote para fazer referências usando arquivo .bib
+%-----------------------------------------------------------
+
+%-----------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{axiom}{Axioma}[section]
+\newtheorem{corollary}{Corolário}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{proposition}{Proposição}[section]
+%-----------------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}[section]
+\newtheorem{example}{Exemplo}[section]
+%-----------------------------------------------------------
+\theoremstyle{remark}
+\newtheorem{remark}{Observação}[section]
+%-----------------------------------------------------------
+%-----------------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{{\cal V}}
+%-----------------------------------------------------------
+\def\ind{\hbox{ ind }}
+%-----------------------------------------------------------
+\includeonly{Capt1/AR}
+%% Comandos para facilitar a edição 
+\newcommand{\cpp}{\texttt{C$++$}}
+\newcommand{\latex}{\LaTeX}
+
+\begin{document}
+%
+%----------------- Título e Dados do Autor -----------------
+\titulo{Rede Social usando Realidade Aumentada}
+%\subtitulo{- Fazendo uso da classe MONOGRAFIA -} % opcional
+\autor{Lucas Fernandes de Almeida} \nome{Lucas} \ultimonome{Almeida}
+%
+%---------- Informe o Curso e Grau -----
+\bacharelado \curso{Sistemas de Informação} \ano{2012}
+\data{15 de Dezembro de 2012} % data da aprovação
+\cidade{Itabaiana}
+%
+%----------Informações sobre a Instituição -----------------
+\instituicao{Universidade Federal de Sergipe} \sigla{UFS}
+\unidadeacademica{Centro de Ciências Exatas e Tecnologia}
+%
+%-------- Informações obtidas na Biblioteca ----------------
+%
+\CDU{536.21} \areas{1.Realidade Aumentada  2. Geoprocessamento.}
+\npaginas{xx}  % total de páginas do trabalho
+%------Nomes do Orientador, 1o. Examinador e 2o. Examinador-
+\orientador{Andrés Menéndez }
+%
+%\coorientador{Nome do Co-orientador} % opcional
+%
+\examinadorum{Nome do Examinador 1}
+%
+\examinadordois{Nome do Examinador 2}
+%
+%\examinadortres{Nome do Examinador 3}
+%
+%\examinadorquatro{Nome do Examinador 4}
+%--------- Títulos do Orientador 1o. e 2o. Examinadores ----
+\ttorientador{Graduado em Ciências da Computação - Unit}
+%
+%\ttcoorientador{Título do Co-orientador} % se digitado \coorientador
+%
+\ttexaminadorum{Título do Examinador 1}
+%
+\ttexaminadordois{Título do Examinador 2}
+%
+%\ttexaminadortres{Título do Examinador 3}
+%
+%\ttexaminadorquatro{Título do Examinador 4}
+%
+\maketitle
+%----------------------------dedicatória  opcional--------------
+\begin{dedicatoria}
+Aos meus pais e irmã.\\
+Aos amigos, pelo apoio e companheirismo.\\
+\end{dedicatoria}
+%--------Digite aqui o seu resumo em Português--------------
+\resumo{Resumo} 
+% Digite aqui
+
+\noindent Palavras-chaves: RA, Geoprocessamento.
+%-----------Digite aqui o seu resumo em Inglês--------------
+\resumo{Abstract} 
+% Digite aqui
+
+\noindent Keywords: AR, GIS.
+%-----------Ou digite aqui o seu resumo em Frances----------
+%\resumo{Résumé} C'est un modèle de la monographie dans \LaTeX et
+%5utilise la classe monografia.cls, avec le but de aider dans le
+%maniement des travaux de conclusion des plusieurs cours de
+%l'Université Fédérale de Maranhão.
+%-----------------------------------------------------------
+\agradecimento{Agradecimentos}
+
+\indent\indent A todos os meus parentes, pelo encorajamento e
+apoio.
+
+Ao professor Andrés Menéndez pela orientação, amizade e
+principalmente, pela paciência, sem a qual este trabalho não se
+realizaria.
+
+
+Aos professores do Departamento de Sistemas de Informação pelos seus
+ensinamentos e aos funcionários do curso, que durante esses anos,
+contribuíram de algum modo para o nosso enriquecimento pessoal e
+profissional.
+\newpage
+%---------------------- EPÍGRAFE I (OPCIONAL)--------------
+\begin{epigrafe}
+``Lembra que o sono é sagrado e alimenta de horizontes o tempo acordado de viver''.\\
+\hfill Beto Guedes (Amor de Índio)
+\end{epigrafe}
+%----Sumário, lista de figura e de tabela ------------
+\tableofcontents 
+\thispagestyle{empty} %\listoffigures
+%\thispagestyle{empty} \listoftables \thispagestyle{empty}
+%---------------------
+%--------------Início do Conteúdo---------------------------
+\pagestyle{ruledheader}
+%\chapter{Realidade Aumentada}
+\listoffigures
+\chapter{Introdução}
+%% Cap. 1 - AR
+%\include{Capt1/AR}
+
+%% Inicio Capitulo de realidade aumentada
+
+\chapter{Realidade Aumentada}
+\label{Cap:ar}
+\section{Introdução}
+	\indent \indent A realidade aumentada (RA) teve seus primeiros passos na década de 60, com o pesquisador Ivan Sutherland, com duas principais contribuições:
+	
+	\begin{enumerate}
+    	\item A escrita de um artigo, vislumbrando a evolução da realidade virtual (RV) e seus reflexos no mundo real ~\cite{Sutherland1963};
+    	\item O desenvolvimento de um capacete de visão ótica direta rastreado para visualização de objetos 3D no ambiente real ~\cite{Sutherland1968}.
+	\end{enumerate}
+	
+  	 \indent Entretanto, somente na decada de 80 que surgiu o primeiro projeto de realidade aumentada. Este projeto foi desenvolvido pela Força Aérea Americana e tratava-se de um simulador de cockpit de avião, com visão ótica direta, misturando elementos virtuais com o ambiente físico do usuário ~\cite{MarcosWagnerS.Ribeiro2011}.
+  	 
+\section{Conceitos e Definições}  	 
+	\indent \indent 
+	 A RA é caracterizada pela inserção de objetos virtuais no ambiente físico, mostrada ao usuário, em tempo real, com o apoio de algum dispositivo tecnológico, usando a interface do ambiente real, adaptada para visualizar e manipular os objetos reais e virtuais  ~\cite{Tori2006a}. 
+
+	 \indent
+	 A RA pode ser aplicada a todos os sentidos humanos ~\cite{Azuma2001} e propocionar ao usuário uma interação segura, sem necessidade de treinamento, uma vez que a RA permite trazer para o seu ambiente real objetos virtuais, incrementando e aumentando a visão que o usuário tem do mundo real ~\cite{Kirner2007}. Para proporcionar essa experiência ao usuário a RA faz uso de uma câmera, técnicas de Visão Computacional e de Computação Gráfica/RV.
+	  	 
+	\indent
+	Existem várias definições para a RV. Alguns autores tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um ambiente), interatividade e \textit{feedback} sensorial (visual, auditivo e táctil) ~\cite{Sherman2003}. Outros descrevem a RV de forma geral, como uma técnica avançada de interface, onde o usuário pode navegar e interagir em um ambiente tridimensional gerado por computador, estando completa ou parcialmente presente ou então imerso pela sensação gerada por canais multi-sensoriais, sendo a visão o canal principal ~\cite{Ficheman2006}. 
+
+	\indent Assim como a RV a RA os autores têm várias definições, como podemos ver a seguir:
+		
+	\begin{citacao}
+"Uma variante da RV [...]. As tecnologias de RV submergem completamente ao usuário em um ambiente sintético ou virtual e, enquanto imerso nesse ambiente, o usuário não pode ver o mundo real que o rodeia. Pelo contrário, a RA permite ver o mundo real com objetos virtuais sobrepostos ou integrados nesse mundo real. Desta forma, a RA complementa a realidade ao invez de substituí-la. [...]" ~\cite{Kirner2012}.
+	\end{citacao}		
+	
+	\begin{citacao}
+	"A realidade aumentada adiciona um pouco mais de mágica à realidade, criando 
+novas maneiras de interagir com o mundo físico e permitindo o acesso a dados extremamente valiosos de uma maneira natural". -David Helgason, CEO da Unity Technologies. %dúvida
+	\end{citacao}
+
+	\begin{citacao}
+	"A realidade aumentada permite que as pessoas visualizem o espaço virtual como parte integral do mundo físico ao seu redor, fazendo com que o mundo real possa ser acessado efetivamente por cliques e links". - Paul E. Jacobs, presidente e diretor executivo da Qualcomm. %tirar dúvida sobre como referenciar
+	\end{citacao}
+	
+	\indent
+	Além disso, \cite{Azuma_1997} define três características fundamentais e distintivas para um sistema ser considerado de RA:
+	\begin{enumerate}
+		\item Combinar o mundo real com o virtual;
+		\item Interagir em tempo real;
+
+	\item Ajustar os objetos virtuais no ambiente 3D.
+	\end{enumerate}
+	
+	\indent
+	 A RA trás o conceito de conteúdo visual sobreposto ao visualizar o mundo real através de uma câmera.  
+	 
+	 \indent
+	 Para que a RA seja possível são utilizadas duas técnicas para localização do ambiente real que será usado para projetar o elemento virtual, são elas: Com marcação (~\textit{mark}) e sem marcação (~\textit{markless}). Sendo a primeira técnica a mais difundida. Na implementação do projeto foi utilizado a técnica sem marcação. Esta técnica utiliza de dados de posição, orientação, dados georeferenciados para localizar o local que será usado para projetar o elemento virtual. Na figura ~\ref{fig_marcacao} e na figura ~\ref{fig_sem_marcacao} podemos ver exemplos de aplicações usando RA com marcação e sem marcação respectivamente.	 
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/marcacao.png}
+			\caption{Aparência de um museu virtual.}
+			\label{fig_marcacao}			
+		\end{center}
+	\end{figure}
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/sem_marcador.png} 
+			\caption{Sistema de RA com registro do ambiente virtual e real usando GPS (\textit{Global Positioning System}).}
+			\label{fig_sem_marcacao}
+		\end{center}
+	\end{figure}
+	
+	 \indent
+	 A RA é utilizada em muitas soluções desde jogos a mídia e marketing interativo, passando por instruções e módulo de ajuda, a realidade aumentada abre espaço para novos aplicativos e serviços móveis. Indo mais fundo, essa tecnologia deverá ter grande impacto no relacionamento das pessoas, através de novas maneiras de realizar visualização, comunicação e interação com pessoas e informação.  
+
+\section{Tipos de Sistemas de Realidade Aumentada}
+	\indent \indent
+	A depender do tipo de display utilizado ~\cite{Azuma2001}, seja envolvendo visão ótica ou por vídeo, os sistemas de RA podem ser classificados em quatro tipos.
+	
+	\begin{enumerate}
+		\item sistema de visão ótica direta;
+		\item sistema de visão direta por vídeo;
+		\item sistema de visão ótica por projeção;
+		\item sistema de visão por vídeo baseado em monitor.
+	\end{enumerate}
+	
+	O sistema de visão ótica direta necessita do uso de óculos ou capacetes, com lentes que permitam o recebimento direto da imagem real, ao mesmo tempo em que permitam a projeção de imagens virtuais devidamente ajustadas com a cena real nós olhos do usuário. Veja um exemplo desse sistema na figura ~\ref{fig_otico}. 
+	\begin{figure}[h]
+		\begin{center}			
+			\includegraphics{Figuras/fig_3_sistema_otico.png}
+			\caption{Diagrama e dispositivo do sistema de visão ótica direta [2].}	 
+			\label{fig_otico}			
+		\end{center}
+	\end{figure}
+	
+	Por sua vez, o sistema de visão direta por vídeo utiliza capacetes com microcâmeras de vídeo acopladas. A cena real capturada pela microcâmera é misturada com os elementos virtuais gerados por computador e apresentadas diretamente nos olhos do usuário, através de pequenos monitores montados no capacete. Veja um exemplo desse sistema na figura ~\ref{fig_video}.
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/fig_04_sistema_por_video.png} 
+			\caption{Diagrama e dispositivo do sistema de visão direta por vídeo [2].}	 
+			\label{fig_video}
+		\end{center}
+	\end{figure}
+	
+	O sistema de visão ótica por projeção utiliza superfícies do ambiente real. Nessa superfície são projetadas as imagens dos objetos virtuais, cujo conjunto é apresentado ao usuário que o visualiza sem a necessidade de nenhum equipamento auxiliar. O limitante desse sistema é sua necessidade com superfícies de projeção. Veja um exemplo desse sistema na figura ~\ref{fig_projecao}.
+	\begin{figure}[t]
+		\begin{center}
+			\includegraphics{Figuras/fig_06_sistema_de_projecao.png} 
+			\caption{Projeção}
+			\label{fig_projecao}
+		\end{center}
+	\end{figure}
+
+	
+	Já o sistema de visão por vídeo baseado em monitor utiliza uma webcam para capturar a cena real. Depois de capturada, a cena real é misturada com os objetos virtuais gerados por computador e apresentada no monitor. O ponto de vista do usuário normalmente é fixo e depende do posicionamento da webcam. Veja um exemplo desse sistema na figura ~\ref{fig_monitor}.
+	\begin{figure}[ht]
+		\begin{center}
+			\includegraphics{Figuras/fig_05_sistema_por_video_baseado_em_monitor.png} 
+			\caption{Diagrama e  dispositivo do  sistema  de visão  por  vídeo
+baseado em monitor [2].} 
+			\label{fig_monitor}
+		\end{center}
+	\end{figure}
+	
+	Como a intenção deste projeto é a criação de uma rede social para dispositivos móveis usando a RA, dar-se-á maior destaque para o sistema de visão direta por vídeo baseado em monitor. Isso se deve ao fato dessa técnica não necessitar de nenhum equipamento auxiliar, sendo necessária somente a câmera que será a do próprio dispositivo móvel e de um software específico que fará a analise dos dados recebidos e a sobreposição dos elementos virtuais no ambiente real que será mostrado no ~\textit{display} do dispositivo móvel do usuário.
+	
+\section{Realidade Aumentada Movel}
+	\indent \indent
+	Os dispositivos móveis eram conhecidos por possuir um Hardware limitado com pouca memória e baixo poder de processamento. Essas características inviabilizavam o uso da realidade aumentada nos dispositivos móveis já que a RA demanda de recursos computacionais. 
+	
+	Porém, com o rápido avanço tecnológico dos dispositivos móveis ao longo dos últimos anos essas restrições da utilização da RA foram sanadas. Hoje, praticamente todo dispositivo móvel dá suporte a aplicações baseadas em RA. Com exceção para, aplicações que exige poder computacional acima da média.  
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[scale=1]{Figuras/fig_07_RA_dispostivo_movel.png} 
+			\caption{Exemplo de uma aplicação usando a RA em um dispositivo móvel.}
+			\label{fig_dMovel1}
+		\end{center}
+	\end{figure}
+	
+	Atualmente existem inúmeras aplicações que usam técnicas de realidade aumentada para dispositivos móveis, desde aplicações para localização, área da saúde, marketing, jogos, etc. O limite do uso da RA para atender nossas necessidades vai da imaginação de quem cria a aplicação. Veja na figura ~\ref{fig_dMovel1} um dos exemplos da utilização da RA em dispositivos móveis.
+		
+\section{Projetos Relacionados}
+	\indent \indent
+	Serão mostrados, nesta seção, alguns dos projetos relacionados ao uso da Realidade Aumentada em dispositivos móveis.
+	
+	\subsection{ \textit{Mobile Augmente Reality Applications} (MARA)}
+	\indent \indent
+		Este projeto desenvolvido pela Nokia é aplicado a celulares que dispõem de GPS, acelerómetro  e bússola. Esses sensores têm o papel de determinar a localização e orientação do telefone. 
+		
+Tem como objetivo, oferecer as seguintes funcionalidades:Identificar restaurantes, hotéis, pontos turísticos, fornecer links da Web e informações básicas sobre esses objetos na tela do telefone. Além disso, David Murphy, engenheiro da Nokia Research Center, afirma que o sistema também pode ser usado para encontrar os amigos próximos, que têm telefones com GPS e software apropriado. % deve ser referenciado
+		
+Uma vez que o telefone está em modo de câmera à aplicação (MARA) reúne as informações dos três sensores para identificar a localização e orientação do telefone, veja a aplicação na figura ~\ref{fig_Mara} . Em seguida, para determinar qual objeto seria visível para a câmera, o software busca objetos no banco de dados que pode ser carregado no telefone ou pode ser acessado através de uma conexão de rede. Com a visibilidade determinada, o software destaca os objetos e fornece informações extras e hiperlinks, se disponível. % deve ser referenciado
+	\begin{figure}[t]
+		\begin{center}
+			\includegraphics[scale=1]{Figuras/ProjetoNokiaMara.png} 
+			\caption{Nesta figura é mostrado o protótipo usando a plataforma Nokia S60, mostrando informações da posição e orientação do telefone através de uma conexão Bluetooth.}
+			\label{fig_Mara}
+		\end{center}
+	\end{figure}	
+	
+	\subsection{LayAr}
+		\indent \indent
+	O Layar é uma plataforma móvel que ajuda-lhe a pesquisar e a descobrir informações sobre o mundo à sua volta, apresentando informações digitais no campo de visão do seu dispositivo móvel, através da tecnologia RA, veja um exemplo na figura ~\ref{fig_navegacao}. Layar, foi desenvolvido por uma empresa holandesa de mesmo nome, fundada em 2009 por Raimo van der Klein, Claire Boonstra e Maarten Lens-FitzGerald. E está disponível para as plataformas, Android, Iphone (IOS), Symbian e Blackberry.	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/navegacao.png} 
+			\caption{Nesta figura mostra uma aplicação desenvolvida pela JWT, usando a plataforma Layar, para uma camanpanha hi-tech para a Mazda.Mostrado o caminho para encontrar a concessionária Mazda mais próxima.}
+			\label{fig_navegacao}
+		\end{center}
+	\end{figure}	
+	
+
+Para permitir que os usuários visualizem diversos itens na tela do dispositivo usando a RA, foram utilizadas, além da visão computacional, alguns componentes: Câmera, Bússola, GPS e Acelerómetro. Esses componentes são utilizados em conjunto para identificar a localização e orientação do dispositivo móvel. Usando essas informações, é feito uma busca em um banco espacial procurando itens que possuem coordenadas (latitude e longitude) próximas da localização do usuário. Por fim, as várias formas de dados coletadas são colocadas sobre a imagem que está sendo exibida pela câmera, funcionando como uma camada adicional.
+	\begin{figure}[!Hbp]
+		\begin{center}
+			\includegraphics{Figuras/exbindoVideoApartirDeUmJornal.png} 
+			\caption{Nesta figura, ao passar o celular sobre uma página do jornal que contém um código reconhecido pelo sistema, é exibido na tela do celular informações digitais (vídeo).}
+			\label{fig_reconhecimentoObjeto}
+		\end{center}
+	\end{figure}
+	
+	
+O Layar oferece vários tipos de experiências aos usuários, com características interativas e imersivas, como objetos em 3D e animação. Algumas das esperiências oferecidas pelo Layar são, jogar games usando como cenário o próprio ambiente (veja na figura ~\ref{fig_jogo}), encontrar locais próximos, incluindo cafés, lojas e outros negócios, bem como locais históricos, monumentos e o reconhecimento de objetos do mundo real mostrando experiências digitais em cima deles permitindo que os usuários interajam com esses objetos, que podem ser encontrados em revistas, jornais, cardápios de restaurantes, cartazes publicitários e livros. Veja um exemplo de visão computacional no uso de reconhecimento de objetos na figura ~\ref{fig_reconhecimentoObjeto}.
+	\begin{figure}[hbp]
+		\begin{center}
+			\includegraphics{Figuras/Jogo.png} 
+			\caption{Nesta figura é mostrado um jogo que tem como cena a imagem do próprio ambiente.}
+			\label{fig_jogo}
+		\end{center}
+	\end{figure}	
+		
+	\subsection{Realidade Urbana Aumentada (RUA)}
+	\indent \indent
+		Este projeto faz parte de um projeto maior, Wikinarua. O Wikinarua visa à criação de uma rede social como proposta de inclusão artística. O software RUA assim como o Wikinarua foram desenvolvidos na Universidade de Brasília. O RUA Permitindo, o compartilhamento de fotos, vídeos, músicas, comunicação entre os usuários, a visualização de um monumento histórico e suas ruínas em diferentes momentos de sua existência, observar os mínimos detalhes de algumas obras de arte na tela do dispositivo e o reconhecimento de imagens para a identificação de diversos espaços e pontos importantes de cidades de todo o Brasil. 
+
+O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de objetos 3D, da biblioteca ARTollkit (Realidade Aumentada) para o rastreamento de marcadores, acelerômetro, GPS e magnetômetro. O GPS e a bússola (magnetômetro) são usados, para identificar onde você está e a direação para qual o celular está apontando. Este projeto foi inicialmente desenvolvido para a API 3.0 do Iphone, mas será estendido para a plataforma Android.
+ 
+%% Fim de RA
+
+\chapter{Plataforma Android}
+\label{Cap:android}
+	\indent \indent
+	Neste capítulo, será apresentada a Plataforma Android, especificando suas principais características, assim como sua infra-estrutura, arquitetura e principais recursos.
+	
+\section{O que é o Android}
+\indent \indent
+ "O Android é uma plataforma de desenvolvimento para aplicativos móveis como smartphones e contêm um sistema operacional baseado em Linux, uma interface visual rica, GPS, diversas aplicações já instaladas e ainda um ambiente de desenvolvimento bastante poderoso, inovador e flexível" [Ricardo Lecheta].
+
+\section{Principais Características}
+\indent \indent
+
+\section{Arquitetura}
+\indent \indent
+
+\section{Recursos Android}
+\indent \indent
+
+	\subsection{API's (\textit{Application programming interface})}
+	\indent \indent
+
+\section{Aplicações}
+	\subsection{Componentes Básicos}
+	\indent \indent
+	\subsection{Ciclo de vida}
+	\indent \indent
+	Entender como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criarmos aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). O SO quando necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciado.
+	
+A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada faze do ciclo.
+
+Os principais métodos do ciclo de vida de uma \textit{Activity} são: onCreat, onStart, onResume, onPause, onStop, onRestart e onDestroy. 
+
+		\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/ciclodeVidaActivity3.png} 
+			\caption{Ciclo de Vida de uma \textit{Activity}.}
+			\label{fig_cicloVidaAtivity}
+		\end{center}
+	\end{figure}
+	
+	O método onCreat, é o responsável por criar a \textit{Activity} e é executada somente uma única vez, ele pode ser utilizado para abrir arquivos que serão utilizados pela \textit{Activity}, por exemplo. No momento da chamada do método onStart, já deve existir a \textit{Activity} e seus componentes visuais, então ele tem a função de exibir a \textit{Activity} ao usuário, porem sem oferecer a interação com a mesma. A partir do método onResume que a \textit{Activity} pode interagir com o usuário, ou seja, nesta faze dizemos que a \textit{Activity} está em execução.
+	
+Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa faze a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
+	
+É importante notar que o SO pode, nas fazes ?Parada? e ?Interrompida? do ciclo, finalizar alguma \textit{Activity} que está muito tempo sem ser executada, para liberar recursos. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
+
+	
+	\subsection{\textit{Layout}}
+	\indent \indent
+	\subsection{Classe R} 
+	\indent \indent
+	É uma classe JAVA, que ao criar um novo projeto, é gerada automaticamente pela ferramenta de desenvolvimento (plugin ADT ou MOTODEV) e gerenciada pela mesma. A classe R nunca deve ser alterada manualmente. Sua atualização acontece quando um novo arquivo, não importando o seu tipo, é adicionado em alguma das seguintes pastas: drawable, layout e values. Essas pastas contêm respectivamente, imagens, arquivos XML que representam as telas da aplicação e arquivos XML que contém as mensagens da aplicação. Então, ao adicionar um novo recurso em uma dessas pastas, é gerada automaticamente uma nova constante na classe R.
+	
+Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois, nela são guardadas constantes, do tipo int e de valor único dentro do projeto, que são utilizadas para referenciar algum recurso do projeto, que pode ser: uma imagem, botão ou um arquivo XML que define alguma tela da aplicação.
+
+O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem ?android.png? que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
+	\subsection{ Arquivo AndroidManifest}
+	\indent \indent
+	O Arquivo AndroidManifest é a base de toda aplicação Android. Ele é um arquivo de configuração, obrigatório em todo o projeto Android, contendo permissões de acesso ao Hardware, como, sensores e câmera, assim como o acesso a internet. Além disso, é necessário que toda Activity do projeto esteja declarada nesse arquivo, caso contrário não será possível utilizá-la.
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/exemploArquivoManifest.png} 
+			\caption{Exemplo de um Arquivo AndroidManifest}
+			\label{fig_exAndroidManifest}
+		\end{center}
+	\end{figure}
+	
+Na figura \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
+
+Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag <manifest> tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
+
+Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
+
+	
+\section{Ferramentas}
+\indent \indent
+As ferramentas de programação ou IDEs, são úteis para auxiliar o desenvolvedor em suas tarefas, proporcionando aumento da produtividade, reduzindo o tempo de desenvolvimento. 
+Para o desenvolvimento de aplicações para a o ambiente Android tem-se o plugin ADT. Este é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
+
+Outra alternativa seria, o MOTODEV Studio. O MOTODEV Studio é uma versão modificada do Eclipse criada pela Motorola. Já vem com tudo configurado e com mais recursos, pronto para o desenvolvedor começar a criar suas aplicações sem se preocupar com a configuração. Além disso, o MOTODEV tem mecanismo de detectar problemas na aplicação, validador de aplicativo, por exemplo, tem o papel de detectar problemas na aplicação para garantir que a aplicação irá funcionar como deveria. Por exemplo, fazendo buscas no código por condições impróprias, permissões faltantes ou layouts impróprios.
+
+
+%O item (\emph{...}) da proposição (\ref{...}) nos permite,
+
+
+
+% chamando uma referência
+%  ~\cite{RA}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Minhas referências.  
+\bibliography{refBib}  
+\bibliographystyle{plain} 
+\end{document}
