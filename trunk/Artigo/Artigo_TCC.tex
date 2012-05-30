@@ -372,13 +372,10 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 	\indent \indent
 	\subsection{Ciclo de vida}
 	\indent \indent
-	Entender como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criarmos aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). O SO quando necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciado.
+	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
 	
-A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada faze do ciclo.
-
-Os principais métodos do ciclo de vida de uma \textit{Activity} são: onCreat, onStart, onResume, onPause, onStop, onRestart e onDestroy. 
-
-		\begin{figure}[h]
+A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada fase do ciclo.
+  \begin{figure}[h]
 		\begin{center}
 			\includegraphics{Figuras/ciclodeVidaActivity3.png} 
 			\caption{Ciclo de Vida de uma \textit{Activity}.}
@@ -386,14 +383,14 @@ Os principais métodos do ciclo de vida de uma \textit{Activity} são: onCreat, on
 		\end{center}
 	\end{figure}
 	
-	O método onCreat, é o responsável por criar a \textit{Activity} e é executada somente uma única vez, ele pode ser utilizado para abrir arquivos que serão utilizados pela \textit{Activity}, por exemplo. No momento da chamada do método onStart, já deve existir a \textit{Activity} e seus componentes visuais, então ele tem a função de exibir a \textit{Activity} ao usuário, porem sem oferecer a interação com a mesma. A partir do método onResume que a \textit{Activity} pode interagir com o usuário, ou seja, nesta faze dizemos que a \textit{Activity} está em execução.
+	O método onCreat, é o responsável por criar a \textit{Activity} e é executada somente uma única vez, ele pode ser usado, por exemplo, para abrir arquivos que serão utilizados pela \textit{Activity}, por exemplo. No momento da chamada do método onStart, já deve existir a \textit{Activity} e seus componentes visuais, então ele tem a função de exibir a \textit{Activity} ao usuário, porem sem oferecer a interação com a mesma. A partir do método onResume que a \textit{Activity} pode interagir com o usuário, ou seja, nesta fase dizemos que a \textit{Activity} está em execução.
 	
 Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa faze a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
 	
-É importante notar que o SO pode, nas fazes ?Parada? e ?Interrompida? do ciclo, finalizar alguma \textit{Activity} que está muito tempo sem ser executada, para liberar recursos. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
+É fácil perceber, através da imagem \ref{fig_cicloVidaAtivity}, quais são as fases do ciclo onde o SO pode liberar recursos, ou seja, finalizar alguma \textit{Activity} que está muito tempo sem ser executada. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
 
 	
-	\subsection{\textit{Layout}}
+	\subsection{Gerenciadores de \textit{Layout}}
 	\indent \indent
 	\subsection{Classe R} 
 	\indent \indent
@@ -408,7 +405,7 @@ O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira.
 	
 	\begin{figure}[h]
 		\begin{center}
-			\includegraphics{Figuras/exemploArquivoManifest.png} 
+	\includegraphics{Figuras/exemploArquivoManifest.png} 
 			\caption{Exemplo de um Arquivo AndroidManifest}
 			\label{fig_exAndroidManifest}
 		\end{center}
@@ -416,7 +413,7 @@ O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira.
 	
 Na figura \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
 
-Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag <manifest> tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
+Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag \flq manifest\frq tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
 
 Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
 
@@ -424,9 +421,9 @@ Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada apl
 \section{Ferramentas}
 \indent \indent
 As ferramentas de programação ou IDEs, são úteis para auxiliar o desenvolvedor em suas tarefas, proporcionando aumento da produtividade, reduzindo o tempo de desenvolvimento. 
-Para o desenvolvimento de aplicações para a o ambiente Android tem-se o plugin ADT. Este é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
+Para o desenvolvimento de aplicações para o ambiente Android tem-se o plugin ADT e o MOTODEV Studio. O plugin ADT é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
 
-Outra alternativa seria, o MOTODEV Studio. O MOTODEV Studio é uma versão modificada do Eclipse criada pela Motorola. Já vem com tudo configurado e com mais recursos, pronto para o desenvolvedor começar a criar suas aplicações sem se preocupar com a configuração. Além disso, o MOTODEV tem mecanismo de detectar problemas na aplicação, validador de aplicativo, por exemplo, tem o papel de detectar problemas na aplicação para garantir que a aplicação irá funcionar como deveria. Por exemplo, fazendo buscas no código por condições impróprias, permissões faltantes ou layouts impróprios.
+O MOTODEV Studio é uma IDE alternativa para o desenvolvimento de aplicações para o ambiente Android. Essa IDE é uma versão modificada do Eclipse criada pela Motorola. O MOTODEV Studio já vem configurado, pronto para o desenvolvedor começar a criar suas aplicações e oferece recursos adicionais que agiliza o desenvolvimento.
 
 
 %O item (\emph{...}) da proposição (\ref{...}) nos permite,
