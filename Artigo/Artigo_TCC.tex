@@ -347,27 +347,33 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 %% Fim de RA
 
 \chapter{Plataforma Android}
-\label{Cap:android}
+\label{android}
 	\indent \indent
 	Neste capítulo, será apresentada a Plataforma Android, especificando suas principais características, assim como sua infra-estrutura, arquitetura e principais recursos.
 	
 \section{O que é o Android}
+\label{android:oqueE}
 \indent \indent
  "O Android é uma plataforma de desenvolvimento para aplicativos móveis como smartphones e contêm um sistema operacional baseado em Linux, uma interface visual rica, GPS, diversas aplicações já instaladas e ainda um ambiente de desenvolvimento bastante poderoso, inovador e flexível" \cite{Lecheta2010}.
 
 \section{Principais Características}
+\label{android:caracteristicas}
 \indent \indent
 
 \section{Arquitetura}
+\label{android:arquitetura}
 \indent \indent
 
 %	\subsection{API's (\textit{Application programming interface})}
 %	\indent \indent
 
 \section{Aplicações}
+\label{android:aplicacoes}
 	\subsection{Componentes Básicos}
+	\label{android:aplicacoes:componentes}
 	\indent \indent
 	\subsection{Ciclo de vida}
+	\label{android:aplicacoes:cicloVida}
 	\indent \indent
 	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
 	
@@ -388,8 +394,14 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 
 	
 	\subsection{Gerenciadores de \textit{Layout}}
+	\label{android:aplicacoes:gerenciadores}
 	\indent \indent
-	\subsection{Classe R} 
+	O Layout está presente em todas as aplicações, seja voltada para Web, Desktop ou Dispositivo móvel. O layout serve para criar a estrutura da aplicação, definindo a ordem ou sequência em que os componentes visuais  ,nela contidos, são exibidos na tela. Alguns desses componentes visuais são descritos na seção \ref{android:aplicacoes:componentes}.
+	
+	A plataforma Android disponibiliza para o desenvolvedor um conjunto de gerenciadores de Layout, são eles: LinearLayout, AbsoluteLayout, TableLayout, RelativeLayout e FrameLayout.
+	
+	\subsection{Classe R}
+	\label{android:aplicacoes:classeR} 
 	\indent \indent
 	É uma classe JAVA, que ao criar um novo projeto, é gerada automaticamente pela ferramenta de desenvolvimento (plugin ADT ou MOTODEV) e gerenciada pela mesma. A classe R nunca deve ser alterada manualmente. Sua atualização acontece quando um novo arquivo, não importando o seu tipo, é adicionado em alguma das seguintes pastas: drawable, layout e values. Essas pastas contêm respectivamente, imagens, arquivos XML que representam as telas da aplicação e arquivos XML que contém as mensagens da aplicação. Então, ao adicionar um novo recurso em uma dessas pastas, é gerada automaticamente uma nova constante na classe R.
 	
@@ -397,6 +409,7 @@ Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois,
 
 O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem ?android.png? que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
 	\subsection{ Arquivo AndroidManifest}
+	\label{android:aplicacoes:arquivoManifest}
 	\indent \indent
 	O Arquivo AndroidManifest é a base de toda aplicação Android. Ele é um arquivo de configuração, obrigatório em todo o projeto Android, contendo permissões de acesso ao Hardware, como, sensores e câmera, assim como o acesso a internet. Além disso, é necessário que toda Activity do projeto esteja declarada nesse arquivo, caso contrário não será possível utilizá-la.
 	
@@ -415,9 +428,11 @@ Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag \flq manifest
 Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
 
 \section{Recursos Avançados do Android}
+\label{android:aplicacoes:recursosAvancados}
 \indent \indent
 	
 \section{Ferramentas}
+\label{android:ferramentas}
 \indent \indent
 As ferramentas de programação ou IDEs, são úteis para auxiliar o desenvolvedor em suas tarefas, proporcionando aumento da produtividade, reduzindo o tempo de desenvolvimento. 
 Para o desenvolvimento de aplicações para o ambiente Android tem-se o plugin ADT e o MOTODEV Studio. O plugin ADT é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
