@@ -433,22 +433,40 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todo os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivimente por \flq nome\frq \ e \flq /nome\frq. Na figura xx, é possível ver um exemplo do uso desses componentes.
 	
 	A tag \flq TextView\frq \, serve unicamente para a exibição de texto na tela de sua aplicação Android. Em outras plataformas, é conhecido como label. Veja um exemplo no código \ref{textView}.
-%% Adicionando Código	
+
+	O componente EditText, é uma expecialização do componente TextView. E representa um campo texto, onde o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq. Veja um exemplo no código \ref{EditText}.
+
+	O componente Button, representa um botão. É referenciado no arquivo .xml pela tag \flq Button\frq. Veja um exemplo no código \ref{Button}.
+		
+	O componente CheckBox, representa um tipo especial de botão, que só assume dois valores: \textit{true} (marcado) ou \textit{false} (desmarcado). É referenciado no arquivo .xml pela tag \flq CheckBox\frq. Veja um exemplo no código \ref{CheckBox}.
+	
+	Assim como o CheckBox, o RadioButton também só assume dois valores: \textit{true} (marcado) ou \textit{false} (desmarcado). Além da sua forma, outra diferença é que o RadioButton uma vez marcado não poderá mais ser desmarcado. É referenciado no arquivo .xml pela tag \flq RadioButton\frq. Veja um exemplo no código \ref{RadioGroup}.
+	
+	O componente RadioGroup, serve para agrupar um ou mais RadioButton. Permitindo asssim que, apenas um RadioButton seja verificado (marcado). O RadioGroup é referenciado no arquivo .xml pela tag \flq RadioGroup\frq. Veja um exemplo no código \ref{RadioGroup}.
+	\newline
+	
+	%% Adicionando Código	
 \lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
 \lstinputlisting[frame=single, label=textView, caption={"Exemplo do xml para o componente TextView."}]
 {ArquivoFonte/TextBox.xml}
 
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=EditText, caption={"Exemplo do xml para o componente EditText."}]
+{ArquivoFonte/Editext.xml}
+
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=Button, caption={"Exemplo do xml para o componente Button."}]
+{ArquivoFonte/Button.xml}
+
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=CheckBox, caption={"Exemplo do xml para o componente CheckBox."}]
+{ArquivoFonte/CheckBox.xml}
+
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=RadioGroup, caption={"Exemplo do xml para os componentes RadioGroup e RadioButton."}]
+{ArquivoFonte/RadioGroup.xml}
+
 % fim do código
-
-	O componente EditText, é uma expecialização do componente TextView. E representa um campo texto, onde o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq.
-
-	O componente Button, representa um botão. É referenciado no arquivo .xml pela tag \flq Button\frq.
-		
-	O componente CheckBox, representa um tipo especial de botão, que só assume dois valores: \textit{true} (marcado) ou \textit{false} (desmarcado). É referenciado no arquivo .xml pela tag \flq CheckBox\frq.
-	
-	Assim como o CheckBox, o RadioButton também só assume dois valores: \textit{true} (marcado) ou \textit{false} (desmarcado). Além da sua forma, outra diferença é que o RadioButton uma vez marcado não poderá mais ser desmarcado. É referenciado no arquivo .xml pela tag \flq RadioButton\frq.
-	
-	O componente RadioGroup, serve para agrupar um ou mais RadioButton. Permitindo asssim que, apenas um RadioButton seja verificado (marcado). O RadioGroup é referenciado no arquivo .xml pela tag \flq RadioGroup\frq.
 	
 	\subsection{Classe R}
 	\label{android:aplicacoes:classeR} 
@@ -462,18 +480,15 @@ O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira.
 	\label{android:aplicacoes:arquivoManifest}
 	\indent \indent
 	O Arquivo AndroidManifest é a base de toda aplicação Android. Ele é um arquivo de configuração, obrigatório em todo o projeto Android, contendo permissões de acesso ao Hardware, como, sensores e câmera, assim como o acesso a internet. Além disso, é necessário que toda Activity do projeto esteja declarada nesse arquivo, caso contrário não será possível utilizá-la.
+\newline
 	
-	\begin{figure}[h]
-		\begin{center}
-	\includegraphics{Figuras/exemploArquivoManifest.png} 
-			\caption{Exemplo de um Arquivo AndroidManifest}
-			\label{fig_exAndroidManifest}
-		\end{center}
-	\end{figure}
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=fig_exAndroidManifest, caption={"Exemplo de um Arquivo AndroidManifest."}]
+{ArquivoFonte/manifest.xml}
 	
-Na figura \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
+No código \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
 
-Como podemos perceber na figura \ref{fig_exAndroidManifest}, a tag \flq manifest\frq \ tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
+Como podemos perceber no código \ref{fig_exAndroidManifest}, a tag \flq manifest\frq \ tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
 
 Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
 
