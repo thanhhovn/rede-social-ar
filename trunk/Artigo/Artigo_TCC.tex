@@ -387,6 +387,15 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 \section{Principais Características}
 \label{android:caracteristicas}
 \indent \indent
+A plataforma Android tem como base o SO Linux, com isso herdou algumas das características desse SO, como o, gerenciamento de \textit{drivers}, segurança, memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e de código aberto.
+
+Possui uma máquina virtual (\textit{Dalvik}) própria baseada na máquina virtual JAVA, mas otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo. Além disso, os arquivos executáveis possuem extensão .dex, que é uma versão melhorada do .class para dispositivos móveis. Usa a linguagem JAVA como linguagem de programação.
+
+O armazenamento na plataforma Android é flexível, podendo ser feito utilizando o banco de dados SQLite (já incluído na SDK) ou qualquer outro, como, por exemplo, MySQL\cite{MySQL} ou PostGreSQL\cite{Postgresql}.
+
+O Android permite que todos os seus componentes nativos possam ser customizados, como: a tela inicial e agenda de contatos.
+
+O Android está em constante evolução. Atualmente, o Android está na versão 4.0, conhecida como Ice Cream Sandwich. A Cada nova versão ou plataforma, são acrescentadas novas APIs (funcionalidades), possibilitando ao desenvolvedor tirar o máximo dos recursos do dispositivo móvel e com isso, possibilitar ao desenvolvedor a criar aplicações robustas.
 
 \section{Arquitetura}
 \label{android:arquitetura}
@@ -430,13 +439,13 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	\subsection{Componentes Básicos}
 	\label{android:aplicacoes:componentes}
 	\indent \indent
-	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todo os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivimente por \flq nome\frq \ e \flq /nome\frq. Na figura xx, é possível ver um exemplo do uso desses componentes.
+	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todos os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivamente por \flq nome\frq \ e \flq /nome\frq. Na figura xx, é possível ver um exemplo do uso desses componentes.
 	
 	A tag \flq TextView\frq \, serve unicamente para a exibição de texto na tela de sua aplicação Android. Em outras plataformas, é conhecido como label. Veja um exemplo no código \ref{textView}.
 
-	O componente EditText, é uma expecialização do componente TextView. E representa um campo texto, onde o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq. Veja um exemplo no código \ref{EditText}.
+	O componente EditText, é uma especialização do componente TextView. E representa um campo texto, onde o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq. Veja um exemplo no código \ref{EditText}.
 
-	O componente Button, representa um botão. É referenciado no arquivo .xml pela tag \flq Button\frq. Veja um exemplo no código \ref{Button}.
+	O componente Button representa um botão. É referenciado no arquivo .xml pela tag \flq Button\frq. Veja um exemplo no código \ref{Button}.
 		
 	O componente CheckBox, representa um tipo especial de botão, que só assume dois valores: \textit{true} (marcado) ou \textit{false} (desmarcado). É referenciado no arquivo .xml pela tag \flq CheckBox\frq. Veja um exemplo no código \ref{CheckBox}.
 	
@@ -476,6 +485,7 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois, nela são guardadas constantes, do tipo int e de valor único dentro do projeto, que são utilizadas para referenciar algum recurso do projeto, que pode ser: uma imagem, botão ou um arquivo XML que define alguma tela da aplicação.
 
 O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem "android.png" que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
+
 	\subsection{ Arquivo AndroidManifest}
 	\label{android:aplicacoes:arquivoManifest}
 	\indent \indent
@@ -488,9 +498,9 @@ O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira.
 	
 No código \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
 
-Como podemos perceber no código \ref{fig_exAndroidManifest}, a tag \flq manifest\frq \ tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag <application> irá ficar todas as Activitys que fazem parte da aplicação.
+Como podemos perceber no código \ref{fig_exAndroidManifest}, a tag \flq manifest\frq \ tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag \flq application\frq \ irá ficar todas as Activitys que fazem parte da aplicação.
 
-Lembrando que, o conteúdo do arquivo AndroidManifest.xml, de penderá de cada aplicação Android.
+Lembrando que, o conteúdo do arquivo AndroidManifest.xml, dependerá de cada aplicação Android.
 
 \section{Recursos Avançados do Android}
 \label{android:aplicacoes:recursosAvancados}
