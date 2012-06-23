@@ -200,7 +200,7 @@ profissional.
 	 A RA pode ser aplicada a todos os sentidos humanos ~\cite{Azuma2001} e propocionar ao usuário uma interação segura, sem necessidade de treinamento, uma vez que a RA permite trazer para o seu ambiente real objetos virtuais, incrementando e aumentando a visão que o usuário tem do mundo real ~\cite{Kirner2007}. Para proporcionar essa experiência ao usuário a RA faz uso de uma câmera, técnicas de Visão Computacional e de Computação Gráfica/RV.
 	  	 
 	\indent
-	Existem várias definições para a RV. Alguns autores tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um ambiente), interatividade e \textit{feedback} sensorial (visual, auditivo e táctil) ~\cite{Sherman2003}. Outros descrevem a RV de forma geral, como uma técnica avançada de interface, onde o usuário pode navegar e interagir em um ambiente tridimensional gerado por computador, estando completa ou parcialmente presente ou então imerso pela sensação gerada por canais multi-sensoriais, sendo a visão o canal principal ~\cite{Ficheman2006}. 
+	Existem várias definições para a RV. Alguns autores tentam listar elementos-chave de RV, tais como imersão (sensação de estar em um ambiente), interatividade e \textit{feedback} sensorial (visual, auditivo e táctil) ~\cite{Sherman2003}. Outros descrevem a RV de forma geral, como uma técnica avançada de interface, na qual o usuário pode navegar e interagir em um ambiente tridimensional gerado por computador, estando completa ou parcialmente presente ou então imerso pela sensação gerada por canais multi-sensoriais, sendo a visão o canal principal ~\cite{Ficheman2006}. 
 
 	\indent Assim como a RV a RA os autores têm várias definições, como podemos ver a seguir:
 		
@@ -387,22 +387,53 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 \section{Principais Características}
 \label{android:caracteristicas}
 \indent \indent
-A plataforma Android tem como base o SO Linux, com isso herdou algumas das características desse SO, como o, gerenciamento de \textit{drivers}, segurança, memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e de código aberto.
+A plataforma Android tem como base o SO Linux, com isso herdou algumas das características desse SO, como o, gerenciamento de \textit{drivers}, segurança, memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e \textit{open source}.
 
-Possui uma máquina virtual (\textit{Dalvik}) própria baseada na máquina virtual JAVA, mas otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo. Além disso, os arquivos executáveis possuem extensão .dex, que é uma versão melhorada do .class para dispositivos móveis. Usa a linguagem JAVA como linguagem de programação.
+O Android possui uma máquina virtual (\textit{Dalvik}) própria, baseada na JVM (\textit{Java Virtual Machine}), mas, otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo. A \textit{Dalvik} não opera bytecodes Java. Antes de serem executados na \textit{Dalvik}, aplicativos escritos na linguagem Java e compilados por um compilador Java precisam ser transformados no formato binário .dex. Essa transformação é feita pela ferramenta "dx" incluída no SDK. O arquivo .dex é uma versão melhorada do .class (bytecode java) para dispositivos móveis. Após a conversão, o arquivo é então comprimido em um arquivo com extensão .apk.
 
 O armazenamento na plataforma Android é flexível, podendo ser feito utilizando o banco de dados SQLite (já incluído na SDK) ou qualquer outro, como, por exemplo, MySQL\cite{MySQL} ou PostGreSQL\cite{Postgresql}.
 
 O Android permite que todos os seus componentes nativos possam ser customizados, como: a tela inicial e agenda de contatos.
 
-O Android está em constante evolução. Atualmente, o Android está na versão 4.0, conhecida como Ice Cream Sandwich. A Cada nova versão ou plataforma, são acrescentadas novas APIs (funcionalidades), possibilitando ao desenvolvedor tirar o máximo dos recursos do dispositivo móvel e com isso, possibilitar ao desenvolvedor a criar aplicações robustas.
+O Android está em constante evolução. Atualmente, o Android está na versão (plataforma) 4.0.3, pertence a família 4.x, conhecida como Ice Cream Sandwich. A Cada nova versão, são acrescentadas novas APIs (\textit{Application programming interface}) ou funcionalidades, possibilitando ao desenvolvedor tirar o máximo dos recursos do dispositivo móvel e com isso, possibilitar ao desenvolvedor a criar aplicações robustas.
 
 \section{Arquitetura}
 \label{android:arquitetura}
 \indent \indent
-
-%	\subsection{API's (\textit{Application programming interface})}
-%	\indent \indent
+Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela estrutura a criação dos aplicativos de forma a manterem um mesmo padrão. Como podemos ver na figura \ref{fig_Arquitetura_Android} abaixo, esta arquitetura pode ser dividida em 5 camadas:
+\begin{itemize}
+	 \item \textit{Applications} (Aplicação);
+ 	 \item \textit{Application Framework} (Framework de Aplicação);
+	 \item \textit{Libraries} (Bibliotecas);
+	 \item \textit{Android Runtime} (Android Runtime);
+	 \item \textit{Linux Kernel} (Kernel Linux).
+\end{itemize}
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/Arquitetura_Android.png} 
+			\caption{Arquitetura do Android.}
+			\label{fig_Arquitetura_Android}
+		\end{center}
+	\end{figure}
+ 
+\section{Dispositivos Android}
+\label{android:dispositivos}
+\indent \indent
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/Versoes_do_Android.png} 
+			\caption{Distribuição das versões ou plataformas entre os dispositivos móveis.}
+			\label{fig_versoesAndroid}
+		\end{center}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/Android_os_distribution.png} 
+			\caption{Distribuição das versões ou plataformas entre os dispositivos.}
+			\label{fig_distribuicaoAndroid}
+		\end{center}
+	\end{figure}
 
 \section{Aplicações}
 \label{android:aplicacoes}
@@ -411,7 +442,7 @@ Esta seção, irá mostrar o "DNA" das aplicações Android, ou seja, do que elas são
 	\subsection{Ciclo de vida}
 	\label{android:aplicacoes:cicloVida}
 	\indent \indent
-	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, onde, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
+	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, no qual, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
 	
 A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada fase do ciclo.
   \begin{figure}[h]
@@ -426,7 +457,7 @@ A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{A
 	
 Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa faze a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
 	
-É fácil perceber, através da imagem \ref{fig_cicloVidaAtivity}, quais são as fases do ciclo onde o SO pode liberar recursos, ou seja, finalizar alguma \textit{Activity} que está muito tempo sem ser executada. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
+É fácil perceber, através da imagem \ref{fig_cicloVidaAtivity}, quais são as fases do ciclo em que o SO pode liberar recursos, ou seja, finalizar alguma \textit{Activity} que está muito tempo sem ser executada. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
 
 	
 	\subsection{Gerenciadores de \textit{Layout}}
@@ -439,11 +470,11 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	\subsection{Componentes Básicos}
 	\label{android:aplicacoes:componentes}
 	\indent \indent
-	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todos os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivamente por \flq nome\frq \ e \flq /nome\frq. Na figura xx, é possível ver um exemplo do uso desses componentes.
+	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todos os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivamente por \flq nome\frq \ e \flq /nome\frq. Na figura \ref{fig_Activity_simples}, é possível ver um exemplo do uso desses componentes.
 	
 	A tag \flq TextView\frq \, serve unicamente para a exibição de texto na tela de sua aplicação Android. Em outras plataformas, é conhecido como label. Veja um exemplo no código \ref{textView}.
 
-	O componente EditText, é uma especialização do componente TextView. E representa um campo texto, onde o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq. Veja um exemplo no código \ref{EditText}.
+	O componente EditText, é uma especialização do componente TextView. E representa um campo texto, no qual o usuário pode digitar. Esse componente é referenciado no arquivo pela tag \flq EditText\frq. Veja um exemplo no código \ref{EditText}.
 
 	O componente Button representa um botão. É referenciado no arquivo .xml pela tag \flq Button\frq. Veja um exemplo no código \ref{Button}.
 		
@@ -453,11 +484,19 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	
 	O componente RadioGroup, serve para agrupar um ou mais RadioButton. Permitindo asssim que, apenas um RadioButton seja verificado (marcado). O RadioGroup é referenciado no arquivo .xml pela tag \flq RadioGroup\frq. Veja um exemplo no código \ref{RadioGroup}.
 	\newline
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics{Figuras/Exemplo_de_uma_Activity.png} 
+			\caption{Exemplo de uma Activity.}
+			\label{fig_Activity_simples}
+		\end{center}
+	\end{figure}
 	
 	%% Adicionando Código	
 \lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
 \lstinputlisting[frame=single, label=textView, caption={"Exemplo do xml para o componente TextView."}]
-{ArquivoFonte/TextBox.xml}
+{ArquivoFonte/TextView.xml}
 
 \lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
 \lstinputlisting[frame=single, label=EditText, caption={"Exemplo do xml para o componente EditText."}]
@@ -476,7 +515,7 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 {ArquivoFonte/RadioGroup.xml}
 
 % fim do código
-	
+
 	\subsection{Classe R}
 	\label{android:aplicacoes:classeR} 
 	\indent \indent
@@ -496,7 +535,7 @@ O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira.
 \lstinputlisting[frame=single, label=fig_exAndroidManifest, caption={"Exemplo de um Arquivo AndroidManifest."}]
 {ArquivoFonte/manifest.xml}
 	
-No código \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, onde é pedido a permissão para a aplicação ter acesso a internet.
+No código \ref{fig_exAndroidManifest} é mostrado um exemplo de Arquivo AndroidManifest.xml, em que é pedido a permissão para a aplicação ter acesso a internet.
 
 Como podemos perceber no código \ref{fig_exAndroidManifest}, a tag \flq manifest\frq \ tem como atributo o nome do pacote (package), código da versão (android:versionCode) e nome da versão (versionName)  e dentro dela fica toda a configuração da aplicação. Na linha 7, temos a permissão para acessar a localização via GPS. Dentro da tag \flq application\frq \ irá ficar todas as Activitys que fazem parte da aplicação.
 
