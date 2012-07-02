@@ -400,12 +400,12 @@ O Android está em constante evolução. Atualmente, o Android está na versão (plat
 \section{Arquitetura}
 \label{android:arquitetura}
 \indent \indent
-Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela estrutura a criação dos aplicativos de forma a manterem um mesmo padrão. Como podemos ver na figura \ref{fig_Arquitetura_Android} abaixo, esta arquitetura pode ser dividida em 5 camadas:
+Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela estrutura a criação dos aplicativos de forma a manterem um mesmo padrão. Como podemos ver na figura \ref{fig_Arquitetura_Android}, esta arquitetura pode ser dividida em 5 camadas:
 \begin{itemize}
 	 \item \textit{Applications} (Aplicação);
  	 \item \textit{Application Framework} (Framework de Aplicação);
 	 \item \textit{Libraries} (Bibliotecas);
-	 \item \textit{Android Runtime} (Android Runtime);
+	 \item \textit{Android Runtime};
 	 \item \textit{Linux Kernel} (Kernel Linux).
 \end{itemize}
 	\begin{figure}[h]
@@ -415,6 +415,8 @@ Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela e
 			\label{fig_Arquitetura_Android}
 		\end{center}
 	\end{figure}
+	
+Na base da plataforma Android está o Kernel Linux, como mencionado na subseção \ref{android:caracteristicas}. O Android utiliza o Kernel Linux na versão 2.6. Essa camada funciona como um facilitador para o desenvolvedor, servindo como uma abstração entre o hardware do dispositivo e o software que está sendo desenvolvido. Com isso, o desenvolvedor não precisa se preocupar em como será o acesso de sua aplicação aos recursos do hardware do dispositivo, mas sim, em desenvolver as funcionalidades requeridas para a sua aplicação.
  
 \section{Dispositivos Android}
 \label{android:dispositivos}
@@ -467,7 +469,7 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	
 	A plataforma Android disponibiliza para o desenvolvedor um conjunto de gerenciadores de Layout, são eles: LinearLayout, AbsoluteLayout, TableLayout, RelativeLayout e FrameLayout.
 	
-	\subsection{Componentes Básicos}
+	\subsection{Componentes Gráficos}
 	\label{android:aplicacoes:componentes}
 	\indent \indent
 	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todos os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivamente por \flq nome\frq \ e \flq /nome\frq. Na figura \ref{fig_Activity_simples}, é possível ver um exemplo do uso desses componentes.
