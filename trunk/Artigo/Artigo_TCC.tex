@@ -389,7 +389,7 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 \indent \indent
 A plataforma Android tem como base o SO Linux, com isso herdou algumas das características desse SO, como o, gerenciamento de \textit{drivers}, segurança, memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e \textit{open source}.
 
-O Android possui uma máquina virtual (\textit{Dalvik}) própria, baseada na JVM (\textit{Java Virtual Machine}), mas, otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo. A \textit{Dalvik} não opera bytecodes Java. Antes de serem executados na \textit{Dalvik}, aplicativos escritos na linguagem Java e compilados por um compilador Java precisam ser transformados no formato binário .dex. Essa transformação é feita pela ferramenta "dx" incluída no SDK. O arquivo .dex é uma versão melhorada do .class (bytecode java) para dispositivos móveis. Após a conversão, o arquivo é então comprimido em um arquivo com extensão .apk.
+O Android possui uma máquina virtual própria, chamada de \textit{Dalvik} (DVM), baseada na JVM (\textit{Java Virtual Machine}), mas, otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo, no qual cada aplicação roda em um processo próprio e restrito a somente está aplicação, ou seja, em uma instância da DVM. A DVM não opera bytecodes Java. Antes de serem executados na DVM, aplicativos escritos na linguagem Java e compilados por um compilador Java precisam ser transformados no formato binário .dex. Essa transformação é feita pela ferramenta "dx" incluída no SDK. O arquivo .dex é uma versão melhorada do .class (bytecode java) para dispositivos móveis. Após a conversão, o arquivo é então comprimido em um arquivo com extensão .apk.
 
 O armazenamento na plataforma Android é flexível, podendo ser feito utilizando o banco de dados SQLite (já incluído na SDK) ou qualquer outro, como, por exemplo, MySQL\cite{MySQL} ou PostGreSQL\cite{Postgresql}.
 
@@ -417,7 +417,20 @@ Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela e
 	\end{figure}
 	
 Na base da plataforma Android está o Kernel Linux, como mencionado na subseção \ref{android:caracteristicas}. O Android utiliza o Kernel Linux na versão 2.6. Essa camada funciona como um facilitador para o desenvolvedor, servindo como uma abstração entre o hardware do dispositivo e o software que está sendo desenvolvido. Com isso, o desenvolvedor não precisa se preocupar em como será o acesso de sua aplicação aos recursos do hardware do dispositivo, mas sim, em desenvolver as funcionalidades requeridas para a sua aplicação.
- 
+
+Subindo o nível da arquitetura do Android, encontramos a camada Android Runtime e a \textit{Libraries}, juntas formando uma única camada. Podemos dizer que, a camada Android Runtime representa o coração da plataforma Android. Nela se encontra: A DVM (veja a seção \ref{android:caracteristicas}) e \textit{Core Libraries} (responsáveis por gerenciar as funções centrais). E, responsável pela execução das aplicações. Já a camada \textit{Libraries}, possui um conjunto de bibliotecas c ou c++ utilizadas por vários componentes do sistema Android. A capacidade oferecida por essas bibliotecas são expostas ao desenvolvedor pela camada \textit{Application Framework}. Veja a baixo, algumas das bibliotecas disponíveis nessa camada:
+
+\begin{itemize}
+	 \item System C library - biblioteca de sistema padrão da linguagem C (libc). Otimizada para dispositivos com Linux embarcado;
+	 \item Media Libraries (Framework) - baseada no PacketVideo's OpenCORE. As bibliotecas suportam os mais populares formatos de audio e video, bem como imagens estáticas, incluindo os formatos MPEG4, H.264, MP3, AAC, AMR, JPG, e PNG;
+	 \item Surface Manager - gere o acesso ao subsistema de exibição bem como as múltiplas camadas de aplicações 2D e 3D;
+	 \item WebKit - um engine de navegador web utilizado tanto no Android Browser quanto para exibições web. Fornece ferramentas para navegar na web;
+	 \item SGL - o engine de gráficos 2D;
+ 	 \item 3D libraries - uma implementação baseada no OpenGL ES 1.0 APIs. Utilizam aceleração 3D via hardware (quando disponível) ou o software de renderização 3D altamente otimizado incluído no Android.	 
+     \item FreeType - renderização de fontes vector e bitmaps;
+ 	 \item SQLite - um poderoso e leve engine de banco de dados relacional, disponível para todas as aplicações.
+\end{itemize}
+	
 \section{Dispositivos Android}
 \label{android:dispositivos}
 \indent \indent
