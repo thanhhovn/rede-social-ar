@@ -1,0 +1,4 @@
+Intent it = new Intent("MOVER");
+it.addCategory("TESTE");
+it.putExtra("mensagem","Testando IntentFilter.");
+startActivity(it);
