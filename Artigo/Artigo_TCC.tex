@@ -430,6 +430,11 @@ Subindo o nível da arquitetura do Android, encontramos a camada Android Runtime 
      \item FreeType - renderização de fontes vector e bitmaps;
  	 \item SQLite - um poderoso e leve engine de banco de dados relacional, disponível para todas as aplicações.
 \end{itemize}
+
+A próxima camada é formada pelo framework de aplicação, comum a todas as aplicações centrais a plataforma. Essa camada possibilita que os desenvolvedores utilizem das mesmas APIs que estas aplicações utilizam. Como também, o reuso de diversos componentes e outras aplicações, tendo que respeitar algumas restrições de segurança impostas pelo próprio framework. O desenvolvedor conversa diretamente com essa camada sempre que precisa criar uma Activity acessando o Activity Manager, por exemplo. Esse é um dos exemplos dos gerenciadores (Manager) que o desenvolvedor pode reutilizar.
+
+E por ultimo, a camada de aplicação. Nessa camada se encontra todas as aplicações, sejam elas: nativas ou criadas pelo desenvolvedor. Dentre as aplicações nativas, podemos citar: cliente de e-mail, programa de SMS, agenda, mapas, navegador, contatos e outras. Sendo, todos os aplicativos implementados na linguagem de programação Java.
+
 	
 \section{Dispositivos Android}
 \label{android:dispositivos}
@@ -459,6 +464,8 @@ Esta seção, irá mostrar o "DNA" das aplicações Android, ou seja, do que elas são
 	\indent \indent
 	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, no qual, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
 	
+	Uma Activity é basicamente uma classe gerenciadora de UI (User interface). A Activity pode ser usada para, representar uma tela de boas-vindas, um mapa, uma lista de itens, uma tela de opções, ou seja, algo que possa ser apresentável ou visível para o usuário, podendo o mesmo interagir. Nós iremos perceber que todos os aplicativos android começam por uma Activity.
+	
 A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada fase do ciclo.
   \begin{figure}[h]
 		\begin{center}
@@ -482,9 +489,38 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	
 	A plataforma Android disponibiliza para o desenvolvedor um conjunto de gerenciadores de Layout, são eles: LinearLayout, AbsoluteLayout, TableLayout, RelativeLayout e FrameLayout.
 	
-	\subsection{Componentes Gráficos}
+	\subsection{Componentes Básicos}
 	\label{android:aplicacoes:componentes}
 	\indent \indent
+O framework Android, conta com um novo conceito chamado de \textit{Intent}. A classe android.content.Intent representa uma "ação" que a aplicação deseja executar. Com a \textit{Intent} é possível invocar componentes  e a comunicação entre processos. A \textit{Intent} está presente em todos os lugares e representa uma mensagem da aplicação para o sistema operacional Android, solicitando que algo seja realizado (ação)  \cite{Lecheta2010}. Por exemplo, ao navegar nas telas do celular, para o usuário é transparente, mas várias \textit{Intents} estão sendo criadas para solicitar ao SO que execute determinada tarefa.
+
+Segundo Ricardo R. Lecheta autor do livro, "Google Android Aprenda a criar aplicações para dispositivos móveis com o Android SDK" \cite{Lecheta2010}, a \textit{Intent} pode ser utilizada para:
+
+\begin{itemize}
+	 \item Enviar um amensagem para osistema operacional;
+ 	 \item Abrir uma nova tela da aplicação, utilizando o método startActivity;
+	 \item Solicitar ao sistema operacional que ligue para determinado número de celular;
+	 \item Abrir o browser em um determinado endereço da \textit{Intent};
+	 \item Exibir algum endereço, localização ou rota no Google Maps;
+	 \item Executar algum processamento pesado em segundo plano usando as classe BroadcastIntentReceiver e Service;
+	 \item Enviar uma mensagem para outra aplicação para executar outro processo;
+	 \item Abrir o Android Market para fazer a instalação de determinado aplicativo;
+	 \item E muito mais.
+\end{itemize}
+
+O SO fica encarregado de tomar as decisões de acordo com o conteúdo da mensagem. Essa mensagem é chamada de \textit{broadcast}. E para que o SO tome decisões, é preciso que tenha em algum lugar a ação que deve ser executada para cada categoria de mensagem.  Para essa finalidade tem-se a classe android.content.IntentFilter. Essa classe permite mapear uma ação para determinada tarefa. Com isso, somente a \textit{Activity} que esteja mapeada para aquela ação será executada. O filtro de intenções (\textit{IntentFilter}) utiliza duas tags \flq action\frq \ e \flq category\frq \ para identificar o que deverá ser executado. Abaixo, nós códigos \ref{intentFilter} e \ref{intent}, segue um exemplo do mapeamento de uma ação para uma \textit{Activity}.
+
+	%% Adicionando Código	
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=intentFilter, caption={"Exemplo do IntentFilter."}]
+{ArquivoFonte/IntentFilter.xml}	
+
+\lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
+\lstinputlisting[frame=single, label=intent, caption={"Exemplo do uso do Intent no envio de uma mensagem ao SO."}]
+{ArquivoFonte/intent.xml}
+
+Como visto na seção \ref{android:aplicacoes:cicloVida}, todas as \textit{Activitys} são definidas dentro do arquivo androidManifest. Com isso, o \textit{IntentFilter}  também é definido  nesse arquivo.  É importante perceber que, o filtro de intenções (\textit{IntentFilter}) usa duas tags \flq action\frq \ e \flq category\frq \ para identificar o que deverá ser executado.
+		
 	"A classe View é responsável por desenhar algo na tela e tratar seus eventos se necessários, e é a classe-base para todos os componentes visuais Android" \cite{Lecheta2010}. Aqui será mostrado alguns desses componentes visuais, tais como, TextView, EditText, Button, CheckBox,  RadioButton e RadioGroup. No Android, todos os elementos da aplicação são representados por tags. E toda tag deve ser aberta e fechada, representada respectivamente por \flq nome\frq \ e \flq /nome\frq. Na figura \ref{fig_Activity_simples}, é possível ver um exemplo do uso desses componentes.
 	
 	A tag \flq TextView\frq \, serve unicamente para a exibição de texto na tela de sua aplicação Android. Em outras plataformas, é conhecido como label. Veja um exemplo no código \ref{textView}.
