@@ -436,29 +436,30 @@ A próxima camada é formada pelo framework de aplicação, comum a todas as aplicaç
 E por ultimo, a camada de aplicação. Nessa camada se encontra todas as aplicações, sejam elas: nativas ou criadas pelo desenvolvedor. Dentre as aplicações nativas, podemos citar: cliente de e-mail, programa de SMS, agenda, mapas, navegador, contatos e outras. Sendo, todos os aplicativos implementados na linguagem de programação Java.
 
 	
-\section{Dispositivos Android}
-\label{android:dispositivos}
-\indent \indent
-	\begin{figure}[h]
-		\begin{center}
-			\includegraphics{Figuras/Versoes_do_Android.png} 
-			\caption{Distribuição das versões ou plataformas entre os dispositivos móveis.}
-			\label{fig_versoesAndroid}
-		\end{center}
-	\end{figure}
-	
-	\begin{figure}[h]
-		\begin{center}
-			\includegraphics{Figuras/Android_os_distribution.png} 
-			\caption{Distribuição das versões ou plataformas entre os dispositivos.}
-			\label{fig_distribuicaoAndroid}
-		\end{center}
-	\end{figure}
+%\section{Dispositivos Android}
+%\label{android:dispositivos}
+%\indent \indent
+%	\begin{figure}[h]
+%		\begin{center}
+%			\includegraphics{Figuras/Versoes_do_Android.png} 
+%			\caption{Distribuição das versões ou plataformas entre os dispositivos móveis.}
+%			\label{fig_versoesAndroid}
+%		\end{center}
+%	\end{figure}
+%	
+%	\begin{figure}[h]
+%		\begin{center}
+%			\includegraphics{Figuras/Android_os_distribution.png} 
+%			\caption{Distribuição das versões ou plataformas entre os dispositivos.}
+%			\label{fig_distribuicaoAndroid}
+%		\end{center}
+%	\end{figure}
 
 \section{Aplicações}
 \label{android:aplicacoes}
 \indent \indent
-Esta seção, irá mostrar o "DNA" das aplicações Android, ou seja, do que elas são compostas. Neste ponto da leitura podemos dizer que já conhecemos um pouco dessa plataforma, então chegou a hora de mostrar alguns dos recursos que são disponibilizados ao desenvolvedor para criar uma aplicação. Na seção \ref{android:aplicacoes:recursosAvancados}, será mostrado alguns dos recursos avançados oferecidos pela plataforma Android.
+Esta seção, irá mostrar o "DNA" das aplicações Android, ou seja, do que elas são compostas. Neste ponto da leitura podemos dizer que já conhecemos um pouco dessa plataforma, então chegou a hora de mostrar alguns dos recursos que são disponibilizados ao desenvolvedor para criar uma aplicação.
+
 	\subsection{Ciclo de vida}
 	\label{android:aplicacoes:cicloVida}
 	\indent \indent
@@ -497,7 +498,7 @@ O framework Android, conta com um novo conceito chamado de \textit{Intent}. A cl
 Segundo Ricardo R. Lecheta autor do livro, "Google Android Aprenda a criar aplicações para dispositivos móveis com o Android SDK" \cite{Lecheta2010}, a \textit{Intent} pode ser utilizada para:
 
 \begin{itemize}
-	 \item Enviar um amensagem para osistema operacional;
+	 \item Enviar um amensagem para o sistema operacional;
  	 \item Abrir uma nova tela da aplicação, utilizando o método startActivity;
 	 \item Solicitar ao sistema operacional que ligue para determinado número de celular;
 	 \item Abrir o browser em um determinado endereço da \textit{Intent};
@@ -508,7 +509,7 @@ Segundo Ricardo R. Lecheta autor do livro, "Google Android Aprenda a criar aplic
 	 \item E muito mais.
 \end{itemize}
 
-O SO fica encarregado de tomar as decisões de acordo com o conteúdo da mensagem. Essa mensagem é chamada de \textit{broadcast}. E para que o SO tome decisões, é preciso que tenha em algum lugar a ação que deve ser executada para cada categoria de mensagem.  Para essa finalidade tem-se a classe android.content.IntentFilter. Essa classe permite mapear uma ação para determinada tarefa. Com isso, somente a \textit{Activity} que esteja mapeada para aquela ação será executada. O filtro de intenções (\textit{IntentFilter}) utiliza duas tags \flq action\frq \ e \flq category\frq \ para identificar o que deverá ser executado. Abaixo, nós códigos \ref{intentFilter} e \ref{intent}, segue um exemplo do mapeamento de uma ação para uma \textit{Activity}.
+O SO fica encarregado de tomar as decisões de acordo com o conteúdo da mensagem. Essa mensagem é chamada de \textit{broadcast}. E para que o SO tome decisões, é preciso que tenha em algum lugar a ação que deve ser executada para cada categoria de mensagem.  Para essa finalidade tem-se a classe android.content.IntentFilter. Essa classe permite mapear uma ação para determinada tarefa. Com isso, somente a \textit{Activity} que esteja mapeada para aquela ação será executada. Abaixo, nós códigos \ref{intentFilter} e \ref{intent}, segue um exemplo do mapeamento de uma ação para uma \textit{Activity}.
 
 	%% Adicionando Código	
 \lstset{frame=single, captionpos=b,morecomment=[s][\color{blue}]{<}{>}}
@@ -592,9 +593,9 @@ Como podemos perceber no código \ref{fig_exAndroidManifest}, a tag \flq manifest
 
 Lembrando que, o conteúdo do arquivo AndroidManifest.xml, dependerá de cada aplicação Android.
 
-\section{Recursos Avançados do Android}
-\label{android:aplicacoes:recursosAvancados}
-\indent \indent
+%\section{Recursos Avançados do Android}
+%\label{android:aplicacoes:recursosAvancados}
+%\indent \indent
 	
 \section{Ferramentas}
 \label{android:ferramentas}
