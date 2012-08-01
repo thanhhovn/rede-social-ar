@@ -377,25 +377,25 @@ O Software RUA, faz uso da biblioteca gráfica 3D (OpenGL) para a geração de obje
 \chapter{Plataforma Android}
 \label{android}
 	\indent \indent
-	Neste capítulo, será apresentada a Plataforma Android, especificando suas principais características, assim como sua infra-estrutura, arquitetura e principais recursos.
+	Neste capítulo, será apresentada a Plataforma Android, especificando suas principais características, assim como sua infraestrutura, arquitetura e principais recursos.
 	
-\section{O que é o Android}
+\section{O que é o Android?}
 \label{android:oqueE}
 \indent \indent
- "O Android é uma plataforma de desenvolvimento para aplicativos móveis como smartphones e contêm um sistema operacional baseado em Linux, uma interface visual rica, GPS, diversas aplicações já instaladas e ainda um ambiente de desenvolvimento bastante poderoso, inovador e flexível" \cite{Lecheta2010}.
+O Android é uma plataforma de desenvolvimento, rica em recursos, voltada para a criação de aplicativos móveis, a exemplo dos smartphones. O Android possui um sistema operacional baseado em Linux, um rico conjunto de APIs (\textit{Application Programming Interface}) que possibilita ao desenvolvedor criar aplicações robustas, fazendo o uso do GPS, sensores e de todos outros recursos oferecidos pelo dispositivo móvel. Como também, possui um ambiente de desenvolvimento poderoso, inovador e flexível \cite{Lecheta2010}.
 
 \section{Principais Características}
 \label{android:caracteristicas}
 \indent \indent
-A plataforma Android tem como base o SO Linux, com isso herdou algumas das características desse SO, como o, gerenciamento de \textit{drivers}, segurança, memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e \textit{open source}.
+A plataforma Android tem como base o SO Linux e com isso herdou algumas das suas características, como o, gerenciamento de \textit{drivers}, segurança, gerenciamento de memória, ser multitarefa (permite que mais de uma aplicação possa ser executada ao mesmo tempo) e \textit{open source}.
 
-O Android possui uma máquina virtual própria, chamada de \textit{Dalvik} (DVM), baseada na JVM (\textit{Java Virtual Machine}), mas, otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo, no qual cada aplicação roda em um processo próprio e restrito a somente está aplicação, ou seja, em uma instância da DVM. A DVM não opera bytecodes Java. Antes de serem executados na DVM, aplicativos escritos na linguagem Java e compilados por um compilador Java precisam ser transformados no formato binário .dex. Essa transformação é feita pela ferramenta "dx" incluída no SDK. O arquivo .dex é uma versão melhorada do .class (bytecode java) para dispositivos móveis. Após a conversão, o arquivo é então comprimido em um arquivo com extensão .apk.
+O Android possui uma máquina virtual própria, chamada de \textit{Dalvik} (DVM), baseada na JVM (\textit{Java Virtual Machine}), mas, otimizada para consumir pouca memória e poder usar mais de uma instância simultaneamente sem prejudicar o desempenho do dispositivo, no qual cada aplicação roda em um processo próprio e restrito a somente está aplicação, ou seja, em uma instância da DVM. Antes de serem executados na DVM, aplicativos escritos na linguagem Java e compilados por um compilador Java precisam ser transformados no formato binário .dex. Essa transformação é necessária devido a DVM não operar bytecodes Java, sendo a ferramenta "dx", incluída no SDK, a responsável por essa trasnformação. O arquivo .dex é uma versão melhorada do .class (bytecode java) para dispositivos móveis. Após a conversão, o arquivo é então comprimido em um arquivo com extensão .apk.
 
 O armazenamento na plataforma Android é flexível, podendo ser feito utilizando o banco de dados SQLite (já incluído na SDK) ou qualquer outro, como, por exemplo, MySQL\cite{MySQL} ou PostGreSQL\cite{Postgresql}.
 
-O Android permite que todos os seus componentes nativos possam ser customizados, como: a tela inicial e agenda de contatos.
+O Android permite que todos os seus componentes nativos possam ser customizados, tais como: a tela inicial, agenda de contatos, entre outros.
 
-O Android está em constante evolução. Atualmente, o Android está na versão (plataforma) 4.0.3, pertence a família 4.x, conhecida como Ice Cream Sandwich. A Cada nova versão, são acrescentadas novas APIs (\textit{Application programming interface}) ou funcionalidades, possibilitando ao desenvolvedor tirar o máximo dos recursos do dispositivo móvel e com isso, possibilitar ao desenvolvedor a criar aplicações robustas.
+O Android está em constante evolução. Atualmente (final de 2012), o Android está na versão (plataforma) 4.0.3, pertence a família 4.x, conhecida como Ice Cream Sandwich. A Cada nova versão são acrescentadas novas APIs (\textit{Application Programming Interface}) ou funcionalidades, possibilitando ao desenvolvedor tirar o máximo dos recursos do dispositivo móvel e com isso, possibilitar ao desenvolvedor a criar aplicações robustas.
 
 \section{Arquitetura}
 \label{android:arquitetura}
@@ -418,7 +418,7 @@ Um dos pontos fortes da plataforma Android, sem dúvida, é sua arquitetura. Ela e
 	
 Na base da plataforma Android está o Kernel Linux, como mencionado na subseção \ref{android:caracteristicas}. O Android utiliza o Kernel Linux na versão 2.6. Essa camada funciona como um facilitador para o desenvolvedor, servindo como uma abstração entre o hardware do dispositivo e o software que está sendo desenvolvido. Com isso, o desenvolvedor não precisa se preocupar em como será o acesso de sua aplicação aos recursos do hardware do dispositivo, mas sim, em desenvolver as funcionalidades requeridas para a sua aplicação.
 
-Subindo o nível da arquitetura do Android, encontramos a camada Android Runtime e a \textit{Libraries}, juntas formando uma única camada. Podemos dizer que, a camada Android Runtime representa o coração da plataforma Android. Nela se encontra: A DVM (veja a seção \ref{android:caracteristicas}) e \textit{Core Libraries} (responsáveis por gerenciar as funções centrais). E, responsável pela execução das aplicações. Já a camada \textit{Libraries}, possui um conjunto de bibliotecas c ou c++ utilizadas por vários componentes do sistema Android. A capacidade oferecida por essas bibliotecas são expostas ao desenvolvedor pela camada \textit{Application Framework}. Veja a baixo, algumas das bibliotecas disponíveis nessa camada:
+Subindo o nível da arquitetura do Android, encontramos a camada Android Runtime e a \textit{Libraries}, juntas formando uma única camada. Podemos dizer que, a camada Android Runtime representa o coração da plataforma Android. Nela se encontra: A DVM (veja a seção \ref{android:caracteristicas}) e \textit{Core Libraries} (responsáveis por gerenciar as funções centrais). E, responsável pela execução das aplicações. Já a camada \textit{Libraries}, possui um conjunto de bibliotecas C ou C++ utilizadas por vários componentes do sistema Android. A capacidade oferecida por essas bibliotecas são expostas ao desenvolvedor pela camada \textit{Application Framework}. Veja a baixo, algumas das bibliotecas disponíveis nessa camada:
 
 \begin{itemize}
 	 \item System C library - biblioteca de sistema padrão da linguagem C (libc). Otimizada para dispositivos com Linux embarcado;
@@ -433,7 +433,7 @@ Subindo o nível da arquitetura do Android, encontramos a camada Android Runtime 
 
 A próxima camada é formada pelo framework de aplicação, comum a todas as aplicações centrais a plataforma. Essa camada possibilita que os desenvolvedores utilizem das mesmas APIs que estas aplicações utilizam. Como também, o reuso de diversos componentes e outras aplicações, tendo que respeitar algumas restrições de segurança impostas pelo próprio framework. O desenvolvedor conversa diretamente com essa camada sempre que precisa criar uma Activity acessando o Activity Manager, por exemplo. Esse é um dos exemplos dos gerenciadores (Manager) que o desenvolvedor pode reutilizar.
 
-E por ultimo, a camada de aplicação. Nessa camada se encontra todas as aplicações, sejam elas: nativas ou criadas pelo desenvolvedor. Dentre as aplicações nativas, podemos citar: cliente de e-mail, programa de SMS, agenda, mapas, navegador, contatos e outras. Sendo, todos os aplicativos implementados na linguagem de programação Java.
+E por ultimo, a camada de aplicação. Nessa camada se encontram todas as aplicações, sejam elas: nativas ou criadas pelo desenvolvedor. Dentre as aplicações nativas, podemos citar: cliente de e-mail, programa de SMS, agenda, mapas, navegador, contatos e outras. Sendo, todos os aplicativos implementados na linguagem de programação Java.
 
 	
 %\section{Dispositivos Android}
@@ -465,7 +465,7 @@ Esta seção, irá mostrar o "DNA" das aplicações Android, ou seja, do que elas são
 	\indent \indent
 	Conhecer como funciona o ciclo de vida de uma \textit{Activity} (tela ou atividade) é fundamental para criar aplicações mais robustas. Todo o ciclo de vida de uma \textit{Activity} é gerenciado pelo Sistema Operacional Android (SO). Quando o SO necessita de mais recursos acaba interrompendo a execução de alguma \textit{Activity}, liberando assim os recursos que antes estavam sendo utilizados pela mesma. Essa atitude do SO é justificável já que estamos nós referindo a um dispositivo móvel, no qual, os recursos disponíveis são limitados como, capacidade de armazenamento (memória) e poder de processamento, e que para manter um bom funcionamento da aplicação esses recursos têm que ser bem gerenciados.
 	
-	Uma Activity é basicamente uma classe gerenciadora de UI (User interface). A Activity pode ser usada para, representar uma tela de boas-vindas, um mapa, uma lista de itens, uma tela de opções, ou seja, algo que possa ser apresentável ou visível para o usuário, podendo o mesmo interagir. Nós iremos perceber que todos os aplicativos android começam por uma Activity.
+	Uma Activity é basicamente uma classe gerenciadora de UI (User interface). A Activity pode ser usada para, representar uma tela de boas-vindas, um mapa, uma lista de itens, uma tela de opções, ou seja, algo que possa ser apresentável ou visível para o usuário, podendo o mesmo interagir. Nós iremos perceber que todos os aplicativos Android começam por uma Activity.
 	
 A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{Activity} e todos os métodos que são chamados por cada fase do ciclo.
   \begin{figure}[h]
@@ -478,7 +478,7 @@ A figura \ref{fig_cicloVidaAtivity} mostra todo o ciclo de vida de uma \textit{A
 	
 	O método onCreat, é o responsável por criar a \textit{Activity} e é executada somente uma única vez, ele pode ser usado, por exemplo, para abrir arquivos que serão utilizados pela \textit{Activity}, por exemplo. No momento da chamada do método onStart, já deve existir a \textit{Activity} e seus componentes visuais, então ele tem a função de exibir a \textit{Activity} ao usuário, porem sem oferecer a interação com a mesma. A partir do método onResume que a \textit{Activity} pode interagir com o usuário, ou seja, nesta fase dizemos que a \textit{Activity} está em execução.
 	
-Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa faze a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
+Já o método onPause, é chamado sempre que a \textit{Activity} corrente for interrompida por uma outra \textit{Activity} ficando temporariamente suspensa e salvando o seu estado atual, para que, quando esta voltar a executar, possa recuperar tudo, se necessário, nó método onResume. O método onStop é chamado quando a \textit{Activity} corrente, está sendo executada em segundo plano ou está  sendo eliminada porque não será mais utilizada. Podendo nessa fase a \textit{Activity} ser reiniciada com a chamada do método onRestart ou finalizada com a chamada do método onDestroy. 
 	
 É fácil perceber, através da imagem \ref{fig_cicloVidaAtivity}, quais são as fases do ciclo em que o SO pode liberar recursos, ou seja, finalizar alguma \textit{Activity} que está muito tempo sem ser executada. E que também, no ciclo da \textit{Activity}, os únicos métodos que não são executados mais de uma vez são os métodos onCreat e o onDestroy.
 
@@ -495,10 +495,10 @@ Já o método onPause, é chamado sempre que a \textit{Activity} corrente for inter
 	\indent \indent
 O framework Android, conta com um novo conceito chamado de \textit{Intent}. A classe android.content.Intent representa uma "ação" que a aplicação deseja executar. Com a \textit{Intent} é possível invocar componentes  e a comunicação entre processos. A \textit{Intent} está presente em todos os lugares e representa uma mensagem da aplicação para o sistema operacional Android, solicitando que algo seja realizado (ação)  \cite{Lecheta2010}. Por exemplo, ao navegar nas telas do celular, para o usuário é transparente, mas várias \textit{Intents} estão sendo criadas para solicitar ao SO que execute determinada tarefa.
 
-Segundo Ricardo R. Lecheta autor do livro, "Google Android Aprenda a criar aplicações para dispositivos móveis com o Android SDK" \cite{Lecheta2010}, a \textit{Intent} pode ser utilizada para:
+Segundo \cite{Lecheta2010}, a \textit{Intent} pode ser utilizada para:
 
 \begin{itemize}
-	 \item Enviar um amensagem para o sistema operacional;
+	 \item Enviar uma mensagem para o sistema operacional;
  	 \item Abrir uma nova tela da aplicação, utilizando o método startActivity;
 	 \item Solicitar ao sistema operacional que ligue para determinado número de celular;
 	 \item Abrir o browser em um determinado endereço da \textit{Intent};
@@ -506,7 +506,7 @@ Segundo Ricardo R. Lecheta autor do livro, "Google Android Aprenda a criar aplic
 	 \item Executar algum processamento pesado em segundo plano usando as classe BroadcastIntentReceiver e Service;
 	 \item Enviar uma mensagem para outra aplicação para executar outro processo;
 	 \item Abrir o Android Market para fazer a instalação de determinado aplicativo;
-	 \item E muito mais.
+
 \end{itemize}
 
 O SO fica encarregado de tomar as decisões de acordo com o conteúdo da mensagem. Essa mensagem é chamada de \textit{broadcast}. E para que o SO tome decisões, é preciso que tenha em algum lugar a ação que deve ser executada para cada categoria de mensagem.  Para essa finalidade tem-se a classe android.content.IntentFilter. Essa classe permite mapear uma ação para determinada tarefa. Com isso, somente a \textit{Activity} que esteja mapeada para aquela ação será executada. Abaixo, nós códigos \ref{intentFilter} e \ref{intent}, segue um exemplo do mapeamento de uma ação para uma \textit{Activity}.
@@ -575,7 +575,7 @@ Como visto na seção \ref{android:aplicacoes:cicloVida}, todas as \textit{Activit
 	
 Como podemos perceber, a classe R serve de acesso aos recursos do projeto, pois, nela são guardadas constantes, do tipo int e de valor único dentro do projeto, que são utilizadas para referenciar algum recurso do projeto, que pode ser: uma imagem, botão ou um arquivo XML que define alguma tela da aplicação.
 
-O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem "android.png" que está na pasta drawable, faríamos R. drawable.android. Só mais um detalhe, na hora de acessar um recurso usando a classe R a pasta e o arquivo deve estar em minúsculo e não deve conter espaços. 
+O acesso aos recursos do projeto usando a classe R funciona da seguinte maneira. Por padrão a nova constante recebe o nome da pasta que contém o recurso, mais o nome do arquivo sem sua extensão. Nesse caso teríamos que, para acessar a imagem "android.png" que está na pasta drawable, faríamos R. drawable.android. E caso queira usar a classe R para acessar algum recurso, o nome da pasta e do arquivo devem estar em minúsculo e não devem conter espaços.
 
 	\subsection{ Arquivo AndroidManifest}
 	\label{android:aplicacoes:arquivoManifest}
