@@ -86,8 +86,8 @@ backgroundcolor=\color{gray}
 \autor{Lucas Fernandes de Almeida} \nome{Lucas} \ultimonome{Almeida}
 %
 %---------- Informe o Curso e Grau -----
-\bacharelado \curso{Sistemas de Informação} \ano{2012}
-\data{15 de Dezembro de 2012} % data da aprovação
+\bacharelado \curso{Sistemas de Informação} \ano{2013}
+\data{15 de Abril de 2013} % data da aprovação
 \cidade{Itabaiana}
 %
 %----------Informações sobre a Instituição -----------------
@@ -99,25 +99,25 @@ backgroundcolor=\color{gray}
 \CDU{536.21} \areas{1.Realidade Aumentada  2. Geoprocessamento.}
 \npaginas{xx}  % total de páginas do trabalho
 %------Nomes do Orientador, 1o. Examinador e 2o. Examinador-
-\orientador{Andrés Menéndez }
+\orientador{Andrés Ignácio Martínez Menéndez }
 %
 %\coorientador{Nome do Co-orientador} % opcional
 %
-\examinadorum{Nome do Examinador 1}
+\examinadorum{André Vinicius Rodrigues Passos Nascimento}
 %
-\examinadordois{Nome do Examinador 2}
+\examinadordois{Mai-Ly Vanessa Almeida S. Faro}
 %
 %\examinadortres{Nome do Examinador 3}
 %
 %\examinadorquatro{Nome do Examinador 4}
 %--------- Títulos do Orientador 1o. e 2o. Examinadores ----
-\ttorientador{Graduado em Ciências da Computação - Unit}
+%\ttorientador{Graduado em Ciências da Computação - Unit}
 %
 %\ttcoorientador{Título do Co-orientador} % se digitado \coorientador
 %
-\ttexaminadorum{Título do Examinador 1}
+%\ttexaminadorum{Título do Examinador 1}
 %
-\ttexaminadordois{Título do Examinador 2}
+%\ttexaminadordois{Título do Examinador 2}
 %
 %\ttexaminadortres{Título do Examinador 3}
 %
@@ -175,11 +175,33 @@ profissional.
 %\chapter{Realidade Aumentada}
 \listoffigures
 \chapter{Introdução}
-%% Cap. 1 - AR
-%\include{Capt1/AR}
+\label{Intro:intro}
+	\indent \indent
+		Com o passar dos anos, nossa sociedade vem demonstrando forte apego a sites de relacionamento, a exemplo do Facebook, Orkut e Google+. Isso devido ao forte interesse que as pessoas têm sobre informações de outras pessoas como, por exemplo, saber onde esta ou esteve, com quem conversou e o que andou fazendo. E, principalmente, devido à facilidade que as redes sociais têm de aproximar as pessoas.
 
-%% Inicio Capitulo de realidade aumentada
+    Todas essas redes sociais têm em comum a forma utilizada para prover a interação entre os usuários, através da troca de mensagens, compartilhamento de fotos, vídeos e músicas. Porém, nenhuma dessas redes sociais oferece ao usuário o serviço de localizar usuários e o uso da Realidade Aumentada~\cite{Azuma_1997}. 
 
+    A Realidade Aumentada~\cite{Haller2007} é uma técnica que permite a sobreposição, em tempo real, de imagens virtuais geradas por computador em um ambiente real. Essa técnica fornece ao usuário uma maneira totalmente diferente de interação enriquecendo o ambiente ao qual ele está inserido com novas informações.
+    
+	Existem duas formas de interação usando a Realidade aumentada~\cite{Haller2007}, com marcação e sem marcação: 
+   \begin{enumerate}
+   		\item A interação da Realidade Aumentada~\cite{Haller2007} com marcação exige a utilização de uma câmera, código impresso e um software. A câmera é utilizada pelo software para reconhecer o código impresso. Caso este código tenha associado a ele um elemento virtual, seja uma imagem animada, um jogo. Este elemento será mostrado na superfície que o código foi impresso.
+   		
+   		 % {pensar no por que não usar a RA com marcador}.
+   		
+   		\item 	Assim como a Realidade Aumentada~\cite{Haller2007} com marcação, a sem marcação faz o uso de uma câmera e de um software, porém não utiliza código impresso para permitir a interação. Em substituição do código impresso é utilizado informações obtidas a partir de sensores de movimento, orientação, e localização (\textit{GPS -Global Positioning System}) disponíveis em alguns dispositivos. Essas informações serão analisadas pelo software que fará a sobreposição dos elementos virtuais, alinhado ao ambiente real indicado pelas coordenadas fornecidas pelos sensores, e exibidos na tela do dispositivo móvel do usuário.
+
+	\end{enumerate}      			
+	
+Como já foi mencionado, a Realidade Aumentada permite enriquecer o ambiente real (o que está sendo visualizado pelo usuário no seu dispositivo) com novas informações (informações virtuais). Com isso, em se tratando de dispositivos móveis a Realidade Aumentada tem um vasto campo de aplicabilidade.	Veja algumas aplicações da Realidade Aumentada em ~\cite{MonteLima2007}.
+
+Para este projeto, a Realidade Aumentada terá o papel de permitir a visualização de informações, na tela do dispositivo, sobre outros usuários da rede que estejam próximos, coexistindo o real e o virtual na tela do dispositivo do usuário. E para que isso aconteça os usuários da rede terão sua localização guardada em um banco de dados espacial~\cite{Obe_Hsu_2011} (PostgreSQL~\cite{Postgresql} com a extenção PostGis~\cite{Postgis}). 
+
+O Geoprocessamento em conjunto com a Realidade aumentada (usando a técnica sem marcação), irá permitir que a partir do momento que o usuário passar a câmera do dispositivo móvel (usando as informações obtidas pelos sensores do dispositivo) por um determinado lugar que possua coordenadas (latitude e longitude) de algum usuário da rede, será exibido na tela do dispositivo informações sobre este usuário. Com isso, oferecendo aos usuários desta rede uma maneira totalmente diferente de interação.
+
+	Neste trabalho, abordaremos a criação de uma Rede Social usando técnicas da Realidade Aumentada~\cite{Haller2007}, em específico a técnica sem marcação por permitir obter dados dinâmicos, com o intuito de prover a comunicação e localização entre os usuários dessa rede.
+
+	
 \chapter{Realidade Aumentada}
 \label{Cap:ar}
 \section{Introdução}
@@ -604,7 +626,6 @@ As ferramentas de programação ou IDEs são úteis para auxiliar o desenvolvedor em
 Para o desenvolvimento de aplicações para o ambiente Android tem-se o plugin ADT e o MOTODEV Studio. O plugin ADT é instalado na IDE Eclipse e toda sua configuração é feita manualmente. 
 
 O MOTODEV Studio é uma IDE alternativa para o desenvolvimento de aplicações para o ambiente Android. Essa IDE é uma versão modificada do Eclipse criada pela Motorola. O MOTODEV Studio já vem configurado, pronto para o desenvolvedor começar a criar suas aplicações e oferece recursos adicionais que agiliza o desenvolvimento.
-
 
 %O item (\emph{...}) da proposição (\ref{...}) nos permite,
 
