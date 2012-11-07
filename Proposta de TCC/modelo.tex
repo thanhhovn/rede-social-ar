@@ -10,8 +10,9 @@
 \usepackage[all]{xy}
 
 \usepackage{cite}  % Needed to use citations.  
-\usepackage [table]{xcolor}
-
+\usepackage{graphicx,color}
+\usepackage{multirow}
+\usepackage{longtable}
 %-----------------------------------------------------------
 
 %-----------------------------------------------------------
@@ -101,7 +102,7 @@ Desenvolvimento de uma Rede Social para dispositivos móveis usando a Realidade A
 \chapter{INTRODUÇÃO}
 \label{ITD}
     \indent \indent   
-    Com o passar dos anos, nossa sociedade vem demonstrando forte apego a sites de relacionamento, a exemplo do Facebook~\cite{FaceBook}, Orkut~\cite{Orkut} e Google+~\cite{Google+}. Isso devido ao forte interesse que as pessoas têm sobre informações de outras pessoas como, por exemplo, saber onde esta ou esteve, com quem conversou e o que andou fazendo. E, principalmente, devido à facilidade que as redes sociais têm de aproximar as pessoas.
+    Com o passar dos anos, nossa sociedade vem demonstrando forte apego a sites de relacionamento, a exemplo do Facebook, Orkut e Google+. Isso devido ao forte interesse que as pessoas têm sobre informações de outras pessoas como, por exemplo, saber onde esta ou esteve, com quem conversou e o que andou fazendo. E, principalmente, devido à facilidade que as redes sociais têm de aproximar as pessoas.
 
     Todas essas redes sociais têm em comum a forma utilizada para prover a interação entre os usuários, através da troca de mensagens, compartilhamento de fotos, vídeos e músicas. Porém, nenhuma dessas redes sociais oferece ao usuário o serviço de localizar usuários e o uso da Realidade Aumentada~\cite{Azuma_1997}. 
 
@@ -157,29 +158,55 @@ O objetivo desse projeto é o desenvolvimento de uma Rede Social usando-se de téc
 	Por fim, será disponibilizado uma ferramenta de Realidade Aumentada no uso de uma Rede Social que possibilita aos usuários uma maneira totalmente diferente de interação.
 
 \section{Cronograma de Atividades}
-\begin{tabular}{|p{5cm}|l|c|c|c|c|c|c|c|c|c|}
+
+\begin{tabular}{|p{10cm}|l|c|c|c|c|c|c|c|c|c|}
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Atividade/Mês & Mar & Abr & Mai & Jun & Jul & Ago & Set & Out & Nov \\ 
+\rule[-1ex]{0pt}{2.3ex} Atividades & Período \\ 
 \hline 
 \rule[-1ex]{0pt}{2.5ex} Pesquisa Bibliográfica sobre Geoprocessamento e Realidade Aumentada e
-suas técnicas & X &  &  &  &  &  &  &  &  \\ 
+suas técnicas & 01/03/12 a 31/03/2012   \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Escrita da Proposta &  & X &  &  &  &  &  &  &    \\ 
+\rule[-1ex]{0pt}{2.5ex} Escrita da Proposta & 15/03/12 a 30/04/2012    \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Entrega da Proposta &  & X &  &  &  &  &  &  &    \\ 
+\rule[-1ex]{0pt}{2.5ex} Entrega da Proposta & 30/04/2012    \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Defesa da Proposta &  &  &  & X &  &  &  &  &    \\ 
+\rule[-1ex]{0pt}{2.5ex} Defesa da Proposta &  07/11/2012   \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Construção da Aplicação        &  &  & X & X & X & X & X & X &    \\ 
+\rule[-1ex]{0pt}{2.5ex} Construção da Aplicação  &  15/06/2012 a 31/03/2013    \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Validar Aplicação              &  &  &  &  &  & X & X & X &    \\ 
+\rule[-1ex]{0pt}{2.5ex} Validar Aplicação  &  20/03/2013 a 31/03/2013    \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Escrita de TCC                 &  & X & X & X & X & X & X & X &  \\ 
+\rule[-1ex]{0pt}{2.5ex} Escrita de TCC     &  01/04/2012 a 31/03/2013  \\ 
 \hline 
-\rule[-1ex]{0pt}{2.5ex} Apresentar Projeto &  &  &  &  &  &  &  &  & X   \\ 
+\rule[-1ex]{0pt}{2.5ex} Apresentar Projeto &  Não definido  \\ 
 \hline 
-
 \end{tabular} 
+%\begin{table}[htbp]
+%	\centering
+%	\begin{tabular}{|c|c|} \hline
+%	\multicolumn{2}{|c|}{Brasil} \\ \hline
+%	Estado & Time \\ \hline
+%	\multirow{4}{*}{Pesquisa Bibliográfica sobre Geoprocessamento e Realidade Aumentada e suas técnicas} & São Paulo \\ \cline{2-2}
+%	& Santos \\ \cline{2-2}
+%	& Corinthias \\ \cline{2-2}
+%	& Palmeiras \\ \hline
+%
+%	\multirow{4}{*}{Rio de Janeiro} & Flamengo \\ \cline{2-2}
+%	& Botafogo \\ \cline{2-2}
+%	& Vasco \\ \cline{2-2}
+%	& Fluminense \\ \hline
+%\end{tabular}
+%\caption{Descrição Total}
+%\label{tab:interfaceCallBack}
+%\end{table}
+
+ % \begin{figure}[h]
+%		\begin{center}
+%			\includegraphics{Figuras/Cronograma2.png} 
+%			\caption{}
+%			\label{fig_cronograma}
+%		\end{center}
+%	\end{figure} 
 
 \section{Recursos}
 \label{RCS}
