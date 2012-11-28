@@ -25,12 +25,11 @@ public class ListaRelacionamentoActivity extends Activity{
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
-				System.out.println("Entrou");
 				String relacionamento = relacionamentoList.get(arg2);
 				Intent it = new Intent();
-				it.putExtra("relacionamento",relacionamento);
+				it.putExtra("RELACIONAMENTO",relacionamento);
 				
-				setResult(1, it);
+				setResult(0, it);
 				finish();
 			}
         });
