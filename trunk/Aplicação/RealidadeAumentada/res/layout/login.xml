@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rede"
+    android:clickable="true"
+    android:gravity="center_vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/shaplinear"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+ 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shaptextview"
+            android:orientation="horizontal" >
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+ 
+         <TextView
+             style="@style/TitleBarText"
+             android:id="@+id/tvLogin"
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:gravity="right|center_vertical"
+             android:text="Login" />
+ 
+        </LinearLayout>
+         
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+         
+              <TextView
+                android:id="@+id/tvUsuario"
+                android:textColor="#1D3472"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Usuário : " />
+              
+              <EditText
+                android:id="@+id/etUsuario"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tvUsuario" />
+
+ 
+<!--             <TextView -->
+<!--                 android:id="@+id/tvUsuario" -->
+<!--                 android:textColor="#1D3472" -->
+<!--                 android:layout_width="0dp" -->
+<!--                 android:layout_weight="1" -->
+<!--                 android:gravity="left" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:textStyle="bold" -->
+<!--                 android:text="Usuário : " /> -->
+ 
+<!--             <EditText -->
+<!--                 android:id="@+id/etUsuario" -->
+<!--                 android:layout_width="0dp" -->
+<!--                 android:layout_weight="2" -->
+<!--                 android:layout_marginRight="10dp" -->
+<!--                 android:layout_height="wrap_content"> -->
+<!--                 <requestFocus /> -->
+<!--             </EditText> -->
+ 
+        </RelativeLayout>
+         
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+              
+            <TextView
+                android:id="@+id/tvSenha"
+                android:textColor="#1D3472"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@+id/etUsuario"
+                android:text="Senha : " />
+ 
+            <EditText
+                android:id="@+id/etSenha"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tvSenha"
+                android:layout_alignTop="@+id/tvSenha"
+                android:inputType="textPassword" />
+            
+ 
+<!--             <TextView -->
+<!--                 android:id="@+id/tvSenha" -->
+<!--                 android:textColor="#1D3472" -->
+<!--                 android:layout_width="0dp" -->
+<!--                 android:layout_weight="1" -->
+<!--                 android:gravity="left" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:textStyle="bold" -->
+<!--                 android:text="Senha : " /> -->
+ 
+<!--             <EditText -->
+<!--                 android:id="@+id/etSenhA" -->
+<!--                 android:layout_width="0dp" -->
+<!--                 android:layout_weight="2" -->
+<!--                 android:layout_marginRight="10dp" -->
+<!--                 android:inputType="textPassword" -->
+<!--                 android:layout_height="wrap_content" > -->
+<!--             </EditText> -->
+ 
+        </RelativeLayout>
+         
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btEntrar"
+                style="@style/TitleBarText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/tvSenha"
+                android:text="Entrar" />
+              <CheckBox
+                 android:id="@+id/chkLembrar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="70dp"
+                 android:layout_toRightOf="@+id/btEntrar"
+                 android:text="Lembrar usuário" />
+             
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="49dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="@+id/tvSenha"
+                android:clickable="true"
+                android:text="Não consegue acessar sua conta?"
+                android:textColor="#1D3472"
+                android:textStyle="bold" />
+ 
+        </RelativeLayout>
+ 
+    </LinearLayout>
+ 
+</RelativeLayout>

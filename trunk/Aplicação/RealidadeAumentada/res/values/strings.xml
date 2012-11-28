@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="hello">Hello World</string>
+    <string name="app_name">AR_RedeSocial</string>
+   	<string-array name="relacionamentos_Array">
+   	    <item>Solteiro (a)</item>
+   	    <item>Namorando</item>
+   	    <item>Casado (a)</item>
+   	    <item>Enrolado</item>
+   	</string-array>
+</resources>
