@@ -5,7 +5,6 @@
     
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.INSTALL_LOCATION_PROVIDER"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
     
@@ -20,6 +19,14 @@
         <activity android:name="ListaRelacionamentoActivity">
 	        <intent-filter>
                 <action android:name="RELACIONAMENTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="LISTA" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="ListaEscolaridadeActivity">
+	        <intent-filter>
+                <action android:name="NIVEL_ESCOLAR" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LISTA" />
             </intent-filter>
