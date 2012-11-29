@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/scroll" android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#C0C0C0">
+	  	
+  <LinearLayout
+       android:id="@+id/layoutPerfilPrincipal"
+	   android:layout_width="fill_parent"
+   	   android:layout_height="fill_parent"
+       android:orientation="vertical" >
+          
+      <LinearLayout
+        android:id="@+id/layoutNomeUsuario"
+	   	android:layout_width="fill_parent"
+   	   	android:layout_height="wrap_content"
+       	android:orientation="vertical" >
+       	
+          <RelativeLayout
+              android:layout_marginTop="10dp"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content" >
+            
+<!--       Nome do Usuário -->
+		   <TextView
+	          android:id="@+id/tv_nomeUsuario"
+	          android:textColor="#1D3472"
+	          android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+	          android:gravity="left"
+	          android:textStyle="bold"
+	          android:text="Nome: " />
+		   
+		   <TextView
+	          android:id="@+id/tv_respostaNomeUsuario"
+	          android:textColor="#FFFFFF"
+	          android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+		      android:layout_marginLeft="15dp"
+	          android:textStyle="bold"
+	          android:layout_below="@+id/tv_nomeUsuario"
+	          android:text="Nome:"/>
+		   
+		   </RelativeLayout>
+		   
+		   <TextView
+	          android:id="@+id/tv_respostaUsuario"
+	          android:textColor="#FFFFFF"
+	          android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+		      android:layout_marginLeft="15dp"
+	          android:textStyle="bold"
+	          android:text=""/>
+
+	   </LinearLayout>
+	   
+<!-- Sexo -->
+       <TextView
+           android:id="@+id/tv_sexoUsuario"
+           android:textColor="#1D3472"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:gravity="left"
+           android:textStyle="bold"
+           android:text="Sexo: " />	
+			
+      <LinearLayout
+          android:id="@+id/layoutCadastroSexoUsuario"
+          android:layout_width="110dip"
+      	  android:layout_height="match_parent"
+      	  android:gravity="center_vertical"
+      	  android:orientation="vertical">
+
+          <RadioGroup
+           	android:id="@+id/rd_SexoUsuario"
+           	android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           	android:orientation="horizontal"
+           	android:layout_marginRight="15dip" >
+
+          <RadioButton
+          	android:id="@+id/rd_UsuarioMasculino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="8dip"
+            android:text="M"/>
+
+          <RadioButton
+            android:id="@+id/rd_Usuario_Feminino"
+            android:layout_width="fill_parent"
+           	android:layout_height="fill_parent"
+            android:textSize="8dip"
+            android:text="F" />
+       </RadioGroup>
+      </LinearLayout>
+	       
+<!--        Data de Nascimento -->
+      <LinearLayout
+        android:id="@+id/layoutDataNascimentoUsuario"
+	   	android:layout_width="fill_parent"
+   	   	android:layout_height="wrap_content"
+       	android:orientation="vertical" >
+	       <TextView
+	           android:id="@+id/tv_dataNascimentoUsuario"
+	           android:layout_width="fill_parent"
+	           android:layout_height="fill_parent"
+	           android:layout_weight="0.79"
+	           android:gravity="left"
+	           android:text="Data Nascimento: "
+	           android:textColor="#1D3472"
+	           android:textStyle="bold" />
+	       
+	       <TextView
+		       android:id="@+id/tv_RespostadataNascimentoUsuario"
+		       android:textColor="#FFFFFF"
+		       android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:layout_marginLeft="15dp"
+			   android:text="Selecione..."
+		       android:textStyle="bold" />
+       
+       </LinearLayout>
+
+<!--       Endereço -->
+	   <TextView
+          android:id="@+id/tv_enderecoUsuario"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Endereço: " />
+	 
+       <EditText
+          android:id="@+id/et_enderecoUsuario"
+     	  android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:maxLength="20">
+<!--            <requestFocus /> -->
+       </EditText>
+       
+<!--       Relacionamento -->
+	  <LinearLayout
+       	android:id="@+id/layoutRelacionamentoUsuario"
+	   	android:layout_width="fill_parent"
+   	   	android:layout_height="wrap_content"
+       	android:orientation="vertical" >
+          
+	   	<TextView
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+          android:textStyle="bold"
+          android:text="Relacionamento: " />   
+	   
+	   	<TextView
+          android:id="@+id/tv_resposta_relacionamentoUsuario"
+          android:textColor="#FFFFFF"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+	      android:layout_marginLeft="15dp"
+	      android:text="Selecione..."
+          android:textStyle="bold"/>
+	   
+	   </LinearLayout>
+	   
+<!--   Nível Escolar -->
+	  <LinearLayout
+	     android:id="@+id/layoutEscolaridadeUsuario"
+		 android:layout_width="fill_parent"
+	   	 android:layout_height="wrap_content"
+	     android:orientation="vertical" >
+          
+		 <TextView
+	       android:textColor="#1D3472"
+	       android:layout_width="fill_parent"
+		   android:layout_height="wrap_content"
+	       android:textStyle="bold"
+	       android:text="Nível Escolar: " />   
+		   
+		 <TextView
+	       android:id="@+id/tv_resposta_nivelEscolarUsuario"
+	       android:textColor="#FFFFFF"
+	       android:layout_width="fill_parent"
+		   android:layout_height="fill_parent"
+		   android:layout_marginLeft="15dp"
+		   android:text="Selecione..."
+	       android:textStyle="bold"/>
+	   
+	   </LinearLayout>
+<!--       Escolaridade -->
+       
+<!--       Profissão -->
+	   <TextView
+          android:id="@+id/tv_profissaoUsuario"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Profissão: " />
+	 
+       <EditText
+           android:id="@+id/et_profissaoUsuario"
+     	   android:layout_width="fill_parent"
+	       android:layout_height="fill_parent"
+           android:maxLength="20">
+<!--            <requestFocus /> -->
+       </EditText>
+              
+<!-- Telefone -->
+      <TextView
+         android:id="@+id/tv_telefoneUsuario"
+         android:textColor="#1D3472"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:gravity="left"
+         android:textStyle="bold"
+         android:text="Telefone: " />
+       
+     <EditText
+         android:id="@+id/ed_telefoneUsuario"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:layout_weight="1"
+         android:ems="10"
+         android:inputType="phone" />
+	
+    
+    <RelativeLayout
+        android:id="@+id/layoutCadastroUsuario"
+        android:layout_width="fill_parent"
+        android:layout_height="49dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" >
+         
+        <Button
+            android:id="@+id/btEntrarPerfil"
+            style="@style/TitleBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginRight="10dp"
+            android:gravity="left"
+            android:text="Confirmar" />
+        
+        <Button
+            android:id="@+id/btCancelarPerfil"
+            style="@style/TitleBarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@+id/btEntrarPerfil"
+            android:text="Cancelar" />
+        
+    </RelativeLayout>
+
+  </LinearLayout>
+</ScrollView>	
+
+	

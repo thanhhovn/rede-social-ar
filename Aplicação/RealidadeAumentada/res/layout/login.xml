@@ -7,7 +7,6 @@
     android:gravity="center_vertical" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="false"
@@ -56,26 +55,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tvUsuario" />
-
- 
-<!--             <TextView -->
-<!--                 android:id="@+id/tvUsuario" -->
-<!--                 android:textColor="#1D3472" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_weight="1" -->
-<!--                 android:gravity="left" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:textStyle="bold" -->
-<!--                 android:text="Usuário : " /> -->
- 
-<!--             <EditText -->
-<!--                 android:id="@+id/etUsuario" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_weight="2" -->
-<!--                 android:layout_marginRight="10dp" -->
-<!--                 android:layout_height="wrap_content"> -->
-<!--                 <requestFocus /> -->
-<!--             </EditText> -->
  
         </RelativeLayout>
          
@@ -100,27 +79,7 @@
                 android:layout_toRightOf="@+id/tvSenha"
                 android:layout_alignTop="@+id/tvSenha"
                 android:inputType="textPassword" />
-            
- 
-<!--             <TextView -->
-<!--                 android:id="@+id/tvSenha" -->
-<!--                 android:textColor="#1D3472" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_weight="1" -->
-<!--                 android:gravity="left" -->
-<!--                 android:layout_height="wrap_content" -->
-<!--                 android:textStyle="bold" -->
-<!--                 android:text="Senha : " /> -->
- 
-<!--             <EditText -->
-<!--                 android:id="@+id/etSenhA" -->
-<!--                 android:layout_width="0dp" -->
-<!--                 android:layout_weight="2" -->
-<!--                 android:layout_marginRight="10dp" -->
-<!--                 android:inputType="textPassword" -->
-<!--                 android:layout_height="wrap_content" > -->
-<!--             </EditText> -->
- 
+
         </RelativeLayout>
          
         <RelativeLayout
@@ -152,7 +111,7 @@
             android:layout_marginTop="10dp" >
 
             <TextView
-                android:id="@+id/TextView01"
+                android:id="@+id/tv_acessarContaUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="@+id/tvSenha"
