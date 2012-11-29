@@ -38,7 +38,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="CADASTRO" />
             </intent-filter>
-        </activity>    
+        </activity>
+        
+        <activity android:name="Perfil_usuarioActivity" android:label="Cadastro do Perfil">
+	        <intent-filter>
+                <action android:name="USUARIO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="PERFIL" />
+            </intent-filter>
+        </activity>
         
         
         
