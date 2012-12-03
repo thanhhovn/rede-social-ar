@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="ListaRelacionamentoActivity">
+        <activity android:name="ListaRelacionamentoActivity" android:label="Tipo de Relacionamento">
 	        <intent-filter>
                 <action android:name="RELACIONAMENTO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="ListaEscolaridadeActivity">
+        <activity android:name="ListaEscolaridadeActivity" android:label="Nível Escolar">
 	        <intent-filter>
                 <action android:name="NIVEL_ESCOLAR" />
                 <category android:name="android.intent.category.DEFAULT" />
