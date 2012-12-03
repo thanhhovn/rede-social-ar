@@ -2,6 +2,10 @@ package br.com.realidadeAumentada;
 
 import java.util.ArrayList;
 
+import br.com.realidadeAumentada.R;
+import br.com.realidadeAumentada.R.id;
+import br.com.realidadeAumentada.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

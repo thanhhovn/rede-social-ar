@@ -9,9 +9,12 @@ package br.com.realidadeAumentada;
 
 public final class R {
     public static final class array {
-        public static final int relacionamentos_Array=0x7f050000;
+        public static final int relacionamentos_Array=0x7f060000;
     }
     public static final class attr {
+    }
+    public static final class color {
+        public static final int background=0x7f040000;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -22,63 +25,63 @@ public final class R {
         public static final int shaptextview=0x7f020005;
     }
     public static final class id {
-        public static final int btCancelar=0x7f07000f;
-        public static final int btCancelarPerfil=0x7f070034;
-        public static final int btEntrar=0x7f07000e;
-        public static final int btEntrarPerfil=0x7f070033;
-        public static final int btSomar=0x7f070037;
-        public static final int chkLembrar=0x7f070018;
-        public static final int ed_emailUsuario=0x7f070006;
-        public static final int ed_telefoneUsuario=0x7f070032;
-        public static final int etSenha=0x7f070017;
-        public static final int etUsuario=0x7f070015;
-        public static final int et_AlertaNomeUsuario=0x7f070001;
-        public static final int et_confirmarSenhaUsuario=0x7f07000b;
-        public static final int et_enderecoUsuario=0x7f07002a;
-        public static final int et_nomeLoginUsuario=0x7f070004;
-        public static final int et_profissaoUsuario=0x7f070030;
-        public static final int et_senhaUsuario=0x7f070009;
-        public static final int imageView1=0x7f070012;
-        public static final int layoutAlertaNome=0x7f070000;
-        public static final int layoutCadastroPrincipal=0x7f070002;
-        public static final int layoutCadastroSexoUsuario=0x7f070022;
-        public static final int layoutCadastroUsuario=0x7f07000d;
-        public static final int layoutDataNascimentoUsuario=0x7f070026;
-        public static final int layoutEscolaridadeUsuario=0x7f07002d;
-        public static final int layoutNomeUsuario=0x7f07001d;
-        public static final int layoutPerfilPrincipal=0x7f07001c;
-        public static final int layoutRelacionamentoUsuario=0x7f07002b;
-        public static final int listview=0x7f07001a;
-        public static final int n1=0x7f070035;
-        public static final int n2=0x7f070036;
-        public static final int rd_SexoUsuario=0x7f070023;
-        public static final int rd_UsuarioMasculino=0x7f070024;
-        public static final int rd_Usuario_Feminino=0x7f070025;
-        public static final int rd_tipoRelcionamentoUsuario=0x7f070011;
-        public static final int scroll=0x7f07001b;
-        public static final int soma=0x7f070038;
-        public static final int tvLogin=0x7f070013;
-        public static final int tvSenha=0x7f070016;
-        public static final int tvUsuario=0x7f070014;
-        public static final int tv_RespostadataNascimentoUsuario=0x7f070028;
-        public static final int tv_acessarContaUsuario=0x7f070019;
-        public static final int tv_confirmarSenhaUsuario=0x7f07000a;
-        public static final int tv_dataNascimentoUsuario=0x7f070027;
-        public static final int tv_emailInvalido=0x7f070007;
-        public static final int tv_emailUsuario=0x7f070005;
-        public static final int tv_enderecoUsuario=0x7f070029;
-        public static final int tv_nomeLoginUsuario=0x7f070003;
-        public static final int tv_nomeUsuario=0x7f07001e;
-        public static final int tv_profissaoUsuario=0x7f07002f;
-        public static final int tv_respostaNomeUsuario=0x7f07001f;
-        public static final int tv_respostaUsuario=0x7f070020;
-        public static final int tv_resposta_nivelEscolarUsuario=0x7f07002e;
-        public static final int tv_resposta_relacionamentoUsuario=0x7f07002c;
-        public static final int tv_senhaNaoConferi=0x7f07000c;
-        public static final int tv_senhaUsuario=0x7f070008;
-        public static final int tv_sexoUsuario=0x7f070021;
-        public static final int tv_telefoneUsuario=0x7f070031;
-        public static final int tv_tipoRelcionamentoUsuario=0x7f070010;
+        public static final int btCancelar=0x7f08000f;
+        public static final int btCancelarPerfil=0x7f080034;
+        public static final int btEntrar=0x7f08000e;
+        public static final int btEntrarPerfil=0x7f080033;
+        public static final int btSomar=0x7f080037;
+        public static final int chkLembrar=0x7f080018;
+        public static final int ed_emailUsuario=0x7f080006;
+        public static final int ed_telefoneUsuario=0x7f080032;
+        public static final int etSenha=0x7f080017;
+        public static final int etUsuario=0x7f080015;
+        public static final int et_AlertaNomeUsuario=0x7f080001;
+        public static final int et_confirmarSenhaUsuario=0x7f08000b;
+        public static final int et_enderecoUsuario=0x7f08002a;
+        public static final int et_nomeLoginUsuario=0x7f080004;
+        public static final int et_profissaoUsuario=0x7f080030;
+        public static final int et_senhaUsuario=0x7f080009;
+        public static final int imageView1=0x7f080012;
+        public static final int layoutAlertaNome=0x7f080000;
+        public static final int layoutCadastroPrincipal=0x7f080002;
+        public static final int layoutCadastroSexoUsuario=0x7f080022;
+        public static final int layoutCadastroUsuario=0x7f08000d;
+        public static final int layoutDataNascimentoUsuario=0x7f080026;
+        public static final int layoutEscolaridadeUsuario=0x7f08002d;
+        public static final int layoutNomeUsuario=0x7f08001d;
+        public static final int layoutPerfilPrincipal=0x7f08001c;
+        public static final int layoutRelacionamentoUsuario=0x7f08002b;
+        public static final int listview=0x7f08001a;
+        public static final int n1=0x7f080035;
+        public static final int n2=0x7f080036;
+        public static final int rd_SexoUsuario=0x7f080023;
+        public static final int rd_UsuarioMasculino=0x7f080024;
+        public static final int rd_Usuario_Feminino=0x7f080025;
+        public static final int rd_tipoRelcionamentoUsuario=0x7f080011;
+        public static final int scroll=0x7f08001b;
+        public static final int soma=0x7f080038;
+        public static final int tvLogin=0x7f080013;
+        public static final int tvSenha=0x7f080016;
+        public static final int tvUsuario=0x7f080014;
+        public static final int tv_RespostadataNascimentoUsuario=0x7f080028;
+        public static final int tv_acessarContaUsuario=0x7f080019;
+        public static final int tv_confirmarSenhaUsuario=0x7f08000a;
+        public static final int tv_dataNascimentoUsuario=0x7f080027;
+        public static final int tv_emailInvalido=0x7f080007;
+        public static final int tv_emailUsuario=0x7f080005;
+        public static final int tv_enderecoUsuario=0x7f080029;
+        public static final int tv_nomeLoginUsuario=0x7f080003;
+        public static final int tv_nomeUsuario=0x7f08001e;
+        public static final int tv_profissaoUsuario=0x7f08002f;
+        public static final int tv_respostaNomeUsuario=0x7f08001f;
+        public static final int tv_respostaUsuario=0x7f080020;
+        public static final int tv_resposta_nivelEscolarUsuario=0x7f08002e;
+        public static final int tv_resposta_relacionamentoUsuario=0x7f08002c;
+        public static final int tv_senhaNaoConferi=0x7f08000c;
+        public static final int tv_senhaUsuario=0x7f080008;
+        public static final int tv_sexoUsuario=0x7f080021;
+        public static final int tv_telefoneUsuario=0x7f080031;
+        public static final int tv_tipoRelcionamentoUsuario=0x7f080010;
     }
     public static final class layout {
         public static final int alerta_nome=0x7f030000;
@@ -91,10 +94,10 @@ public final class R {
         public static final int soma=0x7f030007;
     }
     public static final class string {
-        public static final int app_name=0x7f040001;
-        public static final int hello=0x7f040000;
+        public static final int app_name=0x7f050001;
+        public static final int hello=0x7f050000;
     }
     public static final class style {
-        public static final int TitleBarText=0x7f060000;
+        public static final int TitleBarText=0x7f070000;
     }
 }

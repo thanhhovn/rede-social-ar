@@ -24,6 +24,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import br.com.realidadeAumentada.R;
+import br.com.realidadeAumentada.R.id;
+import br.com.realidadeAumentada.R.layout;
 import br.com.realidadeAumentada.validador.Mask;
 
 public class Perfil_usuarioActivity extends Activity implements OnClickListener {
