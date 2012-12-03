@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".Cadastro_usuarioActivity" android:label="Cadastro de Usuário">
+        <activity android:name="Cadastro_usuarioActivity" android:label="Cadastro de Usuário">
 	        <intent-filter>
                 <action android:name="USUARIO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -47,9 +47,6 @@
                 <category android:name="PERFIL" />
             </intent-filter>
         </activity>
-        
-        
-        
         
     </application>
     

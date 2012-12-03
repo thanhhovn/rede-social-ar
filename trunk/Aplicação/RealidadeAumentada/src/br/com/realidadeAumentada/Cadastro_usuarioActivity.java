@@ -2,16 +2,20 @@ package br.com.realidadeAumentada;
 
 
 
-import br.com.realidadeAumentada.validador.ValidadorEmail;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import br.com.realidadeAumentada.R;
+import br.com.realidadeAumentada.validador.ValidadorEmail;
 
 
 
@@ -62,27 +66,36 @@ public class Cadastro_usuarioActivity extends Activity implements OnClickListene
 			Intent intent = new Intent("USUARIO");
 			intent.addCategory("PERFIL");
 			startActivity(intent);
+			
+//			finishFromChild(getParent());
 		}
 		if(v == cancelar){
 			Cadastro_usuarioActivity.this.finish();
 		}
 	}
 
-	@Override
 	public void onFocusChange(View v, boolean hasFocus) {
 		if(v == email){
 			TextView erro = (TextView) findViewById(R.id.tv_emailInvalido);
+//			Context context=getApplicationContext();
+//			String msg="Email Inválido!";
+//			int duration=Toast.LENGTH_LONG;
+//			Toast toast=Toast.makeText(context,msg,duration);
+//			toast.setGravity(Gravity.TOP,0,0);
+			
 		       if (!hasFocus) {
 		    	   if(email.getText().toString().length() > 0){
 			    	   boolean isEmailValido = ValidadorEmail.validarEmail(email.getText().toString());
-			    	   if(!isEmailValido)
+			    	   if(!isEmailValido){
+//			    		   toast.setGravity(email.getGravity(), email.getScrollX(),email.getScrollY());
+//			     	   	   toast.show();
 			    		   erro.setText("Email Inválido.");
 		    	   }
-		       }else{
+		       }else
 		    	   erro.setText("");
+		       
 		       }
-		}
-		if(v == senha || v == confirmaSenha){
+		if(v == senha || v == confirmaSenha)
 			mensagemSenha.setText("");
 		}
 	}
