@@ -19,17 +19,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import br.com.realidadeAumentada.R;
-import br.com.realidadeAumentada.R.id;
-import br.com.realidadeAumentada.R.layout;
 import br.com.realidadeAumentada.validador.Mask;
 
-public class Perfil_usuarioActivity extends Activity implements OnClickListener {
+public class Perfil_usuarioActivity extends Activity implements OnClickListener, OnCheckedChangeListener {
 
 	private static final int LISTA_RELACIONAMENTO_ID = 0;
 	private static final int LISTA_NIVEL_ESCOLARIDADE_ID = 1;
@@ -37,11 +38,17 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 	private static final int DATE_DIALOG_ID = 3;
 	private static final int NOME_DIALOG_ID = 4;
 	
+	private String sexo = null;
+	
 	private Button cancelar = null;
 	private Button confirmar = null;
 	private TextView respostaData = null;
+	private EditText endereco = null;
+	private EditText profissao = null;
 	private EditText telefone = null;
-	private LinearLayout nomeUsuario = null;
+	private EditText alertNomeUsuario = null;
+	private LinearLayout layoutUsuario = null;
+	private RadioGroup grupoSexo = null;
 	private LinearLayout dataNascimento = null;
 	private LinearLayout tipoRelacionamento = null;
 	private LinearLayout escolaridade = null;
@@ -56,22 +63,30 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.perfil_usuario);
 		
-		nomeUsuario	= (LinearLayout) findViewById(R.id.layoutNomeUsuario);
+		layoutUsuario	= (LinearLayout) findViewById(R.id.layoutNomeUsuario);
+		grupoSexo = (RadioGroup) findViewById(R.id.layout_rdGrupo_SexoUsuario);
 		tipoRelacionamento	= (LinearLayout) findViewById(R.id.layoutRelacionamentoUsuario);
 		escolaridade	= (LinearLayout) findViewById(R.id.layoutEscolaridadeUsuario);
 		dataNascimento = (LinearLayout) findViewById(R.id.layoutDataNascimentoUsuario);
-		cancelar = (Button) findViewById(R.id.btCancelarPerfil);
-		confirmar = (Button) findViewById(R.id.btEntrarPerfil);
 		respostaData = (TextView) findViewById(R.id.tv_RespostadataNascimentoUsuario);
 		telefone = (EditText) findViewById(R.id.ed_telefoneUsuario);
+		endereco = (EditText) findViewById(R.id.et_enderecoUsuario);
+		
+		
 		telefone.addTextChangedListener(Mask.insert("(##)####-####", telefone));
+		profissao = (EditText) findViewById(R.id.et_profissaoUsuario); 
+		
+		cancelar = (Button) findViewById(R.id.btCancelarPerfil);
+		confirmar = (Button) findViewById(R.id.btEntrarPerfil);
 				
 		confirmar.setOnClickListener(this);
 		cancelar.setOnClickListener(this);
-		nomeUsuario.setOnClickListener(this);
+		layoutUsuario.setOnClickListener(this);
+		grupoSexo.setOnCheckedChangeListener(this);
 		dataNascimento.setOnClickListener(this);
 		tipoRelacionamento.setOnClickListener(this);
 		escolaridade.setOnClickListener(this);
+		ocultarTeclado(endereco);
 		carregaData();
 	}
 	
@@ -80,6 +95,19 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 	        ano = c.get(Calendar.YEAR);
 	        mes = c.get(Calendar.MONTH);
 	        dia = c.get(Calendar.DAY_OF_MONTH);
+	}
+	
+	private void ocultarTeclado(EditText edit){
+		InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		//edit.setFocusableInTouchMode(false); // Passa o foco para o próximo componente
+	}
+	
+	private void mostrarTeclado(EditText edit){
+		InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 	}
 	
 	// Atualiza a data no TextView
@@ -137,16 +165,16 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 				dialog.setTitle("Nome");
 				dialog.setView(layout);
 				
-				final EditText editNome = (EditText) layout.findViewById(R.id.et_AlertaNomeUsuario);
-				
-	//Mascara para CPF			
-	//			editNome.addTextChangedListener(Mask.insert("###.###.###-##", editNome));
+/*// Não esta funcionando				
+   alertNomeUsuario = (EditText) layout.findViewById(R.id.et_AlertaNomeUsuario);
+   mostrarTeclado(alertNomeUsuario);
+*/
 				dialog.setPositiveButton("OK", new 
 							DialogInterface.OnClickListener() {
 								@SuppressLint("DefaultLocale")
 								public void onClick(DialogInterface dialog,int which) {
 									
-									String nome	= editNome.getText().toString();
+									String nome	= alertNomeUsuario.getText().toString();
 									if(nome != null && nome.length() > 0){
 										TextView resposta = (TextView) findViewById(R.id.tv_respostaNomeUsuario);
 										resposta.setText(nome.toUpperCase());
@@ -170,6 +198,18 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 			}
 		}
 		return null;
+	}
+	
+	// TODO Ainda não esta sendo utilizado
+	private void limparCampos(){
+		respostaData = null;
+		profissao = null;
+		telefone = null;
+		layoutUsuario = null;
+		grupoSexo = null;
+		dataNascimento = null;
+		tipoRelacionamento = null;
+		escolaridade = null;
 	}
 	
 	protected void onActivityResult(int codigo, int resultado, Intent it){
@@ -196,8 +236,9 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 		if(v == dataNascimento){
 			showDialog(DATE_DIALOG_ID);
 		}
-		if(v == nomeUsuario){
+		if(v == layoutUsuario){
 			showDialog(NOME_DIALOG_ID);
+			
 		}
 		if(v == tipoRelacionamento ){
 			Intent it = new Intent("RELACIONAMENTO");
@@ -214,5 +255,24 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener 
 		if(v == cancelar){
 			Perfil_usuarioActivity.this.finish();
 		}
+	}
+	
+
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+		if (checkedId == R.id.rd_masculino) {
+	         sexo = "M";
+	     }
+		if (checkedId == R.id.rd_feminino) {
+			sexo = "F";
+	     }
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 }

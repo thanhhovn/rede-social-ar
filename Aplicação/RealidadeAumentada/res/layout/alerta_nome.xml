@@ -10,7 +10,6 @@
         android:id="@+id/et_AlertaNomeUsuario"
   	   	android:layout_width="fill_parent"
      	android:layout_height="fill_parent"
-     	
         android:maxLength="36"
         android:maxLines="1">
         <requestFocus />

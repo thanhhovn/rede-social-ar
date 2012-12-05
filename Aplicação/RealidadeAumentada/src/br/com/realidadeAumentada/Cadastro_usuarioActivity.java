@@ -2,24 +2,25 @@ package br.com.realidadeAumentada;
 
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnKeyListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import br.com.realidadeAumentada.R;
 import br.com.realidadeAumentada.validador.ValidadorEmail;
 
 
 
-public class Cadastro_usuarioActivity extends Activity implements OnClickListener, OnFocusChangeListener {
+public class Cadastro_usuarioActivity extends MenuActivity implements Runnable, OnClickListener, OnFocusChangeListener, OnKeyListener {
 		
 	private Button cancelar = null;
 	private Button confirmar = null;
@@ -28,22 +29,18 @@ public class Cadastro_usuarioActivity extends Activity implements OnClickListene
 	private EditText email = null;
 	private EditText senha = null;
 	private EditText confirmaSenha = null;
-	private TextView mensagemSenha = null;
-	
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cadastro_usuario);
-		
+
 		nome = (EditText) findViewById(R.id.et_nomeLoginUsuario);
 		email = (EditText) findViewById(R.id.ed_emailUsuario);
 		senha = (EditText) findViewById(R.id.et_senhaUsuario);
-		mensagemSenha = (TextView) findViewById(R.id.tv_senhaNaoConferi);
 		confirmaSenha = (EditText) findViewById(R.id.et_confirmarSenhaUsuario);
 		cancelar = (Button) findViewById(R.id.btCancelar);
 		confirmar = (Button) findViewById(R.id.btEntrar);
-		
 		 
 		email.setOnFocusChangeListener(this);
 		senha.setOnFocusChangeListener(this);
@@ -52,51 +49,92 @@ public class Cadastro_usuarioActivity extends Activity implements OnClickListene
 		confirmar.setOnClickListener(this);
 		cancelar.setOnClickListener(this);
 		
+		ocultarTeclado(nome);
+	}
+	
+	private void limparCampos(){
+		nome = null;
+		email = null;
+		senha = null;
+	}
+	
+	private void ocultarTeclado(EditText edit){
+		InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		//edit.setFocusableInTouchMode(false); // Passa o foco para o próximo componente
 	}
 	
 	public void onClick(View v) {
 		if(v == confirmar){
-			if(senha.equals(confirmaSenha)){
-			
-			}else if(senha.getText().length() == 0 || confirmaSenha.getText().length() == 0){
-				mensagemSenha.setText("Preencha a Senha.");
+			boolean flag = false;
+			boolean exibirMensagem = false;
+			Context context=getApplicationContext();
+			int duration=Toast.LENGTH_LONG;
+			String msg=null;
+			if(camposEmpty()){
+				msg = "Não Deixe Nenhum Campo Sem Preencher.";
+				exibirMensagem = true;
 			}else{
-				mensagemSenha.setText("Senha diferente!");
+				if (isEmailValido(email)){
+					if(senha.getText().toString().equals(confirmaSenha.getText().toString())){
+						msg = "Cadastro Realizado Com Sucesso. Você será Redirecionado Para a Tela Incial.";
+						flag = true;
+						exibirMensagem = true;
+					}else{
+						msg = "Senha e Contra Senha Estão Diferentes!";
+						exibirMensagem = true;
+					}
+				}
 			}
-			Intent intent = new Intent("USUARIO");
-			intent.addCategory("PERFIL");
-			startActivity(intent);
-			
-//			finishFromChild(getParent());
+			if(exibirMensagem){
+				Toast toast=Toast.makeText(context,msg,duration);
+				toast.show();
+			}
+			if(flag){
+				Handler h = new Handler();
+				h.postDelayed(this, 4000);
+			}
 		}
 		if(v == cancelar){
 			Cadastro_usuarioActivity.this.finish();
 		}
 	}
+	
+	private boolean camposEmpty(){
+		return (nome.getText().length() == 0 || email.getText().length() == 0 
+				|| senha.getText().length() == 0 || confirmaSenha.getText().length() == 0);
+	}
 
 	public void onFocusChange(View v, boolean hasFocus) {
 		if(v == email){
 			TextView erro = (TextView) findViewById(R.id.tv_emailInvalido);
-//			Context context=getApplicationContext();
-//			String msg="Email Inválido!";
-//			int duration=Toast.LENGTH_LONG;
-//			Toast toast=Toast.makeText(context,msg,duration);
-//			toast.setGravity(Gravity.TOP,0,0);
-			
 		       if (!hasFocus) {
 		    	   if(email.getText().toString().length() > 0){
-			    	   boolean isEmailValido = ValidadorEmail.validarEmail(email.getText().toString());
-			    	   if(!isEmailValido){
-//			    		   toast.setGravity(email.getGravity(), email.getScrollX(),email.getScrollY());
-//			     	   	   toast.show();
+			    	   if(!isEmailValido(email)){
 			    		   erro.setText("Email Inválido.");
-		    	   }
-		       }else
+			    	   }else{
+			    		   erro.setText("");
+			    	   }
+		       }else{
 		    	   erro.setText("");
-		       
 		       }
-		if(v == senha || v == confirmaSenha)
-			mensagemSenha.setText("");
+		    }
 		}
+
 	}
+	
+	private boolean isEmailValido(EditText email){
+		return ValidadorEmail.validarEmail(email.getText().toString());
+	}
+	
+	public boolean onKey(View arg0, int arg1, KeyEvent arg2) {
+		return false;
+	}
+
+	public void run() {
+		finish();
+	}
+	
+	
 }

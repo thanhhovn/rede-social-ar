@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="hello">Hello World</string>
-    <string name="app_name">AR_RedeSocial</string>
+    <string name="hello">Seja Bem Vindo!</string>
+    <string name="app_name">AR RedeSocial</string>
+    <!-- Opção para Menu -->
+    <string name="add_new">Add New Item</string>
+  	<string name="remove">Remove Item</string>
+  	<string name="cancel">Cancel</string>
+  	
    	<string-array name="relacionamentos_Array">
    	    <item>Solteiro (a)</item>
    	    <item>Namorando</item>
