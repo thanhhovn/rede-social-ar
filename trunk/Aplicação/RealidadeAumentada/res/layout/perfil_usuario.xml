@@ -17,6 +17,13 @@
    	   	android:layout_height="wrap_content"
        	android:orientation="vertical" >
        	
+<!--  Ver como devo usar a View -->
+<!--         <View -->
+<!--                 android:layout_height="2px" -->
+<!--                 android:background="#DDFFDD" -->
+<!--                 android:layout_marginTop="5dip" -->
+<!--                 android:layout_marginBottom="5dip" > -->
+<!--                 </View>   -->
           <RelativeLayout
               android:layout_marginTop="10dp"
               android:layout_width="fill_parent"
@@ -73,25 +80,27 @@
       	  android:orientation="vertical">
 
           <RadioGroup
-           	android:id="@+id/rd_SexoUsuario"
+           	android:id="@+id/layout_rdGrupo_SexoUsuario"
            	android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            	android:orientation="horizontal"
-           	android:layout_marginRight="15dip" >
+           	android:layout_marginRight="15dip"
+           	android:layout_column="0"			
+			android:layout_span="2" >
 
-          <RadioButton
-          	android:id="@+id/rd_UsuarioMasculino"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="8dip"
-            android:text="M"/>
-
-          <RadioButton
-            android:id="@+id/rd_Usuario_Feminino"
-            android:layout_width="fill_parent"
-           	android:layout_height="fill_parent"
-            android:textSize="8dip"
-            android:text="F" />
+	          <RadioButton
+	          	android:id="@+id/rd_masculino"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="8dip"
+	            android:text="M"/>
+	
+	          <RadioButton
+	            android:id="@+id/rd_feminino"
+	            android:layout_width="fill_parent"
+	           	android:layout_height="fill_parent"
+	            android:textSize="8dip"
+	            android:text="F" />
        </RadioGroup>
       </LinearLayout>
 	       
@@ -228,49 +237,31 @@
          android:inputType="phone" />
      
      <Button
-         android:id="@+id/btEntrarPerfil"
-         style="@style/TitleBarText"
-         android:layout_width="fill_parent"
-         android:layout_height="fill_parent"
-         android:gravity="center_horizontal"
-         android:text="Confirmar" />
-        
-        <Button
-            android:id="@+id/btCancelarPerfil"
-            style="@style/TitleBarText"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
-            android:text="Cancelar" />
-	
-    
-<!--     <RelativeLayout -->
-<!--         android:id="@+id/layoutCadastroUsuario" -->
-<!--         android:layout_width="fill_parent" -->
-<!--         android:layout_height="49dp" -->
-<!--         android:layout_marginBottom="10dp" -->
-<!--         android:layout_marginTop="10dp" > -->
-         
-<!--         <Button -->
-<!--             android:id="@+id/btEntrarPerfil" -->
-<!--             style="@style/TitleBarText" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_gravity="left" -->
-<!--             android:layout_marginRight="10dp" -->
-<!--             android:gravity="left" -->
-<!--             android:text="Confirmar" /> -->
-        
-<!--         <Button -->
-<!--             android:id="@+id/btCancelarPerfil" -->
-<!--             style="@style/TitleBarText" -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_marginLeft="70dp" -->
-<!--             android:layout_toRightOf="@+id/btEntrarPerfil" -->
-<!--             android:text="Cancelar" /> -->
-        
-<!--     </RelativeLayout> -->
+          android:id="@+id/btEntrarPerfil"
+          style="@style/TitleBarText"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+         android:layout_marginTop="5dp"
+          android:background="@drawable/formatobutton"
+          android:gravity="center_horizontal"
+          android:text="Confirmar" />
+
+      <RelativeLayout
+          android:id="@+id/layoutCadastroUsuario"
+          android:layout_width="fill_parent"
+          android:layout_height="30dp"
+          android:layout_marginBottom="20dp"
+          android:layout_marginTop="5dp" >
+
+          <Button
+              android:id="@+id/btCancelarPerfil"
+              style="@style/TitleBarText"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/formatobutton"
+              android:gravity="center_horizontal"
+              android:text="Cancelar" />
+      </RelativeLayout>
 
   </LinearLayout>
 </ScrollView>	
