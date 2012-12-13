@@ -2,11 +2,18 @@
 <manifest android:versionCode="1" android:versionName="1.0"
     package="br.com.realidadeAumentada" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk android:minSdkVersion="10"/>
+						
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/><!--  GPS -->
+    <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/><!--  Acesso a Internet -->
     
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    
     <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
+    
     
     <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
         
@@ -67,6 +74,16 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="br.com.realidadeAumentada.UseGPSActivity" 
+            	  android:label="GPS">
+	        <intent-filter>
+                <action android:name="TESTE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="GPS" />
+            </intent-filter>
+        </activity>
+        
+        <uses-library android:name="com.google.android.maps" />
     </application>
     
 </manifest>
