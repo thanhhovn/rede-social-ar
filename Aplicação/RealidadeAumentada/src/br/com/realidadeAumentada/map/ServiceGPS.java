@@ -1,6 +1,5 @@
 package br.com.realidadeAumentada.map;
 
-import br.com.realidadeAumentada.UseGPSActivity;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
@@ -32,10 +31,10 @@ public class ServiceGPS extends Service implements LocationListener {
     private double latitude = 0.00;
     private double longitude = 0.00;
  
-    // Distância mínima para atualizar posição GPS em metros
+    // Distï¿½ncia mï¿½nima para atualizar posiï¿½ï¿½o GPS em metros
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 0 meters
  
-    // Tempo mínimo entre as atualizações em milissegundos 1000 * 60 * 1; // 1 minute
+    // Tempo mï¿½nimo entre as atualizaï¿½ï¿½es em milissegundos 1000 * 60 * 1; // 1 minute
     private static final long MIN_TIME_BW_UPDATES = 0;
  
     protected LocationManager locationManager;
@@ -67,7 +66,7 @@ public class ServiceGPS extends Service implements LocationListener {
             
             // configurando status do GPS
             isGPSEnabled = locationManager.isProviderEnabled(provedor);
-            // Se o GPS estiver ativo irá pegar a lat / long usando a classe ServiceGPS
+            // Se o GPS estiver ativo irï¿½ pegar a lat / long usando a classe ServiceGPS
             if (isGPSEnabled) {
                 if (provedor != null) {
                 	location= locationManager.getLastKnownLocation(provedor);
@@ -92,7 +91,7 @@ public class ServiceGPS extends Service implements LocationListener {
     		latitude=location.getLatitude();
     		longitude=location.getLongitude();
     		
-    		// Exibe o local informado pelas Coordenadas do GPS, mas não esta funcionando
+    		// Exibe o local informado pelas Coordenadas do GPS, mas nï¿½o esta funcionando
 //    		Geocoder gc=new Geocoder(getApplicationContext(),Locale.getDefault());
 //    		try{
 //    			List<Address>addresses=gc.getFromLocation(latitude,longitude,1);
@@ -141,7 +140,7 @@ public class ServiceGPS extends Service implements LocationListener {
     
  
     /**
-     * Função para Verificar status GPS/wifi
+     * Funï¿½ï¿½o para Verificar status GPS/wifi
      * @return boolean
      * */
     public boolean canGetLocation() {
@@ -149,19 +148,19 @@ public class ServiceGPS extends Service implements LocationListener {
     }
  
     /**
-     *  Função para mostrar as configurações de diálogo de alerta
-      * Ao pressionar o botão Configurações será exibido opções de configuração
+     *  Funï¿½ï¿½o para mostrar as configuraï¿½ï¿½es de diï¿½logo de alerta
+ï¿½ï¿½ï¿½ï¿½ï¿½ * Ao pressionar o botï¿½o Configuraï¿½ï¿½es serï¿½ exibido opï¿½ï¿½es de configuraï¿½ï¿½o
      * */
     public void showSettingsAlert(){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
  
         // Setting Dialog Title
-        alertDialog.setTitle("Configuração do GPS");
+        alertDialog.setTitle("Configuraï¿½ï¿½o do GPS");
  
         // Setting Dialog Message
-        alertDialog.setMessage("O GPS não esta abilitado. Para continuar o serviço de marcação você deve abilitar o GPS, deseja fazer isso agora?");
+        alertDialog.setMessage("O GPS nï¿½o esta abilitado. Para continuar o serviï¿½o de marcaï¿½ï¿½o vocï¿½ deve abilitar o GPS, deseja fazer isso agora?");
  
-        // ao precionar o botão Settings
+        // ao precionar o botï¿½o Settings
         alertDialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -169,8 +168,8 @@ public class ServiceGPS extends Service implements LocationListener {
             }
         });
  
-        // ao precionar o botão cancelar
-        alertDialog.setNegativeButton("NÂO", new DialogInterface.OnClickListener() {
+        // ao precionar o botï¿½o cancelar
+        alertDialog.setNegativeButton("Nï¿½O", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
             }
