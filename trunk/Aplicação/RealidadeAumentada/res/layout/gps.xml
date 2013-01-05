@@ -2,14 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:background="#FFFFFF">
+	
+    <Button
+        android:id="@+id/retrieve_location_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/formatobutton"
+        android:gravity="center_horizontal"
+        android:text="GPS" />
+        
+
 	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="Location info" />
+		android:layout_height="wrap_content" android:text="Coordenadas Coletadas em:" />
+	
+	<TextView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/tempo" />
+	
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="Longitude:" />
+	
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/longitude" />
+	
 	<TextView android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="Latitude:" />
+	
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/latitude" />
+	
 </LinearLayout>

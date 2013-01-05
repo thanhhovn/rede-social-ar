@@ -74,7 +74,8 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="br.com.realidadeAumentada.UseGPSActivity" 
+<!--         UseGPSActivity1 -->
+        <activity android:name="WsdlClient"
             	  android:label="GPS">
 	        <intent-filter>
                 <action android:name="TESTE" />
