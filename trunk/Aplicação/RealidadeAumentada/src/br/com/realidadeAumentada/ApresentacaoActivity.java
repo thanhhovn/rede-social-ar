@@ -22,7 +22,7 @@ public class ApresentacaoActivity extends Activity implements Runnable {
 //			Intent it = new Intent("TELA_LOGIN");
 //			it.addCategory("LOGIN");
 			Intent it = new Intent("TESTE");
-			it.addCategory("GPS");
+			it.addCategory("MAPA");
 			startActivity(it);
 			finish();
 		}

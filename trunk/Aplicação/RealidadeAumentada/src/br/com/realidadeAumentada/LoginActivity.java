@@ -50,14 +50,14 @@ public class LoginActivity extends Activity implements OnClickListener{
 		Context context=getApplicationContext();
 		int duration=Toast.LENGTH_SHORT;
 		if(v == btEntrar){
-			String usuario = "L";
-			String senha = "l";
+			String usuario = "lucas";
+			String senha = "123";
 			if(nomeUsuario != null && senhaUsuario != null 
 			   && nomeUsuario.getText().toString().equals(usuario) 
 			   && senhaUsuario.getText().toString().equals(senha))
 			{
-				Intent intent = new Intent("USUARIO");
-				intent.addCategory("PERFIL");
+				Intent intent = new Intent("TELAPRINCIPAL");
+				intent.addCategory("APLICACAO");
 				startActivity(intent);
 			}else{
 				String msg="Senha ou Usuário Inválido.";

@@ -1,90 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest android:versionCode="1" android:versionName="1.0"
-    package="br.com.realidadeAumentada" xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-sdk android:minSdkVersion="10"/>
-						
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/><!--  GPS -->
-    <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.realidadeAumentada"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
-    <uses-permission android:name="android.permission.INTERNET"/><!--  Acesso a Internet -->
-    
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
-    
-    
-    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
+    <uses-sdk android:minSdkVersion="10" />
+	
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+ <!-- GPS -->
+<!--     <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+ <!-- Acesso a Internet -->
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name">
+        <uses-library android:name="com.google.android.maps" />
         
-        <activity 
-           	android:name=".ApresentacaoActivity" 
-            android:screenOrientation="sensorPortait" 
-            android:configChanges="orientation">
+        <activity
+            android:name="br.com.realidadeAumentada.ApresentacaoActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorPortait" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:label="@string/app_name"
-            	  android:name=".LoginActivity" 
-            	  android:screenOrientation="sensorPortait" 
-            	  android:configChanges="orientation">
+        <activity
+            android:name="br.com.realidadeAumentada.LoginActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="sensorPortait" >
             <intent-filter>
                 <action android:name="TELA_LOGIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LOGIN" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="ListaRelacionamentoActivity" 
-            	  android:label="Tipo de Relacionamento">
-	        <intent-filter>
+        <activity
+            android:name="br.com.realidadeAumentada.ListaRelacionamentoActivity"
+            android:label="Tipo de Relacionamento" >
+            <intent-filter>
                 <action android:name="RELACIONAMENTO" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LISTA" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="ListaEscolaridadeActivity" 
-            	  android:label="Nível Escolar">
-	        <intent-filter>
+        <activity
+            android:name="br.com.realidadeAumentada.ListaEscolaridadeActivity"
+            android:label="Nível Escolar" >
+            <intent-filter>
                 <action android:name="NIVEL_ESCOLAR" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LISTA" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="Cadastro_usuarioActivity" 
-            	  android:label="Cadastro de Usuário">
-	        <intent-filter>
+        <activity
+            android:name="br.com.realidadeAumentada.Cadastro_usuarioActivity"
+            android:label="Cadastro de Usuário" >
+            <intent-filter>
                 <action android:name="USUARIO" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="CADASTRO" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="Perfil_usuarioActivity" 
-            	  android:label="Cadastro do Perfil">
-	        <intent-filter>
+        <activity
+            android:name="br.com.realidadeAumentada.Perfil_usuarioActivity"
+            android:label="Cadastro do Perfil" >
+            <intent-filter>
                 <action android:name="USUARIO" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="PERFIL" />
             </intent-filter>
         </activity>
-        
-<!--         UseGPSActivity1 -->
-        <activity android:name="WsdlClient"
-            	  android:label="GPS">
-	        <intent-filter>
-                <action android:name="TESTE" />
+
+        <!-- UseGPSActivity1 -->
+        <activity
+            android:name="br.com.realidadeAumentada.TelaPrincipal"
+            android:label="GPS" >
+            <intent-filter>
+                <action android:name="TELAPRINCIPAL" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="GPS" />
+                <category android:name="APLICACAO" />
             </intent-filter>
         </activity>
-        
-        <uses-library android:name="com.google.android.maps" />
+
+        <activity
+            android:name="br.com.realidadeAumentada.TesteMapa"
+            android:label="@string/title_activity_teste_mapa" >
+            <intent-filter>
+                <action android:name="TESTE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="MAPA" />
+            </intent-filter>
+        </activity>
     </application>
-    
+
 </manifest>
