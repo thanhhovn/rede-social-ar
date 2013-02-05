@@ -1,0 +1,55 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AR_RedeWSService WSDL service -->
+
+  <service name="AR_RedeWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webService.AR.com.br"/>
+      <parameter name="wsdlServiceElement" value="AR_RedeWSService"/>
+      <parameter name="schemaQualified" value="http://webService.AR.com.br"/>
+      <parameter name="wsdlServicePort" value="AR_RedeWS"/>
+      <parameter name="className" value="br.com.AR.webService.AR_RedeWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AR_RedeWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="login" qname="operNS:login" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:loginReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:nomeLogin" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:senha" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="exibePontosAoRedor" qname="operNS:exibePontosAoRedor" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:exibePontosAoRedorReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:pontoX" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:pontoY" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="exibeTodosPontos" qname="operNS:exibeTodosPontos" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:exibeTodosPontosReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="percursoUsuario" qname="operNS:percursoUsuario" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:percursoUsuarioReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idUsuario" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="cadastrarUsuario" qname="operNS:cadastrarUsuario" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:cadastrarUsuarioReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:aluno" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getMunicipios" qname="operNS:getMunicipios" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:getMunicipiosReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:codEstado" xmlns:pns="http://webService.AR.com.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="registrarMarcacaoGPS" qname="operNS:registrarMarcacaoGPS" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:registrarMarcacaoGPSReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idUsuario" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:x" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:y" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:descricao" xmlns:pns="http://webService.AR.com.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="resposta" qname="operNS:resposta" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:respostaReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="getEstados" qname="operNS:getEstados" xmlns:operNS="http://webService.AR.com.br" returnQName="retNS:getEstadosReturn" xmlns:retNS="http://webService.AR.com.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getEstados exibePontosAoRedor resposta getMunicipios cadastrarUsuario exibeTodosPontos registrarMarcacaoGPS login percursoUsuario"/>
+
+  </service>
+</deployment>
