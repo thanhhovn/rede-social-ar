@@ -1,4 +1,4 @@
-package br.com.realidadeAumentada.map;
+package br.com.realidadeAumentada.GPS;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +18,7 @@ public class LocationManagerHelper implements LocationListener {
 
     public LocationManagerHelper(Context context){
     	LocationManager mlocManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0,this);
     }
     
     public void onLocationChanged(Location loc) {

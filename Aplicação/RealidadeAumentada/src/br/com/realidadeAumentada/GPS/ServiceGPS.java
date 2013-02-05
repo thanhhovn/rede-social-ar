@@ -1,4 +1,4 @@
-package br.com.realidadeAumentada.map;
+package br.com.realidadeAumentada.GPS;
 
 import android.app.AlertDialog;
 import android.app.Service;

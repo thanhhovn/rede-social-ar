@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
-import br.com.realidadeAumentada.map.MyLocation;
+import br.com.realidadeAumentada.GPS.MyLocation;
 
 import com.google.android.maps.GeoPoint;
 

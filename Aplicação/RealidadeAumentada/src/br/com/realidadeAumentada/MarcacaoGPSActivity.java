@@ -11,8 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.com.realidadeAumentada.GPS.LocationManagerHelper;
 import br.com.realidadeAumentada.cadastroUsuario.Treath;
-import br.com.realidadeAumentada.map.LocationManagerHelper;
 
 
 public class MarcacaoGPSActivity extends Activity implements OnClickListener{

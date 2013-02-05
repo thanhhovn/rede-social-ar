@@ -42,11 +42,11 @@ public class ListaEscolaridadeActivity extends Activity{
 	private ArrayList<String> createListaEscolaridade(){
 		ArrayList<String> p = new ArrayList<String>();
 		
-		p.add("Fundamental Completo");
+		p.add("Fundamental");
 		p.add("Fundamental Incompleto");
-		p.add("Médio Completo");
+		p.add("Médio");
 		p.add("Médio Incompleto");
-		p.add("Superior Completo");
+		p.add("Superior");
 		p.add("Superior Incompleto");
 		
 		return p;

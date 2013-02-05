@@ -1,4 +1,4 @@
-package br.com.realidadeAumentada.map;
+package br.com.realidadeAumentada.GPS;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -83,7 +83,7 @@ public class SoapClient {
 	}
 	
 	public Object executeCallResponse() throws Exception{
-	        Object result = null;
+			Object result = null;
 	        SoapObject request = new SoapObject(getNamespace(), getMethodName()); //cria o método soap              
 	        
 	        if(getParameters() != null){
@@ -106,7 +106,7 @@ public class SoapClient {
 	    envelope.setOutputSoapObject(request); //esta método é encarregado de guardar a resposta em request
 	    HttpTransportSE androidHttpTransport = new HttpTransportSE(getUri()); //abre a requisição
 	    androidHttpTransport.call(getSoapAction(), envelope);// chama
-	    result = envelope.getResponse(); // retorna o resultado            
+	    result = (Object) envelope.getResponse(); // retorna o resultado            
 	        
 	        return result;
 	}

@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TesteMapa" >
+
+<!-- Isso esta dando problema na hora de exibir a Activity     -->
+    
+<!--     <com.google.android.maps.MapView -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="fill_parent" -->
+<!--         android:apiKey="AIzaSyDV0KXFkXcgORuL5XDzfGq6k79R-yzMQUg" -->
+<!--     /> -->
+<com.google.android.maps.MapView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mapview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:apiKey="0LMa6eEvOnkqlLunc1bhPH_3OOKgz4vxMnkXHkQ"
+/>
+
+</RelativeLayout>

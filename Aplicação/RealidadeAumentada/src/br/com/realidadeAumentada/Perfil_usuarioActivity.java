@@ -43,6 +43,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 	private Button cancelar = null;
 	private Button confirmar = null;
 	private TextView respostaData = null;
+	private TextView resposta = null;
 	private EditText endereco = null;
 	private EditText profissao = null;
 	private EditText telefone = null;
@@ -71,7 +72,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 		respostaData = (TextView) findViewById(R.id.tv_RespostadataNascimentoUsuario);
 		telefone = (EditText) findViewById(R.id.ed_telefoneUsuario);
 		endereco = (EditText) findViewById(R.id.et_enderecoUsuario);
-		
+		resposta = (TextView) findViewById(R.id.tv_respostaNomeUsuario);
 		
 		telefone.addTextChangedListener(Mask.insert("(##)####-####", telefone));
 		profissao = (EditText) findViewById(R.id.et_profissaoUsuario); 
@@ -165,24 +166,24 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 				dialog.setTitle("Nome");
 				dialog.setView(layout);
 				
-/*// Não esta funcionando				
-   alertNomeUsuario = (EditText) layout.findViewById(R.id.et_AlertaNomeUsuario);
-   mostrarTeclado(alertNomeUsuario);
-*/
-				dialog.setPositiveButton("OK", new 
-							DialogInterface.OnClickListener() {
-								@SuppressLint("DefaultLocale")
-								public void onClick(DialogInterface dialog,int which) {
-									
-									String nome	= alertNomeUsuario.getText().toString();
-									if(nome != null && nome.length() > 0){
-										TextView resposta = (TextView) findViewById(R.id.tv_respostaNomeUsuario);
-										resposta.setText(nome.toUpperCase());
-									}
-									Perfil_usuarioActivity.this.removeDialog(NOME_DIALOG_ID);
-								}
-							}
-					);
+				final EditText editNome = (EditText) layout.findViewById(R.id.et_AlertaNomeUsuario);
+				
+				//Mascara para CPF			
+				//			editNome.addTextChangedListener(Mask.insert("###.###.###-##", editNome));
+							dialog.setPositiveButton("OK", new 
+										DialogInterface.OnClickListener() {
+											@SuppressLint("DefaultLocale")
+											public void onClick(DialogInterface dialog,int which) {
+												
+												String nome	= editNome.getText().toString();
+												if(nome != null && nome.length() > 0){
+													TextView resposta = (TextView) findViewById(R.id.tv_respostaNomeUsuario);
+													resposta.setText(nome.toUpperCase());
+												}
+												Perfil_usuarioActivity.this.removeDialog(NOME_DIALOG_ID);
+											}
+										}
+								);
 				dialog.setNegativeButton("Cancelar", new 
 						DialogInterface.OnClickListener() {
 							@SuppressLint("DefaultLocale")

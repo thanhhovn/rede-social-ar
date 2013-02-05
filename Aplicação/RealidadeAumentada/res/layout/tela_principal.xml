@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="#FFFFFF">
+	
+   <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+	    <Button
+	        android:id="@+id/bt_editarPerfilUsuario"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/formatobutton"
+	        android:gravity="center_horizontal"
+	        android:text="Editar/Preencher Perfil" />
+    </RelativeLayout>
+
+   <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+	    <Button
+	        android:id="@+id/bt_marcacaoUsuarioGPS"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/formatobutton"
+	        android:gravity="center_horizontal"
+	        android:text="Cadastrar Marcação" />
+    </RelativeLayout>
+	
+</LinearLayout>
