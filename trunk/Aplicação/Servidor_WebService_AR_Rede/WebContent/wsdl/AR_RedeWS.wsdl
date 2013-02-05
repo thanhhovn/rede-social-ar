@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webService.AR.com.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webService.AR.com.br" xmlns:intf="http://webService.AR.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webService.AR.com.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="nomeLogin" type="xsd:string"/>
+      <element name="senha" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="exibePontosAoRedor">
+    <complexType>
+     <sequence>
+      <element name="pontoX" type="xsd:string"/>
+      <element name="pontoY" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="exibePontosAoRedorResponse">
+    <complexType>
+     <sequence>
+      <element name="exibePontosAoRedorReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="exibeTodosPontos">
+    <complexType/>
+   </element>
+   <element name="exibeTodosPontosResponse">
+    <complexType>
+     <sequence>
+      <element name="exibeTodosPontosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="percursoUsuario">
+    <complexType>
+     <sequence>
+      <element name="idUsuario" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="percursoUsuarioResponse">
+    <complexType>
+     <sequence>
+      <element name="percursoUsuarioReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cadastrarUsuario">
+    <complexType>
+     <sequence>
+      <element name="aluno" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cadastrarUsuarioResponse">
+    <complexType>
+     <sequence>
+      <element name="cadastrarUsuarioReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMunicipios">
+    <complexType>
+     <sequence>
+      <element name="codEstado" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getMunicipiosResponse">
+    <complexType>
+     <sequence>
+      <element name="getMunicipiosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registrarMarcacaoGPS">
+    <complexType>
+     <sequence>
+      <element name="idUsuario" type="xsd:string"/>
+      <element name="x" type="xsd:string"/>
+      <element name="y" type="xsd:string"/>
+      <element name="descricao" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registrarMarcacaoGPSResponse">
+    <complexType>
+     <sequence>
+      <element name="registrarMarcacaoGPSReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="resposta">
+    <complexType/>
+   </element>
+   <element name="respostaResponse">
+    <complexType>
+     <sequence>
+      <element name="respostaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getEstados">
+    <complexType/>
+   </element>
+   <element name="getEstadosResponse">
+    <complexType>
+     <sequence>
+      <element name="getEstadosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getMunicipiosRequest">
+
+      <wsdl:part element="impl:getMunicipios" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="percursoUsuarioRequest">
+
+      <wsdl:part element="impl:percursoUsuario" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadosRequest">
+
+      <wsdl:part element="impl:getEstados" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="exibeTodosPontosResponse">
+
+      <wsdl:part element="impl:exibeTodosPontosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registrarMarcacaoGPSRequest">
+
+      <wsdl:part element="impl:registrarMarcacaoGPS" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cadastrarUsuarioRequest">
+
+      <wsdl:part element="impl:cadastrarUsuario" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getEstadosResponse">
+
+      <wsdl:part element="impl:getEstadosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="exibePontosAoRedorResponse">
+
+      <wsdl:part element="impl:exibePontosAoRedorResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cadastrarUsuarioResponse">
+
+      <wsdl:part element="impl:cadastrarUsuarioResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registrarMarcacaoGPSResponse">
+
+      <wsdl:part element="impl:registrarMarcacaoGPSResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getMunicipiosResponse">
+
+      <wsdl:part element="impl:getMunicipiosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="respostaResponse">
+
+      <wsdl:part element="impl:respostaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="exibeTodosPontosRequest">
+
+      <wsdl:part element="impl:exibeTodosPontos" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="respostaRequest">
+
+      <wsdl:part element="impl:resposta" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="exibePontosAoRedorRequest">
+
+      <wsdl:part element="impl:exibePontosAoRedor" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="percursoUsuarioResponse">
+
+      <wsdl:part element="impl:percursoUsuarioResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AR_RedeWS">
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="exibePontosAoRedor">
+
+         <wsdl:input message="impl:exibePontosAoRedorRequest" name="exibePontosAoRedorRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:exibePontosAoRedorResponse" name="exibePontosAoRedorResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="exibeTodosPontos">
+
+         <wsdl:input message="impl:exibeTodosPontosRequest" name="exibeTodosPontosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:exibeTodosPontosResponse" name="exibeTodosPontosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="percursoUsuario">
+
+         <wsdl:input message="impl:percursoUsuarioRequest" name="percursoUsuarioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:percursoUsuarioResponse" name="percursoUsuarioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cadastrarUsuario">
+
+         <wsdl:input message="impl:cadastrarUsuarioRequest" name="cadastrarUsuarioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cadastrarUsuarioResponse" name="cadastrarUsuarioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMunicipios">
+
+         <wsdl:input message="impl:getMunicipiosRequest" name="getMunicipiosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getMunicipiosResponse" name="getMunicipiosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registrarMarcacaoGPS">
+
+         <wsdl:input message="impl:registrarMarcacaoGPSRequest" name="registrarMarcacaoGPSRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registrarMarcacaoGPSResponse" name="registrarMarcacaoGPSResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resposta">
+
+         <wsdl:input message="impl:respostaRequest" name="respostaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:respostaResponse" name="respostaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstados">
+
+         <wsdl:input message="impl:getEstadosRequest" name="getEstadosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getEstadosResponse" name="getEstadosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AR_RedeWSSoapBinding" type="impl:AR_RedeWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="exibePontosAoRedor">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="exibePontosAoRedorRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="exibePontosAoRedorResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="exibeTodosPontos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="exibeTodosPontosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="exibeTodosPontosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="percursoUsuario">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="percursoUsuarioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="percursoUsuarioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cadastrarUsuario">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cadastrarUsuarioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cadastrarUsuarioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getMunicipios">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getMunicipiosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getMunicipiosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registrarMarcacaoGPS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="registrarMarcacaoGPSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registrarMarcacaoGPSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resposta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="respostaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="respostaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getEstados">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getEstadosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getEstadosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AR_RedeWSService">
+
+      <wsdl:port binding="impl:AR_RedeWSSoapBinding" name="AR_RedeWS">
+
+         <wsdlsoap:address location="http://localhost:8080/AR_Rede_WebService/services/AR_RedeWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
