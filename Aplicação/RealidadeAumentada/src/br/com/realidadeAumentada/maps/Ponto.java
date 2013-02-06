@@ -16,7 +16,7 @@ public class Ponto extends GeoPoint{
 		this((int)(latitude*1E6),(int)(longitude*1E6),descricao);
 	}
 	
-	public Ponto(int latitudeE6, int longitudeE6,String descricao) {
+	private Ponto(int latitudeE6, int longitudeE6,String descricao) {
 		super(latitudeE6, longitudeE6);
 		this.descricao = descricao;
 	}

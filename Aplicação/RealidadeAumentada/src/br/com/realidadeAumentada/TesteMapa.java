@@ -6,9 +6,10 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import br.com.realidadeAumentada.maps.CustonOverlay;
 import br.com.realidadeAumentada.maps.LocalOverlay;
-import br.com.realidadeAumentada.maps.Ponto;
 
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
@@ -23,38 +24,34 @@ public class TesteMapa extends  MapActivity {
         map = (MapView) findViewById(R.id.mapview);
         map.setClickable(true) ;
         
+        LocalOverlay mlo = new LocalOverlay(this,map);
+        List<CustonOverlay> overlayList = mlo.getListOverlay();
+        for (CustonOverlay local : overlayList ) {
+        	map.getOverlays().add(local);
+        }
+        map.getOverlays().add(mlo);
+        mlo.enableMyLocation();
+        mlo.enableCompass();
+        abilitarControladores(true);
+
+        controller = map.getController();
+        
         LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        int lat, lng;
+        int latitude, longitude;
         if (location != null){
         	//Converte para micrograus
-        	lat = (int)(location.getLatitude() * 1000000);
-        	lng = (int)(location.getLongitude() * 1000000);
+        	latitude =  (int)(location.getLatitude() * 1000000);
+        	longitude = (int)(location.getLongitude() * 1000000);
+        	controller.setCenter(new GeoPoint(latitude,longitude));
         } else {
-        	lat = -23426118;
-        	lng = -51938210;
+        	controller.setCenter(LocalOverlay.newPonto());
         }
-        Ponto mapCenter = new Ponto(lat,lng,"UFS");
-        LocalOverlay mlo = new LocalOverlay(this,map);
-      List<LocalOverlay> overlayList = mlo.getListOverlay();
-      for (LocalOverlay local : overlayList ) {
-      	map.getOverlays().add(local);
-		}
-        map.getOverlays().add(mlo);
-        map.invalidate();
-        abilitarControladores(true);
-        
-        controller = map.getController();
-        mlo.enableCompass();
-        mlo.enableMyLocation();        
-        controller.setCenter(mapCenter);
         controller.setZoom(15);
-        
     }
 
 	@Override
 	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
