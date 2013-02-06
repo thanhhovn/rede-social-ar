@@ -19,10 +19,10 @@ public class ApresentacaoActivity extends Activity implements Runnable {
 		}
 		
 		public void run(){
-//			Intent it = new Intent("TELA_LOGIN");
-//			it.addCategory("LOGIN");
-			Intent it = new Intent("TESTE");
-			it.addCategory("MAPA");
+			Intent it = new Intent("TELA_LOGIN");
+			it.addCategory("LOGIN");
+//			Intent it = new Intent("TESTE");
+//			it.addCategory("MAPA");
 			startActivity(it);
 			finish();
 		}

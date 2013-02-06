@@ -100,7 +100,9 @@
 
         <activity
             android:name="br.com.realidadeAumentada.TesteMapa"
-            android:label="@string/title_activity_teste_mapa" >
+            android:label="@string/title_activity_teste_mapa"
+            android:configChanges="orientation"
+            android:screenOrientation="sensorLandscape" >
             <intent-filter>
                 <action android:name="TESTE" />
 
