@@ -1,8 +1,7 @@
 package br.com.realidadeAumentada;
 
-import java.util.List;
-
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.widget.Toast;
 import br.com.realidadeAumentada.maps.CustonOverlay;
+import br.com.realidadeAumentada.maps.ItemOverlay;
 import br.com.realidadeAumentada.maps.LocalOverlay;
 
 import com.google.android.maps.GeoPoint;
@@ -21,6 +21,7 @@ import com.google.android.maps.MapView;
 public class TesteMapa extends  MapActivity {
 	MapView map;
 	MapController controller;
+	LocalOverlay mlo;
 
 	//definição das constantes utilizadas na criação do menu
 	private static final int TIPOS_VISAO = 0;
@@ -39,19 +40,23 @@ public class TesteMapa extends  MapActivity {
         map = (MapView) findViewById(R.id.mapview);
         map.setClickable(true) ;
         
-        LocalOverlay mlo = new LocalOverlay(this,map);
-        List<CustonOverlay> overlayList = mlo.getListOverlay();
-        for (CustonOverlay local : overlayList ) {
-        	map.getOverlays().add(local);
+        mlo = new LocalOverlay(this,map);        
+        //List<Overlay> overlays = map.getOverlays();
+        Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.ic_launcher);
+        ItemOverlay markers= new ItemOverlay(imagemPadrao,this);
+        if(markers.carregaItensMapa()){
+        	map.getOverlays().add(markers);
         }
+
+        //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
+        CustonOverlay overlay = new CustonOverlay(this);
+        map.getOverlays().add(overlay);
         map.getOverlays().add(mlo);
-        mlo.enableMyLocation();
-        mlo.enableCompass();
-        
+
         controller = map.getController();
-        
         LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        
         int latitude, longitude;
         if (location != null){
         	//Converte para micrograus
@@ -59,7 +64,7 @@ public class TesteMapa extends  MapActivity {
         	longitude = (int)(location.getLongitude() * 1000000);
         	controller.setCenter(new GeoPoint(latitude,longitude));
         } else {
-        	controller.setCenter(LocalOverlay.newPonto());
+        //	controller.setCenter(LocalOverlay.newPonto());
         }
         controller.setZoom(15);
     }
@@ -70,7 +75,7 @@ public class TesteMapa extends  MapActivity {
 	}
 	
 	public void abilitarControladores(boolean on){
-    	map.setBuiltInZoomControls(on);
+    	
     	map.setStreetView(on);
     	map.setTraffic(on);
     	map.setSatellite(on);
@@ -165,6 +170,22 @@ public class TesteMapa extends  MapActivity {
     {
         Toast.makeText (getApplicationContext(), msg, Toast.LENGTH_SHORT).show ();
     }
+    
+    @Override
+    protected void onResume() {
+    	mlo.enableCompass();
+    	mlo.enableMyLocation();
+    	map.setBuiltInZoomControls(true);
+    	super.onResume();
+    }
+    
+    @Override
+    protected void onRestart() {
+    	mlo.disableCompass();
+    	mlo.disableMyLocation();
+    	super.onRestart();
+    }
+
 	
 /*	private void recuperaLocalPorCoordenadas(double lat, double log){
 		String geoURI = String.format("geo:%f,%f?z=10", -10.7483672f, -37.49291661666667f);

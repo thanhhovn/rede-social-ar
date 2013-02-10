@@ -18,6 +18,7 @@ public class LocalOverlay extends MyLocationOverlay {
 		super(context, mapView);
 		contexto = context;
 		this.mapView = mapView;
+		
 	}
 	
 	public List<CustonOverlay> getListOverlay(){
@@ -60,8 +61,8 @@ public class LocalOverlay extends MyLocationOverlay {
 	}
 	
 	public static Ponto newPonto(){
-		int latitude = (int) (-10.7483672 * 1000000);
-		int longitude = (int) (-37.49421661666667 * 1000000); 
+		int latitude = (int) (-10.7483672 * 1E6);
+		int longitude = (int) (-37.49421661666667 * 1E6); 
 		return new Ponto(latitude,longitude,"Campo do Brito");
 	}
 

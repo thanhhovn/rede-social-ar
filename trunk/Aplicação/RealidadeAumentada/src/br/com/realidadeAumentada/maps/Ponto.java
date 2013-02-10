@@ -20,6 +20,10 @@ public class Ponto extends GeoPoint{
 		super(latitudeE6, longitudeE6);
 		this.descricao = descricao;
 	}
+	
+	public Ponto(double latitude,double longitude){
+		this((int)(latitude*1E6),(int)(longitude*1E6),"Olá");
+	}
 
 	public String getDescricao() {
 		return descricao;
