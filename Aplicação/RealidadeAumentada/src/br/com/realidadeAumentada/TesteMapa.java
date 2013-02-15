@@ -1,13 +1,20 @@
 package br.com.realidadeAumentada;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 import br.com.realidadeAumentada.maps.CustonOverlay;
 import br.com.realidadeAumentada.maps.ItemOverlay;
@@ -24,14 +31,16 @@ public class TesteMapa extends  MapActivity {
 	LocalOverlay mlo;
 
 	//definição das constantes utilizadas na criação do menu
-	private static final int TIPOS_VISAO = 0;
-	private static final int STREETVIEW = 1;
-	private static final int TRAFFIC = 2;
-	private static final int SATELLITE = 3;
-	private static final int TODOS = 4;
+	private final int TIPOS_VISAO = 0;
+	private final int STREETVIEW = 1;
+	private final int TRAFFIC = 2;
+	private final int SATELLITE = 3;
+	private final int TODOS = 4;
+	private final int NENHUM = 6;
 	private static final int RAIO = 5;
-	
 	private static int TODOS_HABILITADOS = 0;
+	
+	private static final int NOME_DIALOG_ID = 1;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,21 +52,17 @@ public class TesteMapa extends  MapActivity {
         mlo = new LocalOverlay(this,map);        
         //List<Overlay> overlays = map.getOverlays();
         Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.ic_launcher);
-        ItemOverlay markers= new ItemOverlay(imagemPadrao,this);
-        if(markers.carregaItensMapa()){
-        	map.getOverlays().add(markers);
-        }
+        ItemOverlay markers= new ItemOverlay(imagemPadrao,this,TesteMapa.this);
 
         //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
         CustonOverlay overlay = new CustonOverlay(this);
-        map.getOverlays().add(overlay);
-        map.getOverlays().add(mlo);
 
-        controller = map.getController();
         LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         
-        int latitude, longitude;
+        controller = map.getController();
+        int latitude = 0;
+        int longitude = 0;
         if (location != null){
         	//Converte para micrograus
         	latitude =  (int)(location.getLatitude() * 1000000);
@@ -66,7 +71,15 @@ public class TesteMapa extends  MapActivity {
         } else {
         //	controller.setCenter(LocalOverlay.newPonto());
         }
+        if(markers.carregaItensMapa(location,latitude,longitude)){
+        	map.getOverlays().add(markers);
+        }else{
+        	map.getOverlays().add(overlay);
+        }
+        map.getOverlays().add(mlo);
+        
         controller.setZoom(15);
+        
     }
 
 	@Override
@@ -109,10 +122,11 @@ public class TesteMapa extends  MapActivity {
             //caso seja necessário desabilitar um menu
             //menu.findItem(CONTANTE).setEnabled(false);
         	
-            menuVisaoMapa.add(TIPOS_VISAO, TODOS, 0, "TODOS");
-            menuVisaoMapa.add(TIPOS_VISAO, STREETVIEW, 1, "StreetView");
-            menuVisaoMapa.add(TIPOS_VISAO, SATELLITE, 2, "Satellite");
-            menuVisaoMapa.add(TIPOS_VISAO, TRAFFIC, 3, "Traffic");
+            menuVisaoMapa.add(TIPOS_VISAO, NENHUM, 0, "Nenhum");
+            menuVisaoMapa.add(TIPOS_VISAO, TODOS, 1, "TODOS");
+            menuVisaoMapa.add(TIPOS_VISAO, STREETVIEW, 2, "StreetView");
+            menuVisaoMapa.add(TIPOS_VISAO, SATELLITE, 3, "Satellite");
+            menuVisaoMapa.add(TIPOS_VISAO, TRAFFIC, 4, "Traffic");
             
             menuVisaoMapa.setIcon(R.drawable.add_new_item);
             menuRaio.setIcon(R.drawable.icon);
@@ -138,8 +152,10 @@ public class TesteMapa extends  MapActivity {
             		TODOS_HABILITADOS = 0;
             	}
             	else abilitarControladores(true);
-            	
                 break;}
+            case NENHUM:{ 
+                abilitarControladores(false);
+              break;}
             case STREETVIEW:{ 
                   if(map.isStreetView())
                 	  map.setStreetView(false);
@@ -160,7 +176,39 @@ public class TesteMapa extends  MapActivity {
                 		map.setSatellite(true);
                 break;}
             case RAIO:{ 
-                trace("Você selecionou o menu raio");
+            	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        		final View layout = inflater.inflate(R.layout.dialog_mudar_raio,(ViewGroup) findViewById(R.id.layoutMudarPrecisaoRaio));
+        		
+        		AlertDialog.Builder dialog = new AlertDialog.Builder(TesteMapa.this);
+        		dialog.setTitle("Alterando a Precisão do Raio (Em Metros)");
+        		dialog.setView(layout);
+        		
+        		final EditText editNome = (EditText) layout.findViewById(R.id.et_valorRaio);
+        					dialog.setPositiveButton("OK", new 
+        								DialogInterface.OnClickListener() {
+        									@SuppressLint("DefaultLocale")
+        									public void onClick(DialogInterface dialog,int which) {
+        										String raio	= editNome.getText().toString();
+        										if(ItemOverlay.getOverlay().alterarRaio(raio)){
+        											map.invalidate();
+        											Toast.makeText(TesteMapa.this.getBaseContext(),"Pontos com Aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
+        										}else{
+        											Toast.makeText(TesteMapa.this.getBaseContext(),"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
+        										}
+        										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+        									}
+        								}
+        						);
+        					dialog.setNegativeButton("Cancelar", new 
+        								DialogInterface.OnClickListener() {
+        									@SuppressLint("DefaultLocale")
+        									public void onClick(DialogInterface dialog,int which) {
+        										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+        									}
+        								}
+        					);
+        			AlertDialog alert = dialog.create();
+        			alert.show();
                 break;}   
         }
         return true;
@@ -186,6 +234,42 @@ public class TesteMapa extends  MapActivity {
     	super.onRestart();
     }
 
+    // Captura coordenadas e Descrição do Marcador fornecido pelo Usuário
+    public void exibirDescricaoMarcador(ItemOverlay overlay){
+    	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View layout = inflater.inflate(R.layout.dialog_marcacao_coordenadas,(ViewGroup) findViewById(R.id.layoutMarcacaCoordenada));
+		
+		AlertDialog.Builder dialog = new AlertDialog.Builder(TesteMapa.this);
+		dialog.setTitle("Marcando um Ponto Geográfico");
+		dialog.setView(layout);
+		
+		final EditText editNome = (EditText) layout.findViewById(R.id.et_DescricaoPosicao);
+					dialog.setPositiveButton("OK", new 
+								DialogInterface.OnClickListener() {
+									@SuppressLint("DefaultLocale")
+									public void onClick(DialogInterface dialog,int which) {
+										String nome	= editNome.getText().toString();
+											if(ItemOverlay.getOverlay().cadastrarPonto(nome)){
+												map.invalidate();
+												Toast.makeText(TesteMapa.this,"Marcação Cadastrada",Toast.LENGTH_LONG).show();
+											}else{
+												Toast.makeText(TesteMapa.this,"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
+											}
+										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+									}
+								}
+						);
+					dialog.setNegativeButton("Cancelar", new 
+								DialogInterface.OnClickListener() {
+									@SuppressLint("DefaultLocale")
+									public void onClick(DialogInterface dialog,int which) {
+										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+									}
+								}
+					);
+			AlertDialog alert = dialog.create();
+			alert.show();
+    }
 	
 /*	private void recuperaLocalPorCoordenadas(double lat, double log){
 		String geoURI = String.format("geo:%f,%f?z=10", -10.7483672f, -37.49291661666667f);

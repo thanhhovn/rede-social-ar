@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutMarcacaCoordenada"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#C0C0C0">    
+
+    <TextView
+          android:id="@+id/tv_nomeLoginUsuario"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:gravity="left"
+          android:text="Descrição da Marcação: "
+          android:textColor="#1D3472"
+          android:textStyle="bold" />
+    
+  	<EditText
+        android:id="@+id/et_DescricaoPosicao"
+  	   	android:layout_width="fill_parent"
+     	android:layout_height="fill_parent"
+        android:maxLength="36"
+        android:maxLines="1">
+        <requestFocus />
+    </EditText>  	
+    
+</LinearLayout>
+
+	
