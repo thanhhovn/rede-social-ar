@@ -47,10 +47,9 @@ public class MontandoChamadaWBS {
 					 }
 				 }
 				 try {
-					spo = (Object ) client.executeCallResponse();
+					spo = (Object) client.executeCallResponse();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					spo = null;
 				}
 		 return spo;
 	 }

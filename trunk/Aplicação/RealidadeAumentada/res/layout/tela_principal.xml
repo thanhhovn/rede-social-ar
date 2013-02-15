@@ -4,7 +4,7 @@
 	android:layout_height="fill_parent" android:background="#FFFFFF">
 	
    <RelativeLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 	    <Button
@@ -12,21 +12,37 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/formatobutton"
+	        android:textSize="20sp"
 	        android:gravity="center_horizontal"
 	        android:text="Editar/Preencher Perfil" />
     </RelativeLayout>
 
    <RelativeLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="10sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 	    <Button
-	        android:id="@+id/bt_marcacaoUsuarioGPS"
+	        android:id="@+id/bt_visualizarMapa"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/formatobutton"
+	        android:textSize="20sp"
 	        android:gravity="center_horizontal"
-	        android:text="Cadastrar Marcação" />
+	        android:text="Visualizar Mapa" />
+    </RelativeLayout>
+    
+   <RelativeLayout
+            android:layout_marginTop="10sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+	    <Button
+	        android:id="@+id/bt_realidadeAumentada"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/formatobutton"
+	        android:textSize="20sp"
+	        android:gravity="center_horizontal"
+	        android:text="Ativar Realidade Aumentada" />
     </RelativeLayout>
 	
 </LinearLayout>

@@ -1,18 +1,5 @@
 package br.com.realidadeAumentada;
 
-
-//import org.ksoap2.SoapEnvelope;
-//import org.ksoap2.serialization.PropertyInfo;
-//import org.ksoap2.serialization.SoapObject;
-//import org.ksoap2.serialization.SoapPrimitive;
-//import org.ksoap2.serialization.SoapSerializationEnvelope;
-//import org.ksoap2.transport.HttpTransportSE;
-
-
-
-
-import org.ksoap2.serialization.SoapObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,31 +22,33 @@ import br.com.realidadeAumentada.cadastroUsuario.Treath;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 
-
 public class TelaPrincipal extends Activity implements OnClickListener {
 
  private static final int NOME_DIALOG_ID = 1;
  
  protected LocationManager locationManager;
- private EditText alertNomeUsuario = null;
+ 
  private String descricaoMarcacao;
- private Button marcacao;
  private String mLatitude;
  private String mLongitude;
  private String tempo;
  private boolean OK = false;
  
  private Button editarPerfil;
+ private Button visualizarMapa;
+ private Button realidadeAumentada;
 
  @Override
  public void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.tela_principal);
 
-  marcacao = (Button) findViewById(R.id.bt_marcacaoUsuarioGPS);
+  realidadeAumentada = (Button) findViewById(R.id.bt_realidadeAumentada);
+  visualizarMapa = (Button) findViewById(R.id.bt_visualizarMapa);
   editarPerfil = (Button) findViewById(R.id.bt_editarPerfilUsuario);
   
-  marcacao.setOnClickListener(this);
+  realidadeAumentada.setOnClickListener(this);
+  visualizarMapa.setOnClickListener(this);
   editarPerfil.setOnClickListener(this);
 
  }
@@ -74,7 +63,7 @@ public class TelaPrincipal extends Activity implements OnClickListener {
 		 chamaWBS.addParametro(mLongitude);
 		 chamaWBS.addParametro(descricaoMarcacao);
 		 
-		  SoapObject  spo = (SoapObject ) chamaWBS.iniciarWBS();
+		  Object  spo = (Object) chamaWBS.iniciarWBS();
 		  // Recupera informação
 		  //spo.getProperty("cod_filme")
 		  if(spo!=null){
@@ -91,8 +80,11 @@ public void onClick(View v) {
 		intent.addCategory("PERFIL");
 		startActivity(intent);
 	}
-	if(v == marcacao){
-		descricaoMarcacao = "UFS";
+	if(v == visualizarMapa){
+		Intent intent = new Intent("TESTE");
+		intent.addCategory("MAPA");
+		startActivity(intent);
+/*		descricaoMarcacao = "UFS";
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if(!isAtivoGPS()){
 			int duracao = 2000;
@@ -109,8 +101,13 @@ public void onClick(View v) {
 			}
 		}
 		descricaoMarcacao = null;
+*/		
 	}
-	
+	if(v == realidadeAumentada){
+		Intent intent = new Intent("TESTE");
+		intent.addCategory("REALIDADE_AUMENTADA");
+		startActivity(intent);
+	}
 	
 }
 
@@ -160,7 +157,6 @@ private void statusGPSorAbilitar() {
 						DialogInterface.OnClickListener() {
 							@SuppressLint("DefaultLocale")
 							public void onClick(DialogInterface dialog,int which) {
-								
 								String nome	= editNome.getText().toString();
 								if(nome != null && nome.length() > 0){
 									descricaoMarcacao = nome.toUpperCase();

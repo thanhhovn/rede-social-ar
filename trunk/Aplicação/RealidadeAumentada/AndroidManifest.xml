@@ -3,9 +3,9 @@
     package="br.com.realidadeAumentada"
     android:versionCode="1"
     android:versionName="1.0" >
-
     <uses-sdk android:minSdkVersion="10" />
-	
+    
+	<uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
  <!-- GPS -->
 <!--     <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION" /> -->
@@ -29,7 +29,6 @@
             android:screenOrientation="sensorPortait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,7 +39,6 @@
             android:screenOrientation="sensorPortait" >
             <intent-filter>
                 <action android:name="TELA_LOGIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LOGIN" />
             </intent-filter>
@@ -50,7 +48,6 @@
             android:label="Tipo de Relacionamento" >
             <intent-filter>
                 <action android:name="RELACIONAMENTO" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LISTA" />
             </intent-filter>
@@ -60,7 +57,6 @@
             android:label="Nível Escolar" >
             <intent-filter>
                 <action android:name="NIVEL_ESCOLAR" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="LISTA" />
             </intent-filter>
@@ -70,7 +66,6 @@
             android:label="Cadastro de Usuário" >
             <intent-filter>
                 <action android:name="USUARIO" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="CADASTRO" />
             </intent-filter>
@@ -80,7 +75,6 @@
             android:label="Cadastro do Perfil" >
             <intent-filter>
                 <action android:name="USUARIO" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="PERFIL" />
             </intent-filter>
@@ -92,7 +86,6 @@
             android:label="GPS" >
             <intent-filter>
                 <action android:name="TELAPRINCIPAL" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="APLICACAO" />
             </intent-filter>
@@ -105,9 +98,18 @@
             android:screenOrientation="sensorLandscape" >
             <intent-filter>
                 <action android:name="TESTE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="MAPA" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".RealidadeAumentadaActivity"
+            android:label="" >
+            <intent-filter>
+                <action android:name="TESTE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="REALIDADE_AUMENTADA" />
             </intent-filter>
         </activity>
     </application>
