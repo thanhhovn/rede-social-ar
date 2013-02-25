@@ -20,12 +20,14 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 
 	private ArrayList<OverlayItem> itens;
 	private Context contexto;
+	private static boolean TODOS_PONTOS; 
 	TesteMapa mapa;
 	private GeoPoint point;
 	private long start;
 	private long stop;
-	private static Integer raio= 300;
+	private static Integer raio;
 	private static ItemOverlay overlay;
+	private static Location location;
 	
 	public ItemOverlay(Drawable defaultMarker, Context contexto, TesteMapa mapa) {
 		super(boundCenterBottom(defaultMarker)); //Marcação Padrão
@@ -48,7 +50,15 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 		populate();
 	}
 	
-	public boolean carregaItensMapa(Location location,Integer latitude,Integer longitude){
+	public boolean carregaTodosItensMapa(Location local,OverlayItem item){
+		TODOS_PONTOS = true;
+		if(getLocation() != location && location != null){
+			setLocation(location);
+		}
+			return carregaItensMapa(getLocation(),item);
+	}
+	
+	private boolean carregaItensMapa(Location location, OverlayItem item){
 		boolean flag = false;
 		// OverlayItem().setMarker(Drawable); permite que cada item possua uma imagem diferente.
 // Dados de Teste		
@@ -56,20 +66,30 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 		itens.add(new OverlayItem(new Ponto(-10.7483373,-37.49291661666657),"SP"," "));
 		itens.add(new OverlayItem(new Ponto(-10.7383145,-37.49291661666660),"RJ"," "));
 flag = true;
-
-        	
-*/		String lat = "-10.7483672";
-		String longi = "-37.49421661666667"; 
+*/	
+		newInstanceItemOverlay();
 		try{
 			MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
-			chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
-//			if(location != null){
-//				lat   = String.valueOf(Double.valueOf(latitude/1000000));
-//				longi = String.valueOf(Double.valueOf(longitude/1000000));
-//			}
-			chamaWBS.addParametro(lat);
-			chamaWBS.addParametro(longi);
-			chamaWBS.addParametro(String.valueOf(raio));
+			if(TODOS_PONTOS){
+				chamaWBS.setMetodo(MetodosWBS.TODOS_PONTOS);
+			}
+			else{
+				chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
+				if(getLocation() != location && location != null){
+					setLocation(location);
+				}
+				Double teste1 = getLocation().getLatitude();
+	        	Double teste2 = getLocation().getLongitude();
+				chamaWBS.addParametro(String.valueOf(teste1));
+				chamaWBS.addParametro(String.valueOf(teste2));
+				if(raio == null){
+					chamaWBS.addParametro(String.valueOf(50000));
+				}else{
+					chamaWBS.addParametro(String.valueOf(raio));
+				}
+			}
+		
+//			chamaWBS.setMetodo("resposta");	
 			Object  spo = (Object) chamaWBS.iniciarWBS();
 			if(spo!=null){
 				String retorno = spo.toString();
@@ -88,6 +108,9 @@ flag = true;
 						percursos = new StringBuilder();
 					}
 				}
+				if(item != null){
+					this.itens.add(item);
+				}
 				populate();
 				flag = true;
 			}
@@ -97,13 +120,17 @@ flag = true;
 		return flag;
 	}
 	
-	// TODO irá chamar o método carregaItensMapa para retornar os pontos segundo a nova configuração do Raio
 	public boolean alterarRaio(String r){
 		newInstanceItemOverlay();
 		this.raio = Integer.valueOf(r);
-		return carregaItensMapa(null,null,null);
+		return true;
 	}
 	
+	public boolean carregaItensAoRedorMapa(Location location) {
+			TODOS_PONTOS = false;
+			return carregaItensMapa(location,null);
+	}
+
 	@Override protected boolean onTap(int index){ 
 		Toast.makeText(contexto,
 					   getItem(index).getTitle(), 
@@ -130,7 +157,7 @@ flag = true;
             stop = e.getEventTime();
         }
         if (stop - start > 1000) {
-        	mapa.exibirDescricaoMarcador(ItemOverlay.this);
+        	mapa.cadastraMarcacao();
         	final MapView mapV = mapView;
         	final MotionEvent event = e;
                 	 	point = mapV.getProjection()
@@ -162,8 +189,9 @@ flag = true;
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 				if(spo!=null){
 					Ponto ponto = new Ponto(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6);
-					this.itens.add(new OverlayItem(ponto,descricao," "));
-					populate();
+//					this.itens.add(new OverlayItem(ponto,descricao," "));
+					carregaTodosItensMapa(null,new OverlayItem(ponto,descricao," ") );
+//					populate();
 					teveSucesso = true;
 				}
 			 }catch(Exception e){
@@ -175,5 +203,13 @@ flag = true;
 
 	public static ItemOverlay getOverlay() {
 		return overlay;
+	}
+
+	public static Location getLocation() {
+		return location;
+	}
+
+	public static void setLocation(Location location) {
+		ItemOverlay.location = location;
 	}
 }

@@ -8,5 +8,4 @@ public class MetodosWBS {
 	public static final String CADASTRAR_USUARIO = "cadUsuario";
 	public static final String TODOS_PONTOS ="exibeTodosPontos";
 	public static final String PONTOS_AO_REDOR ="exibePontosAoRedor";
-	
 }

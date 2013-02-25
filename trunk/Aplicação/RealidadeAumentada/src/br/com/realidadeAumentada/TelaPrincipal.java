@@ -19,8 +19,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import br.com.realidadeAumentada.GPS.LocationManagerHelper;
 import br.com.realidadeAumentada.cadastroUsuario.Treath;
-import br.com.realidadeAumentada.webService.MetodosWBS;
-import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 
 public class TelaPrincipal extends Activity implements OnClickListener {
 
@@ -50,28 +48,6 @@ public class TelaPrincipal extends Activity implements OnClickListener {
   realidadeAumentada.setOnClickListener(this);
   visualizarMapa.setOnClickListener(this);
   editarPerfil.setOnClickListener(this);
-
- }
- 
- private void inicarWebService(){
-	 try{ 
-		 MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
-		 chamaWBS.setMetodo(MetodosWBS.GRAVAR_MARCACAO_GPS);
-		 
-		 chamaWBS.addParametro("4");
-		 chamaWBS.addParametro(mLatitude);
-		 chamaWBS.addParametro(mLongitude);
-		 chamaWBS.addParametro(descricaoMarcacao);
-		 
-		  Object  spo = (Object) chamaWBS.iniciarWBS();
-		  // Recupera informação
-		  //spo.getProperty("cod_filme")
-		  if(spo!=null){
-		  }
-		 }catch(Exception e){
-			 System.out.println(e.getCause());
-			 System.out.println(e.getMessage());
-		 }
  }
 
 public void onClick(View v) {
@@ -81,11 +57,6 @@ public void onClick(View v) {
 		startActivity(intent);
 	}
 	if(v == visualizarMapa){
-		Intent intent = new Intent("TESTE");
-		intent.addCategory("MAPA");
-		startActivity(intent);
-/*		descricaoMarcacao = "UFS";
-		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if(!isAtivoGPS()){
 			int duracao = 2000;
 			String mensagem = "Você precisa Ativar o GPS para Usar Esta Funcionalidade.";
@@ -94,14 +65,11 @@ public void onClick(View v) {
 			new Treath(duracao);
 			statusGPSorAbilitar();
 		}else{
-//			showDialog(NOME_DIALOG_ID);
-			if(descricaoMarcacao != null && descricaoMarcacao.length() > 0){
-				showCurrentLocation();
-				inicarWebService();
-			}
+			Intent intent = new Intent("TESTE");
+			intent.addCategory("MAPA");
+			startActivity(intent);
 		}
-		descricaoMarcacao = null;
-*/		
+	
 	}
 	if(v == realidadeAumentada){
 		Intent intent = new Intent("TESTE");
@@ -122,13 +90,14 @@ protected void showCurrentLocation() {
 
 private boolean isAtivoGPS(){
 	boolean status = false;
+	locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
     	status = true;
     }  
     return status;
 }
 
-//Verifica se o GPS estï¿½ ativo e se nï¿½o estiver exibe a tela para o usuï¿½rio ativar.
+//Verifica se o GPS esta ativo e se nao estiver exibe a tela para o usuario ativar.
 private void statusGPSorAbilitar() {
 	if(!locationManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER ))
 	{

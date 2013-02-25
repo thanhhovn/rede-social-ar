@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,10 +26,12 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
-public class TesteMapa extends  MapActivity {
+public class TesteMapa extends  MapActivity implements LocationListener{
 	MapView map;
 	MapController controller;
 	LocalOverlay mlo;
+	Location local;
+	LocationManager manager;
 
 	//definição das constantes utilizadas na criação do menu
 	private final int TIPOS_VISAO = 0;
@@ -37,6 +40,8 @@ public class TesteMapa extends  MapActivity {
 	private final int SATELLITE = 3;
 	private final int TODOS = 4;
 	private final int NENHUM = 6;
+	private final int MUDAR_APROXIMACAO = 7;
+	private final int EXIBE_TODOS_PONTOS = 8;
 	private static final int RAIO = 5;
 	private static int TODOS_HABILITADOS = 0;
 	
@@ -57,38 +62,47 @@ public class TesteMapa extends  MapActivity {
         //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
         CustonOverlay overlay = new CustonOverlay(this);
 
-        LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        
         controller = map.getController();
         int latitude = 0;
         int longitude = 0;
+        manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,this);
+        Location location = getLocation();
         if (location != null){
         	//Converte para micrograus
         	latitude =  (int)(location.getLatitude() * 1000000);
         	longitude = (int)(location.getLongitude() * 1000000);
+        	
         	controller.setCenter(new GeoPoint(latitude,longitude));
+        	controller.animateTo(new GeoPoint(latitude,longitude));
         } else {
         //	controller.setCenter(LocalOverlay.newPonto());
         }
-        if(markers.carregaItensMapa(location,latitude,longitude)){
+        if(markers.carregaTodosItensMapa(location,null)){
         	map.getOverlays().add(markers);
         }else{
         	map.getOverlays().add(overlay);
         }
         map.getOverlays().add(mlo);
         
-        controller.setZoom(15);
-        
+        controller.setZoom(16);
     }
 
+	private Location getLocation(){
+		if(this.local != null){
+			return this.local;
+		}
+		Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		
+        return location;
+	}
+	
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
 	}
 	
 	public void abilitarControladores(boolean on){
-    	
     	map.setStreetView(on);
     	map.setTraffic(on);
     	map.setSatellite(on);
@@ -113,7 +127,7 @@ public class TesteMapa extends  MapActivity {
     	try{
     		//cria o menu e submenus
             SubMenu menuVisaoMapa = menu.addSubMenu(TIPOS_VISAO, 0, 0, "Selecione o Modo de Visualisação do Mapa");
-            MenuItem menuRaio = menu.add(RAIO, RAIO, 0, "Mudar a Área de Cobertura");
+            SubMenu menuRaio = menu.addSubMenu(RAIO,0, 0, "Mudar a Área de Cobertura");
              
             //define uma tecla de atalho para o menu, nesse caso a 
             //tecla de atalho é a letra "F"
@@ -127,13 +141,13 @@ public class TesteMapa extends  MapActivity {
             menuVisaoMapa.add(TIPOS_VISAO, STREETVIEW, 2, "StreetView");
             menuVisaoMapa.add(TIPOS_VISAO, SATELLITE, 3, "Satellite");
             menuVisaoMapa.add(TIPOS_VISAO, TRAFFIC, 4, "Traffic");
-            
             menuVisaoMapa.setIcon(R.drawable.add_new_item);
+            
+            menuRaio.add(RAIO,MUDAR_APROXIMACAO,0,"Alterar Distância de Aproximação");
+            menuRaio.add(RAIO,EXIBE_TODOS_PONTOS,1,"Exibir Todos os Pontos");
             menuRaio.setIcon(R.drawable.icon);
-             
             //caso seja necessário desabilitar um subitem
             //menuArquivo.findItem(CONSTANTE).setEnabled(false);
-
         }
         catch (Exception e) {
             trace("Erro : " + e.getMessage());
@@ -175,7 +189,7 @@ public class TesteMapa extends  MapActivity {
                 	else
                 		map.setSatellite(true);
                 break;}
-            case RAIO:{ 
+            case MUDAR_APROXIMACAO:{ 
             	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         		final View layout = inflater.inflate(R.layout.dialog_mudar_raio,(ViewGroup) findViewById(R.id.layoutMudarPrecisaoRaio));
         		
@@ -190,8 +204,9 @@ public class TesteMapa extends  MapActivity {
         									public void onClick(DialogInterface dialog,int which) {
         										String raio	= editNome.getText().toString();
         										if(ItemOverlay.getOverlay().alterarRaio(raio)){
+        											ItemOverlay.getOverlay().carregaItensAoRedorMapa(getLocation());
         											map.invalidate();
-        											Toast.makeText(TesteMapa.this.getBaseContext(),"Pontos com Aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
+        											Toast.makeText(TesteMapa.this.getBaseContext(),"Pontos proximos com Aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
         										}else{
         											Toast.makeText(TesteMapa.this.getBaseContext(),"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
         										}
@@ -210,6 +225,9 @@ public class TesteMapa extends  MapActivity {
         			AlertDialog alert = dialog.create();
         			alert.show();
                 break;}   
+            case EXIBE_TODOS_PONTOS:{ 
+            	ItemOverlay.getOverlay().carregaTodosItensMapa(getLocation(),null);
+            break;}
         }
         return true;
     }
@@ -233,9 +251,17 @@ public class TesteMapa extends  MapActivity {
     	mlo.disableMyLocation();
     	super.onRestart();
     }
+    
+    @Override
+    protected void onDestroy() {
+    	if(this.manager != null){
+    		this.manager.removeUpdates(this);
+    	}
+    	super.onDestroy();
+    }
 
     // Captura coordenadas e Descrição do Marcador fornecido pelo Usuário
-    public void exibirDescricaoMarcador(ItemOverlay overlay){
+    public void cadastraMarcacao(){
     	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View layout = inflater.inflate(R.layout.dialog_marcacao_coordenadas,(ViewGroup) findViewById(R.id.layoutMarcacaCoordenada));
 		
@@ -270,6 +296,28 @@ public class TesteMapa extends  MapActivity {
 			AlertDialog alert = dialog.create();
 			alert.show();
     }
+
+	public void onLocationChanged(Location location) {
+		manager.removeUpdates(this);
+		if(this.local != location && location != null){
+			this.local = location;
+			ItemOverlay.getOverlay().carregaItensAoRedorMapa(location);
+			map.invalidate();
+			Toast.makeText(TesteMapa.this.getBaseContext(),"Coordenada Atualizada.",Toast.LENGTH_LONG).show();
+		}
+	}
+
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+	}
+
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+	}
+
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+	}
 	
 /*	private void recuperaLocalPorCoordenadas(double lat, double log){
 		String geoURI = String.format("geo:%f,%f?z=10", -10.7483672f, -37.49291661666667f);
