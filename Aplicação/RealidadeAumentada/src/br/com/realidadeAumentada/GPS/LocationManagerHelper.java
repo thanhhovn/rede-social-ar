@@ -28,12 +28,9 @@ public class LocationManagerHelper implements LocationListener {
         setCurrentTimeStamp(Calendar.getInstance());
     }
 
-    
     public void onProviderDisabled(String provider) { }
-
     
     public void onProviderEnabled(String provider) { }
-
     
     public void onStatusChanged(String provider, int status, Bundle extras) { }
 
@@ -56,5 +53,5 @@ public class LocationManagerHelper implements LocationListener {
 	public void setCurrentTimeStamp(Calendar currentTime) {
 		currentTimeStamp = currentTime;
 	}
-
+	
 }
