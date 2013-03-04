@@ -133,20 +133,105 @@
 
 <!--       Endereço -->
 	   <TextView
-          android:id="@+id/tv_enderecoUsuario"
+          android:id="@+id/tv_pais"
           android:textColor="#1D3472"
           android:layout_width="fill_parent"
 	      android:layout_height="fill_parent"
           android:gravity="left"
           android:textStyle="bold"
-          android:text="Endereço: " />
+          android:text="Pais: " />
+	   
+	   <Spinner
+       	  android:id="@+id/pais"
+       	  android:layout_width="250dp"
+       	  android:layout_height="wrap_content"
+       	  android:layout_centerHorizontal="true"
+       	  android:layout_marginTop="1dp"
+	   />
+	   
+	   <TextView
+          android:id="@+id/tv_estado"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Estado: " />
+	   
+	   <Spinner
+       	  android:id="@+id/estado"
+       	  android:layout_width="250dp"
+       	  android:layout_height="wrap_content"
+       	  android:layout_centerHorizontal="true"
+       	  android:layout_marginTop="1dp"
+	   />
+	   
+	   <TextView
+          android:id="@+id/tv_cidade"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Cidade: " />
+	   
+	   <Spinner
+       	  android:id="@+id/cidade"
+       	  android:layout_width="250dp"
+       	  android:layout_height="wrap_content"
+       	  android:layout_centerHorizontal="true"
+       	  android:layout_marginTop="1dp"
+	   />
+	   
+	   <TextView
+          android:id="@+id/tv_bairro"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Bairro: " />
 	 
        <EditText
-          android:id="@+id/et_enderecoUsuario"
-     	  android:layout_width="fill_parent"
-	      android:layout_height="fill_parent"
-          android:maxLength="20">
+           android:id="@+id/et_bairro"
+     	   android:layout_width="fill_parent"
+	       android:layout_height="fill_parent"
+           android:maxLength="45">
 <!--            <requestFocus /> -->
+       </EditText>
+       
+         <TextView
+          android:id="@+id/tv_logradou"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Logradouro: " />
+	 
+       <EditText
+           android:id="@+id/et_logradouro"
+     	   android:layout_width="fill_parent"
+	       android:layout_height="fill_parent"
+           android:maxLength="45">
+	       <!--            <requestFocus /> -->
+       </EditText>
+	   
+	   <TextView
+          android:id="@+id/tv_numeroCasa"
+          android:textColor="#1D3472"
+          android:layout_width="fill_parent"
+	      android:layout_height="fill_parent"
+          android:gravity="left"
+          android:textStyle="bold"
+          android:text="Número: " />
+	 
+       <EditText
+           android:id="@+id/et_numeroCasa"
+     	   android:layout_width="fill_parent"
+	       android:layout_height="fill_parent"
+	       android:inputType="numberDecimal" >
+	          <!--            <requestFocus /> -->
        </EditText>
        
 <!--       Relacionamento -->

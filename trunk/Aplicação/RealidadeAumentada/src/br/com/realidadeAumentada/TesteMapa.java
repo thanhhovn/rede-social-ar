@@ -297,13 +297,14 @@ public class TesteMapa extends  MapActivity implements LocationListener{
 			alert.show();
     }
 
+    // TODO Estava causando erro faltau ao alterar o raio de aproximação
 	public void onLocationChanged(Location location) {
 		manager.removeUpdates(this);
 		if(this.local != location && location != null){
-			this.local = location;
-			ItemOverlay.getOverlay().carregaItensAoRedorMapa(location);
-			map.invalidate();
-			Toast.makeText(TesteMapa.this.getBaseContext(),"Coordenada Atualizada.",Toast.LENGTH_LONG).show();
+//			this.local = location;
+//			ItemOverlay.getOverlay().carregaItensAoRedorMapa(location);
+//			map.invalidate();
+//			Toast.makeText(TesteMapa.this.getBaseContext(),"Coordenada Atualizada.",Toast.LENGTH_LONG).show();
 		}
 	}
 

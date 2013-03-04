@@ -3,6 +3,7 @@ package br.com.realidadeAumentada;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.validador.ValidadorEmail;
 
 
@@ -78,7 +80,12 @@ public class Cadastro_usuarioActivity extends MenuActivity implements Runnable, 
 			}else{
 				if (isEmailValido(email)){
 					if(senha.getText().toString().equals(confirmaSenha.getText().toString())){
-						msg = "Cadastro Realizado Com Sucesso. Você será Redirecionado Para a Tela Incial.";
+						Usuario.newInstance();
+						Usuario.dadosLogin.setNome_login(nome.getText().toString());
+						Usuario.dadosLogin.setEmail(email.getText().toString());
+						Usuario.dadosLogin.setSenha(senha.getText().toString());
+						
+						msg = "Você esta sendo redimencionado para a última tela de cadastro.";
 						flag = true;
 						exibirMensagem = true;
 					}else{
@@ -93,7 +100,7 @@ public class Cadastro_usuarioActivity extends MenuActivity implements Runnable, 
 			}
 			if(flag){
 				Handler h = new Handler();
-				h.postDelayed(this, 4000);
+				h.postDelayed(this, 2000);
 			}
 		}
 		if(v == cancelar){
@@ -133,8 +140,10 @@ public class Cadastro_usuarioActivity extends MenuActivity implements Runnable, 
 	}
 
 	public void run() {
+		Intent intent = new Intent("USUARIO");
+		intent.addCategory("PERFIL");
+		startActivity(intent);
 		finish();
 	}
-	
 	
 }

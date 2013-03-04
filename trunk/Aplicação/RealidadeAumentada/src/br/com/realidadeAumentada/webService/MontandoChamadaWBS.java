@@ -49,7 +49,7 @@ public class MontandoChamadaWBS {
 				 try {
 					spo = (Object) client.executeCallResponse();
 				} catch (Exception e) {
-					spo = null;
+					spo = new String("ERRO");
 				}
 		 return spo;
 	 }
