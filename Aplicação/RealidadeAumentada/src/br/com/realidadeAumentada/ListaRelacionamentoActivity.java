@@ -3,9 +3,6 @@ package br.com.realidadeAumentada;
 import java.util.ArrayList;
 
 import br.com.realidadeAumentada.R;
-import br.com.realidadeAumentada.R.id;
-import br.com.realidadeAumentada.R.layout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,17 +13,23 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ListaRelacionamentoActivity extends Activity{
-	
+
+	private static String[] tiposRelacionemto = {"Solteiro (a)","Namorando","Casado (a)","Enrolado"};
+	private static ListView listView;
+	private static Integer posicao;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
 		final ArrayList<String> relacionamentoList = createListaRelacionamento();
-        ListView listView = (ListView) findViewById(R.id.listview);
+        listView = (ListView) findViewById(R.id.listview);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice,relacionamentoList);
         listView.setAdapter(adapter);
+        if(posicao != null){
+        	listView.setItemChecked(posicao, true);
+        }
         listView.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
 				String relacionamento = relacionamentoList.get(arg2);
@@ -48,5 +51,16 @@ public class ListaRelacionamentoActivity extends Activity{
 		p.add("Enrolado");
 		
 		return p;
+	}
+	
+	public static void setRelacionamento(String relacionamento){
+		if(relacionamento != null){
+			for (int i = 0; i < tiposRelacionemto.length; i++) {
+				if(tiposRelacionemto[i].equals(relacionamento)){
+					posicao = i;
+					break;
+				}
+			}
+		}
 	}
 }
