@@ -24,7 +24,7 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
-public class TesteMapa extends  MapActivity implements LocationListener{
+public class MapaActivity extends  MapActivity implements LocationListener{
 	MapView map;
 	MapController controller;
 	Location local;
@@ -53,7 +53,7 @@ public class TesteMapa extends  MapActivity implements LocationListener{
         map.setClickable(true) ;
         
         Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.ic_launcher);
-        markers= new ItemOverlay(imagemPadrao,this,TesteMapa.this,map);
+        markers= new ItemOverlay(imagemPadrao,this,MapaActivity.this,map);
 
         //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
 
@@ -185,7 +185,7 @@ public class TesteMapa extends  MapActivity implements LocationListener{
             	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         		final View layout = inflater.inflate(R.layout.dialog_mudar_raio,(ViewGroup) findViewById(R.id.layoutMudarPrecisaoRaio));
         		
-        		AlertDialog.Builder dialog = new AlertDialog.Builder(TesteMapa.this);
+        		AlertDialog.Builder dialog = new AlertDialog.Builder(MapaActivity.this);
         		dialog.setTitle("Alterando a Precisão do Raio (Em Metros)");
         		dialog.setView(layout);
         		
@@ -198,11 +198,11 @@ public class TesteMapa extends  MapActivity implements LocationListener{
         										if(ItemOverlay.getOverlay().alterarRaio(raio)){
         											ItemOverlay.getOverlay().carregaItensAoRedorMapa(getLocation());
         											map.invalidate();
-        											Toast.makeText(TesteMapa.this.getBaseContext(),"Pontos proximos com Aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
+        											Toast.makeText(MapaActivity.this.getBaseContext(),"Pontos proximos com Aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
         										}else{
-        											Toast.makeText(TesteMapa.this.getBaseContext(),"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
+        											Toast.makeText(MapaActivity.this.getBaseContext(),"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
         										}
-        										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+        										MapaActivity.this.removeDialog(NOME_DIALOG_ID);
         									}
         								}
         						);
@@ -210,7 +210,7 @@ public class TesteMapa extends  MapActivity implements LocationListener{
         								DialogInterface.OnClickListener() {
         									@SuppressLint("DefaultLocale")
         									public void onClick(DialogInterface dialog,int which) {
-        										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+        										MapaActivity.this.removeDialog(NOME_DIALOG_ID);
         									}
         								}
         					);
@@ -257,7 +257,7 @@ public class TesteMapa extends  MapActivity implements LocationListener{
     	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View layout = inflater.inflate(R.layout.dialog_marcacao_coordenadas,(ViewGroup) findViewById(R.id.layoutMarcacaCoordenada));
 		
-		AlertDialog.Builder dialog = new AlertDialog.Builder(TesteMapa.this);
+		AlertDialog.Builder dialog = new AlertDialog.Builder(MapaActivity.this);
 		dialog.setTitle("Marcando um Ponto Geográfico");
 		dialog.setView(layout);
 		
@@ -269,11 +269,11 @@ public class TesteMapa extends  MapActivity implements LocationListener{
 										String nome	= editNome.getText().toString();
 											if(ItemOverlay.getOverlay().cadastrarPonto(nome)){
 												map.invalidate();
-												Toast.makeText(TesteMapa.this,"Marcação Cadastrada",Toast.LENGTH_LONG).show();
+												Toast.makeText(MapaActivity.this,"Marcação Cadastrada",Toast.LENGTH_LONG).show();
 											}else{
-												Toast.makeText(TesteMapa.this,"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
+												Toast.makeText(MapaActivity.this,"Não Foi Possível se Conectar com o Servidor",Toast.LENGTH_LONG).show();
 											}
-										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+										MapaActivity.this.removeDialog(NOME_DIALOG_ID);
 									}
 								}
 						);
@@ -281,7 +281,7 @@ public class TesteMapa extends  MapActivity implements LocationListener{
 								DialogInterface.OnClickListener() {
 									@SuppressLint("DefaultLocale")
 									public void onClick(DialogInterface dialog,int which) {
-										TesteMapa.this.removeDialog(NOME_DIALOG_ID);
+										MapaActivity.this.removeDialog(NOME_DIALOG_ID);
 									}
 								}
 					);

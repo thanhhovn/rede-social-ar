@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.view.MotionEvent;
 import android.widget.Toast;
-import br.com.realidadeAumentada.TesteMapa;
+import br.com.realidadeAumentada.MapaActivity;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 
@@ -22,7 +22,7 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private ArrayList<OverlayItem> itens;
 	private Context contexto;
 	private static boolean TODOS_PONTOS; 
-	private TesteMapa mapa;
+	private MapaActivity mapa;
 	private GeoPoint point;
 	private long start;
 	private long stop;
@@ -33,7 +33,7 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private MyLocationOverlay myLocationOverlay;
 	
 
-	public ItemOverlay(Drawable defaultMarker, Context contexto, TesteMapa mapa,MapView map) {
+	public ItemOverlay(Drawable defaultMarker, Context contexto, MapaActivity mapa,MapView map) {
 		super(boundCenterBottom(defaultMarker)); //Marcação Padrão
 		myLocationOverlay = new MyLocationOverlay(contexto, map);
 		this.contexto = contexto;
