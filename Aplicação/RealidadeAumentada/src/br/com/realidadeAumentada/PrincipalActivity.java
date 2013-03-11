@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import br.com.realidadeAumentada.GPS.LocationManagerHelper;
 
-public class TelaPrincipal extends Activity implements OnClickListener {
+public class PrincipalActivity extends Activity implements OnClickListener {
 
  private static final int NOME_DIALOG_ID = 1;
  
@@ -108,7 +108,7 @@ protected void showCurrentLocation() {
 									descricaoMarcacao = nome.toUpperCase();
 								    OK = true;							
 								}
-								TelaPrincipal.this.removeDialog(NOME_DIALOG_ID);
+								PrincipalActivity.this.removeDialog(NOME_DIALOG_ID);
 							}
 						}
 				);
@@ -117,7 +117,7 @@ protected void showCurrentLocation() {
 						@SuppressLint("DefaultLocale")
 						public void onClick(DialogInterface dialog,int which) {
 							OK = false;
-							TelaPrincipal.this.removeDialog(NOME_DIALOG_ID);
+							PrincipalActivity.this.removeDialog(NOME_DIALOG_ID);
 						}
 					}
 			);
