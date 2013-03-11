@@ -14,6 +14,7 @@ import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.OverlayItem;
 
 public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
@@ -21,17 +22,22 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private ArrayList<OverlayItem> itens;
 	private Context contexto;
 	private static boolean TODOS_PONTOS; 
-	TesteMapa mapa;
+	private TesteMapa mapa;
 	private GeoPoint point;
 	private long start;
 	private long stop;
 	private static Integer raio;
 	private static ItemOverlay overlay;
 	private static Location location;
+	private static MapView mapView;
+	private MyLocationOverlay myLocationOverlay;
 	
-	public ItemOverlay(Drawable defaultMarker, Context contexto, TesteMapa mapa) {
+
+	public ItemOverlay(Drawable defaultMarker, Context contexto, TesteMapa mapa,MapView map) {
 		super(boundCenterBottom(defaultMarker)); //Marcação Padrão
+		myLocationOverlay = new MyLocationOverlay(contexto, map);
 		this.contexto = contexto;
+		mapView = map;
 		this.mapa = mapa;
 		overlay = ItemOverlay.this;
 		newInstanceItemOverlay();
@@ -91,6 +97,9 @@ flag = true;
 		
 //			chamaWBS.setMetodo("resposta");	
 			Object  spo = (Object) chamaWBS.iniciarWBS();
+			if(spo.equals("ERRO")){
+				return false;
+			}
 			if(spo!=null){
 				String retorno = spo.toString();
 				String[] listaPercursos = retorno.toString().split(",");
@@ -187,6 +196,9 @@ flag = true;
 				chamaWBS.addParametro(String.valueOf((point.getLongitudeE6() / 1E6)));
 				chamaWBS.addParametro(descricao);
 				Object  spo = (Object) chamaWBS.iniciarWBS();
+				if(spo.equals("ERRO")){
+					return false;
+				}
 				if(spo!=null){
 					Ponto ponto = new Ponto(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6);
 //					this.itens.add(new OverlayItem(ponto,descricao," "));
@@ -200,7 +212,7 @@ flag = true;
 		}
 		return teveSucesso;
 	}
-
+	
 	public static ItemOverlay getOverlay() {
 		return overlay;
 	}
@@ -212,4 +224,29 @@ flag = true;
 	public static void setLocation(Location location) {
 		ItemOverlay.location = location;
 	}
+	
+	public MyLocationOverlay getMyLocationOverlay() {
+		return myLocationOverlay;
+	}
+	
+	public MapView getMapView() {
+		return mapView;
+	}
+	
+	public boolean enableCompass(){
+		return myLocationOverlay.enableCompass();
+	}
+	
+	public boolean enableMyLocation(){
+		return myLocationOverlay.enableMyLocation();
+	}
+
+	public void disableCompass(){
+		myLocationOverlay.disableCompass();
+	}
+	
+	public void disableMyLocation(){
+		myLocationOverlay.disableMyLocation();
+	}
+
 }

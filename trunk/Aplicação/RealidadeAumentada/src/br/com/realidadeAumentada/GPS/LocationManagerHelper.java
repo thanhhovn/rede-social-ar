@@ -3,11 +3,15 @@ package br.com.realidadeAumentada.GPS;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 
 public class LocationManagerHelper implements LocationListener {
 
@@ -15,17 +19,34 @@ public class LocationManagerHelper implements LocationListener {
     private static double latitude;
     private static double longitude;
     private static Calendar currentTimeStamp = null;
+    private static Context context = null;
+    private static LocationManager mlocManager = null;
+    private static Location local;
 
-    public LocationManagerHelper(Context context){
-    	LocationManager mlocManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+    public LocationManagerHelper(Context c){
+    	context = c;
+    	mlocManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0,this);
     }
     
+	public static void setContext(Context c){
+		if(context == null && c != null){
+			context = c;
+		}
+	}
+    
     public void onLocationChanged(Location loc) {
+    	local = loc;
         latitude = loc.getLatitude();
         longitude = loc.getLongitude();
         
         setCurrentTimeStamp(Calendar.getInstance());
+    }
+    
+    public static void setLocation(Location loc){
+    	if(loc != null){
+    		local = loc;	
+    	}
     }
 
     public void onProviderDisabled(String provider) { }
@@ -50,8 +71,47 @@ public class LocationManagerHelper implements LocationListener {
 		return date;
 	}
 
+	public static Location getLocation(){
+		if(local != null){
+			return local;
+		}
+		Location location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        return location;
+	}	
+	
 	public void setCurrentTimeStamp(Calendar currentTime) {
 		currentTimeStamp = currentTime;
 	}
+	
+    public static boolean isAtivoGPS(){
+    	mlocManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        	return true;
+        }
+        return false;
+    }
+	
+    /**
+     *  mostra as configuracoes atraves de alerta
+     * Ao pressionar o botao Configuracoes sera exibido opcoes de configuracao
+     * */
+    public static void showSettingsAlert(){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+		alertDialog.setTitle("Configuração do GPS");
+		alertDialog.setMessage("O GPS não esta abilitado. Para continuar o serviço você tem que habilitar o GPS, deseja fazer isso agora?");
+
+		alertDialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int which) {
+				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				context.startActivity(intent);
+			}
+		});
+		alertDialog.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		alertDialog.show();
+    }
 	
 }

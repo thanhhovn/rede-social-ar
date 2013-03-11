@@ -34,8 +34,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.realidadeAumentada.cadastroUsuario.Usuario;
-import br.com.realidadeAumentada.util.DataConverter;
 import br.com.realidadeAumentada.util.Endereco;
+import br.com.realidadeAumentada.util.ValidadorEConversorUtil;
 import br.com.realidadeAumentada.validador.Mask;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
@@ -230,7 +230,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 			
 			String[] data = Usuario.dadosPerfil.getDt_nascimento().split("-");
 			dia = Integer.valueOf(data[0]);
-			mes = DataConverter.mes(data[1]);
+			mes = ValidadorEConversorUtil.mes(data[1]);
 			ano = Integer.valueOf(data[2]);
 			respostaData.setText(dia+"-"+mes+"-"+ano);
 			tipoRelacionamento.setText(Usuario.dadosPerfil.getStatus_relacionamento());
@@ -449,6 +449,10 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 				
 				montarDados(true);
 			}
+			this.finish();
+			Intent it = new Intent("TELA_LOGIN");
+			it.addCategory("LOGIN");
+			startActivity(it);
 		}
 		if(v == cancelar){
 			Perfil_usuarioActivity.this.finish();
@@ -493,7 +497,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 			dados.append(Usuario.dadosPerfil.getTelefone()+",");
 			dados.append(Usuario.dadosPerfil.getDt_nascimento()+",");
 			dados.append(Usuario.getUsuario_id());
-			
+
 			editarPerfilUsuario(dados.toString());
 		}
 	}

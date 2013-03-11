@@ -1,4 +1,4 @@
-package br.com.realidadeAumentada;
+package br.com.realidadeAumentada.util;
 import android.content.Context;
 import android.widget.Toast;
 import es.ucm.look.ar.ar2D.drawables.Text2D;
@@ -17,6 +17,9 @@ public class EntityFactory extends WorldEntityFactory{
 	public static final String COLOR = "color";
 	private Context contexto;
 	
+	public static Double origenX;// pegar da Classe Location
+	public static Double origenY;
+	
 	public EntityFactory(Context contexto){
 		this.contexto = contexto;
 	}
@@ -26,16 +29,17 @@ public class EntityFactory extends WorldEntityFactory{
 		WorldEntity we = new WorldEntity(data);
 		we.setDrawable2D(new Text2D(data.getPropertyValue(NAME)));
 			
-		//Entity3D drawable3d = new Entity3D(new Cube());
+		Entity3D drawable3d = new Entity3D(new Cube());
 		
 		String color = data.getPropertyValue(COLOR);
 		if(color.equals("red")){
-			//drawable3d.setMaterial(new Color4(1.0f,0.0f,0.0f));
+			drawable3d.setMaterial(new Color4(1.0f,0.0f,0.0f));
+			
 		}else
 		if(color.equals("green")){
-			//drawable3d.setMaterial(new Color4(0.0f,1.0f,0.0f));
+			drawable3d.setMaterial(new Color4(0.0f,1.0f,0.0f));
 		}
-		//we.setDrawable3D(drawable3d);
+		we.setDrawable3D(drawable3d);
 		we.addTouchListener(new TouchListener(){
 
 			public boolean onTouchDown(WorldEntity arg0, float arg1, float arg2) {
@@ -56,4 +60,33 @@ public class EntityFactory extends WorldEntityFactory{
 		});
 		return we;
 	}
+	
+	public static float distanciaEntrePonto(Double bx,Double by){
+		Double origenXporax =  Math.pow((origenX-bx),2);
+		Double origenYporay =  Math.pow((origenY-by),2);
+		Double distancia = Math.sqrt(origenXporax+origenYporay);
+		double teta = Math.cos(origenX)/Math.sin(origenY);
+		Double angulo =  (distancia*Math.sin(teta));
+		
+		return angulo.floatValue();
+	}
+	
+	public static float distanciaEntrePonto2(Double bx,Double by){
+		Double origenXporax =  Math.pow((origenX-bx),2);
+		Double origenYporay =  Math.pow((origenY-by),2);
+		Double distancia = Math.sqrt(origenXporax+origenYporay);
+		double teta = Math.cos(origenX)/Math.sin(origenY);
+		Double angulo =  (distancia*Math.sin(teta));
+		
+		return angulo.floatValue();
+	}
+	
+    public static void transformarCorEsfericaRetangulares(){
+    	double raio =  Math.sqrt( (Math.pow(origenX, 2)+ Math.pow(origenY, 2)+1) );
+    	double teta =  Math.atan2(origenY,origenX);
+    	double zeta =   Math.atan2(Math.sqrt( (Math.pow(origenX, 2)+ Math.pow(origenY, 2)) ),1);
+    	
+    	origenX =  (raio*Math.sin(teta)*Math.cos(zeta));
+    	origenY =  (raio*Math.sin(teta)*Math.sin(zeta));	    	    	
+    }
 }

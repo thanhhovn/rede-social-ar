@@ -53,4 +53,20 @@ public class MontandoChamadaWBS {
 				}
 		 return spo;
 	 }
+	 
+	 // TODO Chamar antes de cada operação que use o Web Service
+	 public static boolean isServidorDisponivel(){
+			boolean teveSucesso = false;
+			try{
+				MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
+				chamaWBS.setMetodo(MetodosWBS.IS_SERVIDOR_DISPONIVEL);				
+				Object  spo = (Object) chamaWBS.iniciarWBS();
+				if(spo.toString().equals("ERRO")){}
+				if(spo.toString().equals("Sucesso")){
+					teveSucesso = true;
+				}
+			 }catch(Exception e){}
+			return teveSucesso;
+		}
+
 }

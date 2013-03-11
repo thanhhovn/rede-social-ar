@@ -16,9 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import br.com.realidadeAumentada.GPS.LocationManagerHelper;
-import br.com.realidadeAumentada.cadastroUsuario.Treath;
 
 public class TelaPrincipal extends Activity implements OnClickListener {
 
@@ -57,24 +55,24 @@ public void onClick(View v) {
 		startActivity(intent);
 	}
 	if(v == visualizarMapa){
-		if(!isAtivoGPS()){
-			int duracao = 2000;
-			String mensagem = "Você precisa Ativar o GPS para Usar Esta Funcionalidade.";
-			Toast toast=Toast.makeText(getApplicationContext(),mensagem,Toast.LENGTH_SHORT);
-			toast.show();
-			new Treath(duracao);
-			statusGPSorAbilitar();
+		LocationManagerHelper.setContext(this);
+		if(!LocationManagerHelper.isAtivoGPS()){
+			LocationManagerHelper.showSettingsAlert();
 		}else{
 			Intent intent = new Intent("TESTE");
 			intent.addCategory("MAPA");
 			startActivity(intent);
 		}
-	
 	}
 	if(v == realidadeAumentada){
-		Intent intent = new Intent("TESTE");
-		intent.addCategory("REALIDADE_AUMENTADA");
-		startActivity(intent);
+		LocationManagerHelper.setContext(this);
+		if(!LocationManagerHelper.isAtivoGPS()){
+			LocationManagerHelper.showSettingsAlert();
+		}else{
+			Intent intent = new Intent("TESTE");
+			intent.addCategory("REALIDADE_AUMENTADA");
+			startActivity(intent);
+		}
 	}
 	
 }
@@ -87,27 +85,6 @@ protected void showCurrentLocation() {
 	mLongitude =String.valueOf(LocationManagerHelper.getLongitude());
 	tempo = String.valueOf(LocationManagerHelper.getCurrentTimeStamp());
 }
-
-private boolean isAtivoGPS(){
-	boolean status = false;
-	locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-    if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-    	status = true;
-    }  
-    return status;
-}
-
-//Verifica se o GPS esta ativo e se nao estiver exibe a tela para o usuario ativar.
-private void statusGPSorAbilitar() {
-	if(!locationManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER ))
-	{
-	    Intent myIntent = new Intent( Settings.ACTION_SECURITY_SETTINGS );
-	    startActivity(myIntent);
-	}
-//	Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);     
-//	startActivityForResult(intent, 1);
-}
-
 
 @Override
 	protected Dialog onCreateDialog(int id) {

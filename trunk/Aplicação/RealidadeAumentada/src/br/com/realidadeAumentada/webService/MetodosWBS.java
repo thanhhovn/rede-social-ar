@@ -9,6 +9,7 @@ public class MetodosWBS {
 	public static final String EDITAR_PERFIL = "editarPerfil";
 	public static final String TODOS_PONTOS ="exibeTodosPontos";
 	public static final String PONTOS_AO_REDOR ="exibePontosAoRedor";
+	public static final String IS_SERVIDOR_DISPONIVEL ="resposta";
 	
 	public static final String ESTADOS ="getEstados";
 	public static final String CIDADES ="getMunicipios";

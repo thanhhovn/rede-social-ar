@@ -4,7 +4,8 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="libs/ksoap2-j2se-full-2.1.2.jar"/>
-	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/soap"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/look.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

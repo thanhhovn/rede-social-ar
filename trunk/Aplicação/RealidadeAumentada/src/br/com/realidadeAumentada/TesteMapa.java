@@ -17,9 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import br.com.realidadeAumentada.maps.CustonOverlay;
 import br.com.realidadeAumentada.maps.ItemOverlay;
-import br.com.realidadeAumentada.maps.LocalOverlay;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -29,9 +27,9 @@ import com.google.android.maps.MapView;
 public class TesteMapa extends  MapActivity implements LocationListener{
 	MapView map;
 	MapController controller;
-	LocalOverlay mlo;
 	Location local;
 	LocationManager manager;
+	ItemOverlay markers;
 
 	//definição das constantes utilizadas na criação do menu
 	private final int TIPOS_VISAO = 0;
@@ -54,13 +52,10 @@ public class TesteMapa extends  MapActivity implements LocationListener{
         map = (MapView) findViewById(R.id.mapview);
         map.setClickable(true) ;
         
-        mlo = new LocalOverlay(this,map);        
-        //List<Overlay> overlays = map.getOverlays();
         Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.ic_launcher);
-        ItemOverlay markers= new ItemOverlay(imagemPadrao,this,TesteMapa.this);
+        markers= new ItemOverlay(imagemPadrao,this,TesteMapa.this,map);
 
         //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
-        CustonOverlay overlay = new CustonOverlay(this);
 
         controller = map.getController();
         int latitude = 0;
@@ -80,11 +75,8 @@ public class TesteMapa extends  MapActivity implements LocationListener{
         }
         if(markers.carregaTodosItensMapa(location,null)){
         	map.getOverlays().add(markers);
-        }else{
-        	map.getOverlays().add(overlay);
         }
-        map.getOverlays().add(mlo);
-        
+        map.getOverlays().add(markers.getMyLocationOverlay());
         controller.setZoom(16);
     }
 
@@ -239,16 +231,16 @@ public class TesteMapa extends  MapActivity implements LocationListener{
     
     @Override
     protected void onResume() {
-    	mlo.enableCompass();
-    	mlo.enableMyLocation();
+    	markers.enableCompass();
+    	markers.enableMyLocation();
     	map.setBuiltInZoomControls(true);
     	super.onResume();
     }
     
     @Override
     protected void onRestart() {
-    	mlo.disableCompass();
-    	mlo.disableMyLocation();
+    	markers.disableCompass();
+    	markers.disableMyLocation();
     	super.onRestart();
     }
     
