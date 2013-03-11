@@ -22,7 +22,7 @@ import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.util.ValidadorEConversorUtil;
 
 
-public class Cadastro_usuarioActivity extends Activity implements Runnable, OnClickListener, OnFocusChangeListener, OnKeyListener {
+public class CadastroUsuarioActivity extends Activity implements Runnable, OnClickListener, OnFocusChangeListener, OnKeyListener {
 		
 	private Button cancelar = null;
 	private Button confirmar = null;
@@ -104,7 +104,7 @@ public class Cadastro_usuarioActivity extends Activity implements Runnable, OnCl
 			}
 		}
 		if(v == cancelar){
-			Cadastro_usuarioActivity.this.finish();
+			CadastroUsuarioActivity.this.finish();
 		}
 	}
 	
