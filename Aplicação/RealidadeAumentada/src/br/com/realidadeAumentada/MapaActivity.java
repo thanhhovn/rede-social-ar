@@ -94,7 +94,7 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 		return false;
 	}
 	
-	public void abilitarControladores(boolean on){
+	public void habilitarControladores(boolean on){
     	map.setStreetView(on);
     	map.setTraffic(on);
     	map.setSatellite(on);
@@ -102,15 +102,15 @@ public class MapaActivity extends  MapActivity implements LocationListener{
     }
 	
 	@SuppressWarnings("deprecation")
-	public void abilitarStreetView(boolean on){
+	public void habilitarStreetView(boolean on){
 		map.setStreetView(on);	
     }
     
-    public void abilitarTrafico(boolean on){
+    public void habilitarTrafico(boolean on){
     	map.setTraffic(on);	
     }
     
-    public void abilitarSatelite(boolean on){
+    public void habilitarSatelite(boolean on){
     	map.setSatellite(on);	
     }	
 	
@@ -154,13 +154,13 @@ public class MapaActivity extends  MapActivity implements LocationListener{
             	break;}
             case TODOS:{     
             	if(TODOS_HABILITADOS == 1){
-            		abilitarControladores(false);
+            		habilitarControladores(false);
             		TODOS_HABILITADOS = 0;
             	}
-            	else abilitarControladores(true);
+            	else habilitarControladores(true);
                 break;}
             case NENHUM:{ 
-                abilitarControladores(false);
+                habilitarControladores(false);
               break;}
             case STREETVIEW:{ 
                   if(map.isStreetView())

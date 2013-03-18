@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.realidadeAumentada.Cadastro_usuarioActivity"
+            android:name="br.com.realidadeAumentada.CadastroUsuarioActivity"
             android:label="Cadastro de Usuário" >
             <intent-filter>
                 <action android:name="USUARIO" />
@@ -82,8 +82,8 @@
 
         <!-- UseGPSActivity1 -->
         <activity
-            android:name="br.com.realidadeAumentada.TelaPrincipal"
-            android:label="GPS" >
+            android:name="br.com.realidadeAumentada.PrincipalActivity"
+            android:label="Tela Principal" >
             <intent-filter>
                 <action android:name="TELAPRINCIPAL" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -92,7 +92,7 @@
         </activity>
 
         <activity
-            android:name="br.com.realidadeAumentada.TesteMapa"
+            android:name="br.com.realidadeAumentada.MapaActivity"
             android:label="@string/title_activity_teste_mapa"
             android:configChanges="orientation"
             android:screenOrientation="sensorLandscape" >
