@@ -9,7 +9,6 @@ import es.ucm.look.ar.LookAR;
 import es.ucm.look.data.EntityData;
 import es.ucm.look.data.LookData;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 public class RealidadeAumentadaActivity extends LookAR {

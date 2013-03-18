@@ -65,7 +65,7 @@ public class EntityFactory extends WorldEntityFactory{
 		Double origenXporax =  Math.pow((origenX-bx),2);
 		Double origenYporay =  Math.pow((origenY-by),2);
 		Double distancia = Math.sqrt(origenXporax+origenYporay);
-		double teta = Math.cos(origenX)/Math.sin(origenY);
+		double teta = Math.cos(bx)/Math.sin(by);
 		Double angulo =  (distancia*Math.sin(teta));
 		
 		return angulo.floatValue();
