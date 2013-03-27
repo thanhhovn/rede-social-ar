@@ -84,6 +84,7 @@
          
         <RelativeLayout
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -109,32 +110,6 @@
              
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="49dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp" >
-            
-            <CheckBox
-                 android:id="@+id/chkLembrar"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginLeft="140dp"
-                 android:layout_below="@+id/btEntrar"
-                 android:text="Lembrar usuário" />
-            
-            <TextView
-                android:id="@+id/tv_acessarContaUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/chkLembrar"
-                android:clickable="true"
-                android:text="Não consegue acessar sua conta?"
-                android:textColor="#1D3472"
-                android:textStyle="bold" />
-            
- 
-        </RelativeLayout>
  
     </LinearLayout>
  
