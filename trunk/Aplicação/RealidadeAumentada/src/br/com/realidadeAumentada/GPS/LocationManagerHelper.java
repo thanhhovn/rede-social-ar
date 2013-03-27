@@ -49,12 +49,6 @@ public class LocationManagerHelper implements LocationListener {
     	}
     }
 
-    public void onProviderDisabled(String provider) { }
-    
-    public void onProviderEnabled(String provider) { }
-    
-    public void onStatusChanged(String provider, int status, Bundle extras) { }
-
     public static double getLatitude() {
         return latitude;
     }
@@ -113,5 +107,20 @@ public class LocationManagerHelper implements LocationListener {
 		});
 		alertDialog.show();
     }
+
+	public void onProviderDisabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderEnabled(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -8,6 +8,8 @@ import android.location.Location;
 import android.view.MotionEvent;
 import android.widget.Toast;
 import br.com.realidadeAumentada.MapaActivity;
+import br.com.realidadeAumentada.R;
+import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 
@@ -15,6 +17,7 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
+import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
@@ -46,8 +49,8 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private void newInstanceItemOverlay(){
 		this.itens = new ArrayList<OverlayItem>(0);
 	}
-	public void addNewItem(Ponto ponto,String fragmento){
-		this.itens.add(new OverlayItem(ponto,ponto.getDescricao(),fragmento));
+	public void addNewItem(Marcador marcacao,String fragmento){
+		this.itens.add(new OverlayItem(marcacao,marcacao.getDescricao(),fragmento));
 		populate();
 	}
 	
@@ -66,12 +69,11 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	
 	private boolean carregaItensMapa(Location location, OverlayItem item){
 		boolean flag = false;
-		// OverlayItem().setMarker(Drawable); permite que cada item possua uma imagem diferente.
 // Dados de Teste		
 /*		itens.add(new OverlayItem(new Ponto(-10.7483672,-37.49421661666667),"PE"," "));
 		itens.add(new OverlayItem(new Ponto(-10.7483373,-37.49291661666657),"SP"," "));
 		itens.add(new OverlayItem(new Ponto(-10.7383145,-37.49291661666660),"RJ"," "));
-flag = true;
+
 */	
 		newInstanceItemOverlay();
 		try{
@@ -84,23 +86,25 @@ flag = true;
 				if(getLocation() != location && location != null){
 					setLocation(location);
 				}
-				Double teste1 = getLocation().getLatitude();
-	        	Double teste2 = getLocation().getLongitude();
-				chamaWBS.addParametro(String.valueOf(teste1));
-				chamaWBS.addParametro(String.valueOf(teste2));
+				Double latitude = getLocation().getLatitude();
+	        	Double longitude = getLocation().getLongitude();
+				chamaWBS.addParametro(String.valueOf(latitude));
+				chamaWBS.addParametro(String.valueOf(longitude));
 				if(raio == null){
-					chamaWBS.addParametro(String.valueOf(50000));
+					chamaWBS.addParametro(String.valueOf(10000)); // 10 KM
 				}else{
 					chamaWBS.addParametro(String.valueOf(raio));
 				}
+				chamaWBS.addParametro(Usuario.getUsuario_id());
 			}
 		
-//			chamaWBS.setMetodo("resposta");	
 			Object  spo = (Object) chamaWBS.iniciarWBS();
 			if(spo.equals("ERRO")){
 				return false;
 			}
 			if(spo!=null){
+				Drawable imagemMarcador = null;
+				OverlayItem overlayItem = null;
 				String retorno = spo.toString();
 				String[] listaPercursos = retorno.toString().split(",");
 				StringBuilder percursos = new StringBuilder();
@@ -112,8 +116,21 @@ flag = true;
 						double latitudep = Double.valueOf(localList[0]);
 						double longitudep = Double.valueOf(localList[1]);
 						String descricao = localList[2];
-						Ponto ponto = new Ponto(latitudep,longitudep);
-						this.itens.add(new OverlayItem(ponto,descricao," "));
+						String idUsuario = localList[3];
+						String idMarcador = localList[4];
+						Marcador marcacao = new Marcador(latitudep,longitudep,descricao,idUsuario,idMarcador);
+						
+						if(Usuario.getUsuario_id() != null && Usuario.getUsuario_id().equalsIgnoreCase(idUsuario)){
+							imagemMarcador = contexto.getResources().getDrawable(R.drawable.meu_marcador);
+							overlayItem = new OverlayItem(marcacao,descricao," ");
+							Usuario.addMarcador(marcacao);
+						}else{
+							imagemMarcador = contexto.getResources().getDrawable(R.drawable.marcador);
+							overlayItem = new OverlayItem(marcacao,descricao," ");
+						}
+						imagemMarcador.setBounds(0,0, imagemMarcador.getIntrinsicWidth(),imagemMarcador.getIntrinsicHeight());
+						overlayItem.setMarker(imagemMarcador);
+						this.itens.add(overlayItem);
 						percursos = new StringBuilder();
 					}
 				}
@@ -191,7 +208,7 @@ flag = true;
 				MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 				chamaWBS.setMetodo(MetodosWBS.GRAVAR_MARCACAO_GPS);
 
-				chamaWBS.addParametro("4");
+				chamaWBS.addParametro(String.valueOf(Usuario.getUsuario_id()));
 				chamaWBS.addParametro(String.valueOf((point.getLatitudeE6()  / 1E6)));
 				chamaWBS.addParametro(String.valueOf((point.getLongitudeE6() / 1E6)));
 				chamaWBS.addParametro(descricao);
@@ -200,10 +217,11 @@ flag = true;
 					return false;
 				}
 				if(spo!=null){
-					Ponto ponto = new Ponto(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6);
-//					this.itens.add(new OverlayItem(ponto,descricao," "));
-					carregaTodosItensMapa(null,new OverlayItem(ponto,descricao," ") );
-//					populate();
+					String idMarcador = spo.toString();
+					String usuario = Usuario.getUsuario_id();
+					Marcador marcacao = new Marcador(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6,descricao,usuario,idMarcador);
+					Usuario.addMarcador(marcacao);
+					carregaTodosItensMapa(null,new OverlayItem(marcacao,descricao," ") );
 					teveSucesso = true;
 				}
 			 }catch(Exception e){

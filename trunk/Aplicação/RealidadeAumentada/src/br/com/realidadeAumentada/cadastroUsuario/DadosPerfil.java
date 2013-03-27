@@ -18,7 +18,7 @@ public class DadosPerfil {
 	private String telefone;
 	private String dt_nascimento;
 	
-	private  Endereco endereco = new Endereco();
+	private  DadosEndereco endereco = new DadosEndereco();
 	
 	public String getEmail() {
 		return email;
@@ -62,22 +62,19 @@ public class DadosPerfil {
 	public  void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	@SuppressLint("SimpleDateFormat")
-	public  String getDt_nascimento() {
-		Date data = null;
-		try {
-			data = new SimpleDateFormat("yyyy-MM-dd").parse(dt_nascimento);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}  
 
-       	return new SimpleDateFormat("dd-MMM-yyyy").format(data);
+	public  String getDt_nascimento() {
+		String[] data = this.dt_nascimento.split("-");
+		String retorno = data[2]+"-"+data[1]+"-"+data[0];
+		return retorno;
 	}
 	public  void setDt_nascimento(String dt_nascimento) {
-		this.dt_nascimento = dt_nascimento;
+		String[] data = dt_nascimento.split("-");
+		String dataFormatada = data[2]+"-"+data[1]+"-"+data[0];
+		this.dt_nascimento = dataFormatada;
 	}
 	
-	public  Endereco getEndereco() {
+	public  DadosEndereco getEndereco() {
 		return endereco;
 	}
 

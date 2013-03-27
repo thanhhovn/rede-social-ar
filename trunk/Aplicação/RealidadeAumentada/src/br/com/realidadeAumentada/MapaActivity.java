@@ -33,7 +33,6 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 
 	//definição das constantes utilizadas na criação do menu
 	private final int TIPOS_VISAO = 0;
-	private final int STREETVIEW = 1;
 	private final int TRAFFIC = 2;
 	private final int SATELLITE = 3;
 	private final int TODOS = 4;
@@ -48,20 +47,20 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teste_mapa);
+        setContentView(R.layout.mapa);
         map = (MapView) findViewById(R.id.mapview);
         map.setClickable(true) ;
         
-        Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.ic_launcher);
+        Drawable imagemPadrao = this.getResources().getDrawable(R.drawable.meu_marcador);
         markers= new ItemOverlay(imagemPadrao,this,MapaActivity.this,map);
 
         //mc.zoomToSpan(markers.getLatSpanE6(), markers.getLonSpanE6());
-
+     
         controller = map.getController();
         int latitude = 0;
         int longitude = 0;
         manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,this);
+		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
         Location location = getLocation();
         if (location != null){
         	//Converte para micrograus
@@ -70,14 +69,12 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         	
         	controller.setCenter(new GeoPoint(latitude,longitude));
         	controller.animateTo(new GeoPoint(latitude,longitude));
-        } else {
-        //	controller.setCenter(LocalOverlay.newPonto());
         }
         if(markers.carregaTodosItensMapa(location,null)){
         	map.getOverlays().add(markers);
         }
         map.getOverlays().add(markers.getMyLocationOverlay());
-        controller.setZoom(16);
+        controller.setZoom(12);
     }
 
 	private Location getLocation(){
@@ -85,7 +82,6 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 			return this.local;
 		}
 		Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		
         return location;
 	}
 	
@@ -95,17 +91,11 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 	}
 	
 	public void habilitarControladores(boolean on){
-    	map.setStreetView(on);
     	map.setTraffic(on);
     	map.setSatellite(on);
     	TODOS_HABILITADOS = 1;
     }
 	
-	@SuppressWarnings("deprecation")
-	public void habilitarStreetView(boolean on){
-		map.setStreetView(on);	
-    }
-    
     public void habilitarTrafico(boolean on){
     	map.setTraffic(on);	
     }
@@ -130,9 +120,8 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         	
             menuVisaoMapa.add(TIPOS_VISAO, NENHUM, 0, "Nenhum");
             menuVisaoMapa.add(TIPOS_VISAO, TODOS, 1, "TODOS");
-            menuVisaoMapa.add(TIPOS_VISAO, STREETVIEW, 2, "StreetView");
-            menuVisaoMapa.add(TIPOS_VISAO, SATELLITE, 3, "Satellite");
-            menuVisaoMapa.add(TIPOS_VISAO, TRAFFIC, 4, "Traffic");
+            menuVisaoMapa.add(TIPOS_VISAO, SATELLITE, 2, "Satellite");
+            menuVisaoMapa.add(TIPOS_VISAO, TRAFFIC, 3, "Traffic");
             menuVisaoMapa.setIcon(R.drawable.add_new_item);
             
             menuRaio.add(RAIO,MUDAR_APROXIMACAO,0,"Alterar Distância de Aproximação");
@@ -162,13 +151,6 @@ public class MapaActivity extends  MapActivity implements LocationListener{
             case NENHUM:{ 
                 habilitarControladores(false);
               break;}
-            case STREETVIEW:{ 
-                  if(map.isStreetView())
-                	  map.setStreetView(false);
-                  else
-                	  map.setStreetView(true);
-                	  
-                break;}
             case TRAFFIC:{ 
                 	if(map.isTraffic())
                 		map.setTraffic(false);

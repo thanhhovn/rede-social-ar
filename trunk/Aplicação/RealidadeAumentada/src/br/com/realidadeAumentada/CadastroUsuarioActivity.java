@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.realidadeAumentada.cadastroUsuario.Usuario;
-import br.com.realidadeAumentada.util.ValidadorEConversorUtil;
+import br.com.realidadeAumentada.util.Validador;
 
 
 public class CadastroUsuarioActivity extends Activity implements Runnable, OnClickListener, OnFocusChangeListener, OnKeyListener {
@@ -132,7 +132,7 @@ public class CadastroUsuarioActivity extends Activity implements Runnable, OnCli
 	}
 	
 	private boolean isEmailValido(EditText email){
-		return ValidadorEConversorUtil.validarEmail(email.getText().toString());
+		return Validador.validarEmail(email.getText().toString());
 	}
 	
 	public boolean onKey(View arg0, int arg1, KeyEvent arg2) {

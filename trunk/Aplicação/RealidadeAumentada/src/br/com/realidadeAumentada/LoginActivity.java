@@ -19,9 +19,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 
 	private Button btEntrar = null;
 	private Button btInscrever = null;
-	private TextView nAcessarConta = null;
-	private CheckBox lembrarUsuario = null;
-	
 	private EditText emailUsuario = null;
 	private EditText senhaUsuario = null;
 
@@ -36,13 +33,10 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		btEntrar = (Button) findViewById(R.id.btEntrar);
 		btInscrever = (Button) findViewById(R.id.btInscrever);
-		nAcessarConta = (TextView) findViewById(R.id.tv_acessarContaUsuario);
-		lembrarUsuario = (CheckBox) findViewById(R.id.chkLembrar);
-		
-		lembrarUsuario.setOnClickListener(this);
+
 		btEntrar.setOnClickListener(this);
 		btInscrever.setOnClickListener(this);
-		nAcessarConta.setOnClickListener(this);
+		
 	}
 
 	public void onClick(View v) {
@@ -118,11 +112,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 				Toast toast=Toast.makeText(context,msg,duration);
 				toast.show();
 			}
-		}
-		
-		if(v == nAcessarConta){
-		}
-		if(v == lembrarUsuario){
 		}
 	}
 }

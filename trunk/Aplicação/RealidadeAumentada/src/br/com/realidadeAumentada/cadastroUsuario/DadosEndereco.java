@@ -1,6 +1,6 @@
 package br.com.realidadeAumentada.cadastroUsuario;
 
-public class Endereco {
+public class DadosEndereco {
 	
 	private  String enderecoId;
 	private  String nome_pais;
