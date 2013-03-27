@@ -35,7 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.util.Endereco;
-import br.com.realidadeAumentada.util.ValidadorEConversorUtil;
+import br.com.realidadeAumentada.util.Validador;
 import br.com.realidadeAumentada.validador.Mask;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
@@ -229,10 +229,10 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 			}
 			
 			String[] data = Usuario.dadosPerfil.getDt_nascimento().split("-");
-			dia = Integer.valueOf(data[0]);
-			mes = ValidadorEConversorUtil.mes(data[1]);
-			ano = Integer.valueOf(data[2]);
-			respostaData.setText(dia+"-"+mes+"-"+ano);
+			dia = Integer.valueOf(data[2]);
+			mes = Integer.valueOf(data[1])-1;
+			ano = Integer.valueOf(data[0]);
+			respostaData.setText(dia+"-"+(mes+1)+"-"+ano);
 			tipoRelacionamento.setText(Usuario.dadosPerfil.getStatus_relacionamento());
 			nivel_escolar.setText(Usuario.dadosPerfil.getNivel_escolar());
 			profissao.setText(Usuario.dadosPerfil.getProfissao());
@@ -261,8 +261,8 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
             new StringBuilder()
                     // Month is 0 based so add 1
             		.append(dia).append("-")
-                    .append(mes + 1).append("-")
-                    .append(ano).append(" "));
+                    .append(mes+1).append("-")
+                    .append(ano));
     }
     
     // Seta o valor da data

@@ -4,19 +4,26 @@ package br.com.realidadeAumentada;
 import br.com.realidadeAumentada.GPS.LocationManagerHelper;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
+import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.util.EntityFactory;
 import es.ucm.look.ar.LookAR;
+import es.ucm.look.ar.util.LookARUtil;
 import es.ucm.look.data.EntityData;
 import es.ucm.look.data.LookData;
+import android.content.Context;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.ViewGroup;
 
-public class RealidadeAumentadaActivity extends LookAR {
+public class RealidadeAumentadaActivity extends LookAR implements LocationListener {
 
 	private static Integer raio;
+	private LocationManager manager;
 	
 	public RealidadeAumentadaActivity(){
-		super(true,false,true,true,100.0f,true);
+		super(true,true,true,true,100.0f,true);
 	}
 
     @Override
@@ -25,6 +32,9 @@ public class RealidadeAumentadaActivity extends LookAR {
         
 //        setContentView(R.layout.activity_main);
 //        
+        ViewGroup v= this.getHudContainer();
+        v.addView(LookARUtil.getView(R.layout.hud, null ));
+        
         LookData.getInstance().setWorldEntityFactory(new EntityFactory(this));
        
         LocationManagerHelper.setContext(this); 
@@ -62,40 +72,39 @@ public class RealidadeAumentadaActivity extends LookAR {
 	return angulo.floatValue();
 }
     
-//    public float distanciaEntrePonto(Double bx,Double by){
-//    	Location location = LocationManagerHelper.getLocation();
-//    	Double origenX =  location.getLatitude();
-//    	Double origenY =  location.getLongitude();
-//    	Double origenXporax =  Math.sqrt((origenX-bx));
-//    	Double origenYporay =  Math.sqrt((origenY-by));
-//    	Double distancia = Math.sqrt(origenXporax+origenYporay);
-//    	
-//    	return distancia.floatValue();
-//    }
+    public float distanciaEntrePonto(Double origenX,Double origenY,Double bx,Double by){
+    	Double origenXporax =  Math.sqrt((Math.abs(origenX)-Math.abs(bx)));
+    	Double origenYporay =  Math.sqrt((Math.abs(origenY)-Math.abs(by)));
+    	Double distancia = Math.sqrt(origenXporax+origenYporay);
+    	return distancia.floatValue();
+    }
     
     public void carregaPontos(Location location){
     	try{
 			MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 			chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
-			Location local = LocationManagerHelper.getLocation();
+//			Location local = LocationManagerHelper.getLocation();
+			manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+			manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+	        Location local = getLocation();
 			if(local != null){
-				Double teste1 = local.getLatitude();
-	        	Double teste2 = local.getLongitude();
-				chamaWBS.addParametro(String.valueOf(teste1));
-				chamaWBS.addParametro(String.valueOf(teste2));
+				Double lat = local.getLatitude();
+	        	Double longi = local.getLongitude();
+				chamaWBS.addParametro(String.valueOf(lat));
+				chamaWBS.addParametro(String.valueOf(longi));
 				if(raio == null){
-					chamaWBS.addParametro(String.valueOf(50000));
+					chamaWBS.addParametro(String.valueOf(5)); // precisão de 5 metros
 				}else{
 					chamaWBS.addParametro(String.valueOf(raio));
 				}
+				chamaWBS.addParametro(Usuario.getUsuario_id());
 
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 	            LookData.getInstance().setWorldEntityFactory(new EntityFactory(this));
 				EntityData data = null;
 				if(spo!=null){
-					Location l = LocationManagerHelper.getLocation();
-					EntityFactory.origenX = l.getLatitude();
-					EntityFactory.origenY = l.getLongitude();
+					EntityFactory.origenX = lat;
+					EntityFactory.origenY = longi;
 					
 					// Esta apontando os pontos para a direção errada
 					EntityFactory.transformarCorEsfericaRetangulares();
@@ -113,7 +122,8 @@ public class RealidadeAumentadaActivity extends LookAR {
 		    				Double longitude = Double.valueOf(localList[1]);
 		    				data = new EntityData();
 		    				float x = EntityFactory.distanciaEntrePonto(latitude,longitude);
-		    				data.setLocation(x,0,contadorX+2);
+//		    				float x = distanciaEntrePonto(lat,longi,latitude,longitude);
+		    				data.setLocation((-x),0,contadorX+2);
 		    				data.setPropertyValue(EntityFactory.NAME,descricao);
 		    				data.setPropertyValue(EntityFactory.COLOR,"green");    
 		    				LookData.getInstance().getDataHandler().addEntity(data);
@@ -128,6 +138,11 @@ public class RealidadeAumentadaActivity extends LookAR {
 			 System.out.println(e.getMessage());
 		 }
     }
+    
+	private Location getLocation(){
+		Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        return location;
+	}
     
     public float[] transformarCorEsfericaRetangulares(float x, float y){
     	double raio =  Math.sqrt( (Math.pow(x, 2)+ Math.pow(y, 2)+1) );
@@ -156,6 +171,26 @@ public class RealidadeAumentadaActivity extends LookAR {
 
 	public static void setRaio(Integer raio) {
 		RealidadeAumentadaActivity.raio = raio;
+	}
+
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
 	}
         
 }
