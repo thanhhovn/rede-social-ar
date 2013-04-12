@@ -87,7 +87,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 							intent.addCategory("APLICACAO");
 							startActivity(intent);
 						}else{
-							String msg="Senha ou Usuário Inválido.";
+							String msg="Usuário não cadastrado.";
 							Toast toast=Toast.makeText(context,msg,duration);
 							toast.show();
 						}

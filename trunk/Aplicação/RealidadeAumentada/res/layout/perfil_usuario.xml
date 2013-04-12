@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
+<ScrollView android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:background="#FFFFFF">
+  android:background="#FFFFFF" xmlns:android="http://schemas.android.com/apk/res/android">
 	  	
   <LinearLayout
        android:id="@+id/layoutPerfilPrincipal"
@@ -16,14 +15,7 @@
 	   	android:layout_width="fill_parent"
    	   	android:layout_height="wrap_content"
        	android:orientation="vertical" >
-       	
-<!--  Ver como devo usar a View -->
-<!--         <View -->
-<!--                 android:layout_height="2px" -->
-<!--                 android:background="#DDFFDD" -->
-<!--                 android:layout_marginTop="5dip" -->
-<!--                 android:layout_marginBottom="5dip" > -->
-<!--                 </View>   -->
+
           <RelativeLayout
               android:layout_marginTop="10dp"
               android:layout_width="fill_parent"
@@ -321,32 +313,44 @@
          android:ems="10"
          android:inputType="phone" />
      
-     <Button
-          android:id="@+id/btEntrarPerfil"
-          style="@style/TitleBarText"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-         android:layout_marginTop="5dp"
-          android:background="@drawable/formatobutton"
-          android:gravity="center_horizontal"
-          android:text="Confirmar" />
 
-      <RelativeLayout
-          android:id="@+id/layoutCadastroUsuario"
-          android:layout_width="fill_parent"
-          android:layout_height="30dp"
-          android:layout_marginBottom="20dp"
-          android:layout_marginTop="5dp" >
 
-          <Button
-              android:id="@+id/btCancelarPerfil"
-              style="@style/TitleBarText"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:background="@drawable/formatobutton"
-              android:gravity="center_horizontal"
-              android:text="Cancelar" />
-      </RelativeLayout>
+<!--       <RelativeLayout -->
+<!--           android:id="@+id/layoutCadastroUsuario" -->
+<!--           android:layout_width="fill_parent" -->
+<!--           android:layout_height="30dp" -->
+<!--           android:layout_marginBottom="20dp" -->
+<!--           android:layout_marginTop="5dp" > -->
+
+<LinearLayout
+    android:id="@+id/layoutNomeUsuario"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/btEntrarPerfil"
+        style="@style/TitleBarText"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/formatobutton"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Confirmar" />
+
+    <Button
+        android:id="@+id/btCancelarPerfil"
+        style="@style/TitleBarText"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/formatobutton"
+        android:gravity="center_horizontal"
+        android:text="Cancelar" />
+
+</LinearLayout>
 
   </LinearLayout>
 </ScrollView>	

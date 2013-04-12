@@ -1,117 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.realidadeAumentada"
-    android:versionCode="1"
-    android:versionName="1.0" >
-    <uses-sdk android:minSdkVersion="10" />
-    
-	<uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
- <!-- GPS -->
-<!--     <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION" /> -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
- <!-- Acesso a Internet -->
-
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
-
-    <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name">
-        <uses-library android:name="com.google.android.maps" />
-        
-        <activity
-            android:name="br.com.realidadeAumentada.ApresentacaoActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="sensorPortait" >
+<manifest android:versionCode="1" android:versionName="1.0"
+    package="br.com.realidadeAumentada" xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+    <uses-sdk android:minSdkVersion="10"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- GPS -->
+    <!--     <uses-permission android:name="android.permission.ACCESS_COARCE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Acesso a Internet -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
+    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
+        <uses-library android:name="com.google.android.maps" android:required="true"/>
+        <activity android:name="br.com.realidadeAumentada.ApresentacaoActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                 <action android:name="TELA_LOGIN"/> -->
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+<!--                 <category android:name="APRESENTACAO"/> -->
             </intent-filter>
         </activity>
-        <activity
-            android:name="br.com.realidadeAumentada.LoginActivity"
-            android:configChanges="orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="sensorPortait" >
+        <activity android:label="@string/app_name" android:name="br.com.realidadeAumentada.LoginActivity">
             <intent-filter>
-                <action android:name="TELA_LOGIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="LOGIN" />
+                <action android:name="TELA_LOGIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="LOGIN"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="br.com.realidadeAumentada.ListaRelacionamentoActivity"
-            android:label="Tipo de Relacionamento" >
+        <activity android:label="Tipo de Relacionamento" android:name="br.com.realidadeAumentada.ListaRelacionamentoActivity">
             <intent-filter>
-                <action android:name="RELACIONAMENTO" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="LISTA" />
+                <action android:name="RELACIONAMENTO"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="LISTA"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="br.com.realidadeAumentada.ListaEscolaridadeActivity"
-            android:label="Nível Escolar" >
+        <activity android:label="Nível Escolar" android:name="br.com.realidadeAumentada.ListaEscolaridadeActivity">
             <intent-filter>
-                <action android:name="NIVEL_ESCOLAR" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="LISTA" />
+                <action android:name="NIVEL_ESCOLAR"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="LISTA"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="br.com.realidadeAumentada.CadastroUsuarioActivity"
-            android:label="Cadastro de Usuário" >
+        <activity android:label="Cadastro de Usuário" android:name="br.com.realidadeAumentada.CadastroUsuarioActivity">
             <intent-filter>
-                <action android:name="USUARIO" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="CADASTRO" />
+                <action android:name="USUARIO"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="CADASTRO"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="br.com.realidadeAumentada.Perfil_usuarioActivity"
-            android:label="Cadastro do Perfil" >
+        <activity android:label="Cadastro do Perfil" android:name="br.com.realidadeAumentada.Perfil_usuarioActivity">
             <intent-filter>
-                <action android:name="USUARIO" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="PERFIL" />
+                <action android:name="USUARIO"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="PERFIL"/>
             </intent-filter>
         </activity>
-
         <!-- UseGPSActivity1 -->
-        <activity
-            android:name="br.com.realidadeAumentada.PrincipalActivity"
-            android:label="Tela Principal" >
+        <activity android:label="Bem vindo a RA Rede Social" android:name="br.com.realidadeAumentada.PrincipalActivity">
             <intent-filter>
-                <action android:name="TELAPRINCIPAL" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="APLICACAO" />
+                <action android:name="TELAPRINCIPAL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="APLICACAO"/>
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="br.com.realidadeAumentada.MapaActivity"
-            android:label="@string/title_activity_teste_mapa"
-            android:configChanges="orientation"
-            android:screenOrientation="sensorLandscape" >
+        <activity android:label="Mapa" android:name="br.com.realidadeAumentada.MapaActivity">
             <intent-filter>
-                <action android:name="TESTE" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="MAPA" />
+                <action android:name="TESTE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="MAPA"/>
             </intent-filter>
         </activity>
+        <activity android:name=".RealidadeAumentadaActivity">
+            <intent-filter>
+                <action android:name="TESTE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="REALIDADE_AUMENTADA"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Dialogo"/>
+        <service android:name=".Servico"/>
         
-        <activity
-            android:name=".RealidadeAumentadaActivity"
-            android:label="" >
-            <intent-filter>
-                <action android:name="TESTE" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="REALIDADE_AUMENTADA" />
+                <activity
+            android:label="@string/app_name"
+            android:name=".Main" >
+            <intent-filter >
+                <action android:name="TESTE"/>
+<!--                 <action android:name="android.intent.action.MAIN" /> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="TESTE"/>
             </intent-filter>
         </activity>
+        <activity 
+            android:label="@string/app_name"
+            android:name=".SimpleMap"/>
+        <activity 
+            android:label="@string/app_name"
+            android:name=".CustomMap"/>
+        <activity 
+            android:label="@string/app_name"
+            android:name=".TapControlledMap"/>
     </application>
-
 </manifest>

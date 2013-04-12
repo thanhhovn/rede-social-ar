@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"    
+    android:weightSum="1" android:orientation="vertical">
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="68dp" android:layout_weight="0.31" android:background="#d0d0d0">
+       <TextView android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content" android:text="Conteudo Cabeçalho" android:textAppearance="?android:attr/textAppearanceLarge">ola</TextView>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/linearLayout1" android:layout_height="328dp" android:layout_weight="0.74" android:layout_width="match_parent" android:weightSum="1">
+                
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_height="211dp">
+           <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_weight="0.33" android:layout_height="76dp"></LinearLayout>
+           <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MAPA" android:id="@+id/button1"></Button>
+           <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="RA" android:id="@+id/button2"></Button>
+           
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:layout_weight="0.98" android:layout_height="match_parent">
+            <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="horizontal" android:background="#222222" android:layout_height="75dp">
+               <TextView android:id="@+id/textView1" android:text="Mensagem Para :" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="140dp" android:textStyle="bold" android:layout_marginTop="13px" android:layout_height="37dp" android:textSize="24px"></TextView>
+               <Spinner android:layout_height="wrap_content" android:id="@+id/spinner1" android:layout_width="100dp"></Spinner>
+            </LinearLayout>            
+            <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_weight="0.33" android:layout_height="86dp" android:weightSum="1">
+                <EditText android:layout_width="240dp" android:id="@+id/editText1" android:inputType="textMultiLine" android:layout_height="match_parent" android:layout_marginLeft="10px" android:layout_weight="0.61"></EditText>
+            </LinearLayout>            
+            <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:background="#222222" android:layout_height="76dp" android:layout_weight="0.33" android:layout_width="235dp" android:weightSum="1">
+               <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ENVIAR" android:id="@+id/button3" android:layout_marginLeft="40px" android:layout_weight="0.25" android:layout_marginTop="70px"></Button>
+               <Button android:layout_height="wrap_content" android:text="SAIR" android:id="@+id/button4" android:layout_width="70dp" android:layout_marginLeft="60px" android:layout_marginTop="70px"></Button>
+            </LinearLayout>            
+        </LinearLayout>
+    </LinearLayout>
+    
+</LinearLayout>

@@ -11,7 +11,7 @@
           android:layout_width="fill_parent"
           android:layout_height="fill_parent"
           android:gravity="left"
-          android:text="Precisão de: "
+          android:text=" Informe a distância (em metros): "
           android:textColor="#1D3472"
           android:textStyle="bold" />
     

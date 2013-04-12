@@ -92,7 +92,7 @@ public class LocationManagerHelper implements LocationListener {
     public static void showSettingsAlert(){
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 		alertDialog.setTitle("Configuração do GPS");
-		alertDialog.setMessage("O GPS não esta abilitado. Para continuar o serviço você tem que habilitar o GPS, deseja fazer isso agora?");
+		alertDialog.setMessage("O GPS não esta habilitado. Para continuar o serviço você tem que habilitar o GPS, deseja fazer isso agora?");
 
 		alertDialog.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int which) {

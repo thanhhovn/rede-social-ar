@@ -48,7 +48,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Usuário : " />
+                android:text="E-mail : " />
               
               <EditText
                 android:id="@+id/etUsuario"
