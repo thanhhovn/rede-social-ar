@@ -10,17 +10,16 @@ import android.widget.Toast;
 import br.com.realidadeAumentada.MapaActivity;
 import br.com.realidadeAumentada.R;
 import br.com.realidadeAumentada.cadastroUsuario.Usuario;
+import br.com.realidadeAumentada.util.BalloonItemizedOverlay;
 import br.com.realidadeAumentada.webService.MetodosWBS;
 import br.com.realidadeAumentada.webService.MontandoChamadaWBS;
 
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
-import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
+public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 
 	private ArrayList<OverlayItem> itens;
 	private Context contexto;
@@ -34,10 +33,11 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private static Location location;
 	private static MapView mapView;
 	private MyLocationOverlay myLocationOverlay;
+	private static Integer indix = 0;
 	
 
 	public ItemOverlay(Drawable defaultMarker, Context contexto, MapaActivity mapa,MapView map) {
-		super(boundCenterBottom(defaultMarker)); //Marcação Padrão
+		super(boundCenterBottom(defaultMarker),map); //Marcação Padrão
 		myLocationOverlay = new MyLocationOverlay(contexto, map);
 		this.contexto = contexto;
 		mapView = map;
@@ -49,6 +49,7 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	private void newInstanceItemOverlay(){
 		this.itens = new ArrayList<OverlayItem>(0);
 	}
+
 	public void addNewItem(Marcador marcacao,String fragmento){
 		this.itens.add(new OverlayItem(marcacao,marcacao.getDescricao(),fragmento));
 		populate();
@@ -64,7 +65,7 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 		if(getLocation() != location && location != null){
 			setLocation(location);
 		}
-			return carregaItensMapa(getLocation(),item);
+		return carregaItensMapa(getLocation(),item);
 	}
 	
 	private boolean carregaItensMapa(Location location, OverlayItem item){
@@ -118,15 +119,18 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 						String descricao = localList[2];
 						String idUsuario = localList[3];
 						String idMarcador = localList[4];
-						Marcador marcacao = new Marcador(latitudep,longitudep,descricao,idUsuario,idMarcador);
+						String titulo = localList[5];
+						Marcador marcacao = new Marcador(latitudep,longitudep,titulo,descricao,idUsuario,idMarcador);
 						
 						if(Usuario.getUsuario_id() != null && Usuario.getUsuario_id().equalsIgnoreCase(idUsuario)){
 							imagemMarcador = contexto.getResources().getDrawable(R.drawable.meu_marcador);
-							overlayItem = new OverlayItem(marcacao,descricao," ");
+							overlayItem = new OverlayItem(marcacao,titulo,descricao);
+							mapMarcadores.put(getIndix(), marcacao);
+							atualizaIndix();
 							Usuario.addMarcador(marcacao);
 						}else{
 							imagemMarcador = contexto.getResources().getDrawable(R.drawable.marcador);
-							overlayItem = new OverlayItem(marcacao,descricao," ");
+							overlayItem = new OverlayItem(marcacao,titulo,descricao);
 						}
 						imagemMarcador.setBounds(0,0, imagemMarcador.getIntrinsicWidth(),imagemMarcador.getIntrinsicHeight());
 						overlayItem.setMarker(imagemMarcador);
@@ -157,11 +161,11 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 			return carregaItensMapa(location,null);
 	}
 
-	@Override protected boolean onTap(int index){ 
-		Toast.makeText(contexto,
-					   getItem(index).getTitle(), 
-					   Toast.LENGTH_LONG).show(); 
-		return true; 
+	@Override
+	protected boolean onBalloonTap(int index, OverlayItem item) {
+		Toast.makeText(contexto, "onBalloonTap for overlay index " + index,
+				Toast.LENGTH_LONG).show();
+		return true;
 	}
 
 	@Override
@@ -195,23 +199,31 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 		return false;
 	}
 	
-	public boolean cadastrarPonto(String descricao){
+	
+	public boolean cadastrarPonto(String titulo,String descricao,Location location){
 		boolean teveSucesso = false;
 		if(descricao != null && descricao.length() > 0){
-//			int duracao = 50001;
-//			String msg = "<Cadastrado> - Sua Localização: "+
-//	 				   point.getLatitudeE6()  / 1E6 +","+
-//	 				   point.getLongitudeE6() / 1E6+": "+descricao;
-//			Toast toast=Toast.makeText(contexto,msg,duracao);
-//			toast.show();
 			try{
 				MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 				chamaWBS.setMetodo(MetodosWBS.GRAVAR_MARCACAO_GPS);
 
-				chamaWBS.addParametro(String.valueOf(Usuario.getUsuario_id()));
-				chamaWBS.addParametro(String.valueOf((point.getLatitudeE6()  / 1E6)));
-				chamaWBS.addParametro(String.valueOf((point.getLongitudeE6() / 1E6)));
-				chamaWBS.addParametro(descricao);
+//				chamaWBS.addParametro(String.valueOf(Usuario.getUsuario_id()));
+//				if(location == null){
+//					chamaWBS.addParametro(String.valueOf((point.getLatitudeE6()  / 1E6)));
+//					chamaWBS.addParametro(String.valueOf((point.getLongitudeE6() / 1E6)));
+//				}else{
+//					chamaWBS.addParametro(String.valueOf(location.getLatitude()));
+//					chamaWBS.addParametro(String.valueOf(location.getLongitude()));
+//				}
+//				chamaWBS.addParametro(titulo);
+//				chamaWBS.addParametro(descricao);
+				StringBuilder dadosMarcacao = new StringBuilder();
+				dadosMarcacao.append("4,");
+				dadosMarcacao.append("2.2,");
+				dadosMarcacao.append("2.4,");
+				dadosMarcacao.append("Minha casa,");
+				dadosMarcacao.append("Teste");
+				chamaWBS.addParametro(dadosMarcacao.toString());
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 				if(spo.equals("ERRO")){
 					return false;
@@ -219,9 +231,16 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 				if(spo!=null){
 					String idMarcador = spo.toString();
 					String usuario = Usuario.getUsuario_id();
-					Marcador marcacao = new Marcador(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6,descricao,usuario,idMarcador);
+					Marcador marcacao = new Marcador(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6,titulo,descricao,usuario,idMarcador);
+					mapMarcadores.put(getIndix(), marcacao);
+					atualizaIndix();
 					Usuario.addMarcador(marcacao);
-					carregaTodosItensMapa(null,new OverlayItem(marcacao,descricao," ") );
+					Drawable imagemMarcador = contexto.getResources().getDrawable(R.drawable.meu_marcador);
+					OverlayItem overlayItem = new OverlayItem(marcacao,titulo,descricao);
+					imagemMarcador.setBounds(0,0, imagemMarcador.getIntrinsicWidth(),imagemMarcador.getIntrinsicHeight());
+					overlayItem.setMarker(imagemMarcador);
+					this.itens.add(overlayItem);
+					populate();
 					teveSucesso = true;
 				}
 			 }catch(Exception e){
@@ -265,6 +284,18 @@ public class ItemOverlay extends ItemizedOverlay<OverlayItem>{
 	
 	public void disableMyLocation(){
 		myLocationOverlay.disableMyLocation();
+	}
+
+	public void addMapMarcador(Marcador marcador, Integer indix) {
+		this.mapMarcadores.put(indix, marcador);
+	}
+
+	public static Integer getIndix() {
+		return indix;
+	}
+
+	public static void atualizaIndix() {
+		indix++;
 	}
 
 }

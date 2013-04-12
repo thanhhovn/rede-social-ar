@@ -88,6 +88,12 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 		dataNascimento = (LinearLayout) findViewById(R.id.layoutDataNascimentoUsuario);
 		respostaData = (TextView) findViewById(R.id.tv_RespostadataNascimentoUsuario);
 		telefone = (EditText) findViewById(R.id.ed_telefoneUsuario);
+		dataNascimento = (LinearLayout) findViewById(R.id.balloon_main_layout);
+//		dataNascimento = (View) findViewById(R.id.balloon_inner_layout);
+//		dataNascimento = (View) findViewById(R.id.balloon_close);
+//		dataNascimento = (View) findViewById(R.id.balloon_disclosure);
+//		nomeUsuario = (TextView) findViewById(R.id.balloon_item_title);
+//		nomeUsuario = (TextView) findViewById(R.id.balloon_item_snippet);
 		bairro = (EditText) findViewById(R.id.et_bairro);
 		logradouro = (EditText) findViewById(R.id.et_logradouro);
 		numeroCasa = (EditText) findViewById(R.id.et_numeroCasa);
@@ -97,6 +103,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 		cidade = (Spinner) findViewById(R.id.cidade);
 		
 		nomeUsuario = (TextView) findViewById(R.id.tv_respostaNomeUsuario);
+
 		tipoRelacionamento	= (TextView) findViewById(R.id.tv_resposta_relacionamentoUsuario);
 		nivel_escolar	= (TextView) findViewById(R.id.tv_resposta_nivelEscolarUsuario);
 		

@@ -6,17 +6,34 @@
 	android:orientation="vertical"
 	android:background="#C0C0C0">    
 
+     <TextView
+          android:id="@+id/tv_tituloMarcacao"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:gravity="left"
+          android:text="Titulo: "
+          android:textColor="#1D3472"
+          android:textStyle="bold" />
+    
+  	<EditText
+        android:id="@+id/et_DescricaoTitulo"
+  	   	android:layout_width="fill_parent"
+     	android:layout_height="fill_parent"
+        android:maxLength="36"
+        android:maxLines="1">
+        <requestFocus />
+    </EditText>  	
     <TextView
           android:id="@+id/tv_nomeLoginUsuario"
           android:layout_width="fill_parent"
           android:layout_height="fill_parent"
           android:gravity="left"
-          android:text="Descrição da Marcação: "
+          android:text="Descrição: "
           android:textColor="#1D3472"
           android:textStyle="bold" />
     
   	<EditText
-        android:id="@+id/et_DescricaoPosicao"
+        android:id="@+id/et_DescricaoMarcacao"
   	   	android:layout_width="fill_parent"
      	android:layout_height="fill_parent"
         android:maxLength="36"

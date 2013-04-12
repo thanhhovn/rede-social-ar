@@ -13,8 +13,8 @@ public class Marcador extends GeoPoint{
 	private Double longitue;
 	private String idUsario;
 
-	public Marcador(Location localizacao,String descricao,String usuario,String idMarcador){
-		this(localizacao.getLatitude(),localizacao.getLongitude(),descricao,usuario,idMarcador);
+	public Marcador(Location localizacao,String titulo,String descricao,String usuario,String idMarcador){
+		this(localizacao.getLatitude(),localizacao.getLongitude(),titulo,descricao,usuario,idMarcador);
 	}
 		
 	private Marcador(int latitudeE6, int longitudeE6,String descricao) {
@@ -23,14 +23,17 @@ public class Marcador extends GeoPoint{
 
 	}
 	
-	public Marcador(double latitude,double longitude,String descricao,String usuario,String idMarcador){
+	public Marcador(double latitude,double longitude,String titulo,String descricao,String usuario,String idMarcador){
 		this((int)(latitude*1E6),(int)(longitude*1E6),descricao);
 		setLatitude(latitude);
 		setLongitue(longitude);
+		setTitulo(titulo);
 		setDescricao(descricao);
 		setIdUsario(usuario);
 		setIdMarcador(idMarcador);
 	}
+	
+	
 
 	public String getDescricao() {
 		return descricao;
