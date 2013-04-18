@@ -60,15 +60,15 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 		populate();
 	}
 	
-	public boolean carregaTodosItensMapa(Location local,OverlayItem item){
+	public boolean carregaTodosItensMapa(GeoPoint local,OverlayItem item){
 		TODOS_PONTOS = true;
-		if(getLocation() != location && location != null){
-			setLocation(location);
-		}
-		return carregaItensMapa(getLocation(),item);
+//		if(getLocation() != location && location != null){
+//			setLocation(location);
+//		}
+		return carregaItensMapa(local,item);
 	}
 	
-	private boolean carregaItensMapa(Location location, OverlayItem item){
+	private boolean carregaItensMapa(GeoPoint location, OverlayItem item){
 		boolean flag = false;
 // Dados de Teste		
 /*		itens.add(new OverlayItem(new Ponto(-10.7483672,-37.49421661666667),"PE"," "));
@@ -84,11 +84,9 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 			}
 			else{
 				chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
-				if(getLocation() != location && location != null){
-					setLocation(location);
-				}
-				Double latitude = getLocation().getLatitude();
-	        	Double longitude = getLocation().getLongitude();
+
+				int latitude = location.getLatitudeE6();
+	        	int longitude = location.getLongitudeE6();
 				chamaWBS.addParametro(String.valueOf(latitude));
 				chamaWBS.addParametro(String.valueOf(longitude));
 				if(raio == null){
@@ -96,7 +94,7 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 				}else{
 					chamaWBS.addParametro(String.valueOf(raio));
 				}
-				chamaWBS.addParametro(Usuario.getUsuario_id());
+				chamaWBS.addParametro(Usuario.getUsuarioLogado_id());
 			}
 		
 			Object  spo = (Object) chamaWBS.iniciarWBS();
@@ -117,12 +115,12 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 						double latitudep = Double.valueOf(localList[0]);
 						double longitudep = Double.valueOf(localList[1]);
 						String descricao = localList[2];
-						String idUsuario = localList[3];
-						String idMarcador = localList[4];
-						String titulo = localList[5];
+						String titulo = localList[3];
+						String idUsuario = localList[4];
+						String idMarcador = localList[5];
 						Marcador marcacao = new Marcador(latitudep,longitudep,titulo,descricao,idUsuario,idMarcador);
 						
-						if(Usuario.getUsuario_id() != null && Usuario.getUsuario_id().equalsIgnoreCase(idUsuario)){
+						if(Usuario.getUsuarioLogado_id() != null && Usuario.getUsuarioLogado_id().equalsIgnoreCase(idUsuario)){
 							imagemMarcador = contexto.getResources().getDrawable(R.drawable.meu_marcador);
 							overlayItem = new OverlayItem(marcacao,titulo,descricao);
 							mapMarcadores.put(getIndix(), marcacao);
@@ -156,7 +154,7 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 		return true;
 	}
 	
-	public boolean carregaItensAoRedorMapa(Location location) {
+	public boolean carregaItensAoRedorMapa(GeoPoint location) {
 			TODOS_PONTOS = false;
 			return carregaItensMapa(location,null);
 	}
@@ -206,23 +204,17 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 			try{
 				MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 				chamaWBS.setMetodo(MetodosWBS.GRAVAR_MARCACAO_GPS);
-
-//				chamaWBS.addParametro(String.valueOf(Usuario.getUsuario_id()));
-//				if(location == null){
-//					chamaWBS.addParametro(String.valueOf((point.getLatitudeE6()  / 1E6)));
-//					chamaWBS.addParametro(String.valueOf((point.getLongitudeE6() / 1E6)));
-//				}else{
-//					chamaWBS.addParametro(String.valueOf(location.getLatitude()));
-//					chamaWBS.addParametro(String.valueOf(location.getLongitude()));
-//				}
-//				chamaWBS.addParametro(titulo);
-//				chamaWBS.addParametro(descricao);
 				StringBuilder dadosMarcacao = new StringBuilder();
-				dadosMarcacao.append("4,");
-				dadosMarcacao.append("2.2,");
-				dadosMarcacao.append("2.4,");
-				dadosMarcacao.append("Minha casa,");
-				dadosMarcacao.append("Teste");
+				dadosMarcacao.append(String.valueOf(Usuario.getUsuarioLogado_id())+",");
+				if(location == null){
+					dadosMarcacao.append(String.valueOf((point.getLatitudeE6()  / 1E6))+",");
+					dadosMarcacao.append((point.getLongitudeE6() / 1E6)+",");
+				}else{
+					dadosMarcacao.append(String.valueOf(location.getLatitude())+",");
+					dadosMarcacao.append(String.valueOf(location.getLongitude())+",");
+				}
+				dadosMarcacao.append(titulo+",");
+				dadosMarcacao.append(descricao);
 				chamaWBS.addParametro(dadosMarcacao.toString());
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 				if(spo.equals("ERRO")){
@@ -230,7 +222,7 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 				}
 				if(spo!=null){
 					String idMarcador = spo.toString();
-					String usuario = Usuario.getUsuario_id();
+					String usuario = Usuario.getUsuarioLogado_id();
 					Marcador marcacao = new Marcador(point.getLatitudeE6()/1E6,point.getLongitudeE6()/1E6,titulo,descricao,usuario,idMarcador);
 					mapMarcadores.put(getIndix(), marcacao);
 					atualizaIndix();

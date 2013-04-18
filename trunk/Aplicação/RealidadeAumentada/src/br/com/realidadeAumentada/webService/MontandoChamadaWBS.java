@@ -6,9 +6,10 @@ import java.util.List;
 import org.ksoap2.serialization.SoapObject;
 
 public class MontandoChamadaWBS {
-
+	
+//	192.168.42.98 ip do notebook quando conectado na rede do celular
 	private static final String NAMESPACE = "http://hello_webservice/";
-	 private static String URL = "http://192.168.42.98:8080/Servidor_WebService_AR_Rede/services/AR_RedeWS?WSDL"; 
+	 private static String URL = "http://192.168.0.102:8080/Servidor_WebService_AR_Rede/services/AR_RedeWS?WSDL"; 
 	 private String METHOD_NAME = "";
 	 private String SOAP_ACTION = "";
 	 private List<String> parametros = new ArrayList<String>(0);

@@ -1,12 +1,6 @@
 package br.com.realidadeAumentada.cadastroUsuario;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.text.ParseException;
-
-import android.annotation.SuppressLint;
-
 public class DadosPerfil {
 
 	private String email;

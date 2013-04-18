@@ -206,4 +206,7 @@ public class ServiceGPS extends Service implements LocationListener {
 		this.longitude = longitude;
 	}
  
+	public void removeUpdates(){
+		 locationManager.removeUpdates(this);
+	}
 }

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF" >
 	  	
   <LinearLayout
-      android:id="@+id/layoutPrincipalMensagem"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:id="@+id/layoutAdicionarContato"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:background="#C0C0C0"
       android:gravity="left|right"
       android:orientation="vertical" >
@@ -16,33 +13,25 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="5dp"
             android:layout_width="fill_parent"
+            android:background="#C0C0C0"
             android:layout_height="wrap_content">
 
-         <ImageView
-            android:id="@+id/balloon_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:onClick="adicionarAmigo"
-            android:src="@drawable/plus" />
-
          <TextView
-             android:id="@+id/usuarioLogado"
+             android:id="@+id/ultimoAcesso"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginLeft="80dp"
-             android:layout_toRightOf="@+id/balloon_close"
+             android:text="Último Acesso"
              android:textColor="@android:color/primary_text_light"
-             android:textSize="16dip" 
-             android:text="Usuário:"/>
+             android:textSize="16dip" />
          
          <TextView
              android:id="@+id/nome_usuarioLogado"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_marginLeft="5dp"
-             android:layout_toRightOf="@+id/usuarioLogado"
-             android:text="Lucas Fernandes"
+             android:layout_marginLeft="80dp"
+             android:layout_below="@+id/ultimoAcesso"
+             android:text="Usuário:" 
              android:textColor="@android:color/primary_text_light"
              android:textSize="16dip" />
     </RelativeLayout>
@@ -57,7 +46,7 @@
         android:id="@+id/layoutMensagemUsuario"
 	   	android:layout_width="fill_parent"
    	   	android:layout_height="wrap_content"
-       	android:orientation="horizontal" >
+       	android:orientation="vertical" >
 	   <TextView
           android:id="@+id/tv_pais"
           android:textColor="#1D3472"
@@ -65,12 +54,12 @@
 	      android:layout_height="wrap_content"
           android:gravity="left"
           android:textStyle="bold"
-          android:textSize="16dip"
-          android:text="Enviar mensagem para: " />
+          android:textSize="20dip"
+          android:text="Usuário: " />
 
 	   <Spinner
-	       android:id="@+id/amigosUsuario"
-	       android:layout_width="150dp"
+	       android:id="@+id/usuarios"
+	       android:layout_width="fill_parent"
 	       android:layout_height="wrap_content"
 	       android:layout_marginTop="1dp" />
 
@@ -91,18 +80,6 @@
             
              android:textSize="16dip" />
 
-         <EditText
-             android:id="@+id/edit_mensagem"
-             android:layout_width="fill_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="5dp"
-             android:layout_marginRight="5dp"
-             android:inputType="textMultiLine"
-             android:maxLength="50"
-             android:maxLines="10"
-             android:textColor="@android:color/primary_text_light"
-             android:textSize="16dip" />
-
      </RelativeLayout>  
 
  <RelativeLayout
@@ -112,7 +89,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btEntrar"
+                android:id="@+id/btAdicionarUsuario"
                 style="@style/TitleBarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,21 +97,20 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="54dp"
                 android:background="@drawable/formatobutton"
-                android:text="Enviar" />
+                android:text="Adicionar" />
 
             <Button
-                android:id="@+id/btInscrever"
+                android:id="@+id/btVoltar"
                 style="@style/TitleBarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="41dp"
-                android:layout_toRightOf="@+id/btEntrar"
+                android:layout_toRightOf="@+id/btAdicionarUsuario"
                 android:background="@drawable/formatobutton"
                 android:text="Voltar" />
              
         </RelativeLayout>
-  </LinearLayout>
-</ScrollView>	
+</LinearLayout>
 
 	

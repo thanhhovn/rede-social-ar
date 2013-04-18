@@ -1,30 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"    
-    android:weightSum="1" android:orientation="vertical">
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="68dp" android:layout_weight="0.31" android:background="#d0d0d0">
-       <TextView android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content" android:text="Conteudo Cabeçalho" android:textAppearance="?android:attr/textAppearanceLarge">ola</TextView>
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="horizontal" android:layout_height="40dp" android:layout_weight="0.31" android:background="#C0C0C0">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
+            android:background="#C0C0C0"
+            android:orientation="vertical" >
+
+           <ImageView
+               android:id="@+id/adicionaAmigo"
+               android:layout_width="40dp"
+               android:layout_height="40dp"
+               android:layout_marginLeft="5dp"
+               android:onClick="adicionarAmigo"
+               android:src="@drawable/plus" />
+
+        </LinearLayout>
+		<LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="54dp" android:layout_weight="0.31" android:background="#C0C0C0">
+
+			<TextView
+			    android:id="@+id/ultimoAcesso"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Último Acesso"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+       <TextView android:layout_width="wrap_content" android:id="@+id/usuarioLogado" android:layout_height="wrap_content" android:text="Usuário:" android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
+       </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@+id/linearLayout1" android:layout_height="328dp" android:layout_weight="0.74" android:layout_width="match_parent" android:weightSum="1">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#000000"
+        android:orientation="horizontal" />
+    <LinearLayout android:orientation="horizontal" android:background="#C0C0C0" android:id="@+id/linearLayout1" android:layout_height="328dp" android:layout_weight="0.74" android:layout_width="match_parent" android:weightSum="1">
                 
-        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_height="211dp">
-           <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_weight="0.33" android:layout_height="76dp"></LinearLayout>
-           <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MAPA" android:id="@+id/button1"></Button>
-           <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="RA" android:id="@+id/button2"></Button>
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:background="#C0C0C0"
+            android:orientation="vertical" >
+
+           <LinearLayout
+               android:id="@+id/linearLayout3"
+               android:layout_width="wrap_content"
+               android:layout_height="90dp"
+               android:layout_weight="5.07"
+               android:background="#C0C0C0"
+               android:orientation="vertical"
+               android:paddingTop="60dp" >
+
+               <Button
+                   android:id="@+id/bt_visualizarMapa"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:background="@drawable/formatobutton"
+                   android:text="MAPA"
+                   android:textSize="15sp" />
+
+               <Button
+                   android:id="@+id/bt_realidadeAumentada"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:background="@drawable/formatobutton"
+                   android:text="RA"
+                   android:textSize="15sp" />
+
+               <Button
+                   android:id="@+id/bt_caixaMensagem"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:background="@drawable/formatobutton"
+                   android:text="C. Msg"
+                   android:textSize="15sp" />
+
+               <Button
+                   android:id="@+id/bt_editarPerfilUsuario"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:background="@drawable/formatobutton"
+                   android:text="Ed. Perf"
+                   android:textSize="15sp" />
+
+               <Button
+                   android:id="@+id/bt_sair"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="100dp"
+                   android:background="@drawable/formatobutton"
+                   android:text="SAIR"
+                   android:textSize="15sp" />
+
+           </LinearLayout>
            
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:layout_weight="0.98" android:layout_height="match_parent">
-            <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="horizontal" android:background="#222222" android:layout_height="75dp">
-               <TextView android:id="@+id/textView1" android:text="Mensagem Para :" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="140dp" android:textStyle="bold" android:layout_marginTop="13px" android:layout_height="37dp" android:textSize="24px"></TextView>
-               <Spinner android:layout_height="wrap_content" android:id="@+id/spinner1" android:layout_width="100dp"></Spinner>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.98"
+            android:background="#C0C0C0"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="246dp"
+                android:layout_height="75dp"
+                android:background="#C0C0C0"
+                android:orientation="vertical" >
+
+               <TextView
+                   android:id="@+id/textView1"
+                   android:layout_width="140dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="13px"
+                   android:text="Mensagem Para :"
+                   android:textAppearance="?android:attr/textAppearanceLarge"
+                   android:textSize="24px"
+                   android:textStyle="bold" >
+</TextView>
+
+               <Spinner
+                   android:id="@+id/listaAmigos"
+                   android:layout_width="fill_parent"
+                   android:layout_height="fill_parent" >
+</Spinner>
             </LinearLayout>            
-            <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#222222" android:layout_weight="0.33" android:layout_height="86dp" android:weightSum="1">
-                <EditText android:layout_width="240dp" android:id="@+id/editText1" android:inputType="textMultiLine" android:layout_height="match_parent" android:layout_marginLeft="10px" android:layout_weight="0.61"></EditText>
+            <LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:orientation="vertical" android:background="#C0C0C0" android:layout_weight="0.33" android:layout_height="86dp" android:weightSum="1">
+                <EditText android:layout_width="240dp" android:id="@+id/mensagem" android:inputType="textMultiLine" android:layout_height="match_parent" android:layout_marginLeft="10px" android:layout_weight="0.61"></EditText>
             </LinearLayout>            
-            <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:background="#222222" android:layout_height="76dp" android:layout_weight="0.33" android:layout_width="235dp" android:weightSum="1">
-               <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ENVIAR" android:id="@+id/button3" android:layout_marginLeft="40px" android:layout_weight="0.25" android:layout_marginTop="70px"></Button>
-               <Button android:layout_height="wrap_content" android:text="SAIR" android:id="@+id/button4" android:layout_width="70dp" android:layout_marginLeft="60px" android:layout_marginTop="70px"></Button>
+            <LinearLayout android:id="@+id/linearLayout3" android:orientation="horizontal" android:background="#C0C0C0" android:layout_height="76dp" android:layout_weight="0.33" android:layout_width="235dp" android:weightSum="1">
+
+               <Button
+                   android:id="@+id/bt_enviarMensagem"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="40px"
+                   android:layout_marginTop="70px"
+                   android:background="@drawable/formatobutton"
+                   android:text="ENVIAR"
+                   android:textSize="15sp" >
+
+				</Button>
+
+               <Button
+                   android:id="@+id/bt_localizarUsuario"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="70px"
+                   android:background="@drawable/formatobutton"
+                   android:text="Localizar Usuário"
+                   android:textSize="15sp" >
+
+</Button>
             </LinearLayout>            
         </LinearLayout>
     </LinearLayout>

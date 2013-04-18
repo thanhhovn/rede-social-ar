@@ -29,17 +29,17 @@ public class EntityFactory extends WorldEntityFactory{
 		WorldEntity we = new WorldEntity(data);
 		we.setDrawable2D(new Text2D(data.getPropertyValue(NAME)));
 			
-		Entity3D drawable3d = new Entity3D(new Cube());
-		
-		String color = data.getPropertyValue(COLOR);
-		if(color.equals("red")){
-			drawable3d.setMaterial(new Color4(1.0f,0.0f,0.0f));
-			
-		}else
-		if(color.equals("green")){
-			drawable3d.setMaterial(new Color4(0.0f,1.0f,0.0f));
-		}
-		we.setDrawable3D(drawable3d);
+//		Entity3D drawable3d = new Entity3D(new Cube());
+//		
+//		String color = data.getPropertyValue(COLOR);
+//		if(color.equals("red")){
+//			drawable3d.setMaterial(new Color4(1.0f,0.0f,0.0f));
+//			
+//		}else
+//		if(color.equals("green")){
+//			drawable3d.setMaterial(new Color4(0.0f,1.0f,0.0f));
+//		}
+//		we.setDrawable3D(drawable3d);
 		we.addTouchListener(new TouchListener(){
 
 			public boolean onTouchDown(WorldEntity arg0, float arg1, float arg2) {
