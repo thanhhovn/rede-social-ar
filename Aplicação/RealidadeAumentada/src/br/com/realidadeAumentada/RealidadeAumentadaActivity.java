@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.google.android.maps.GeoPoint;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 import br.com.realidadeAumentada.GPS.LocationManagerHelper;
+import br.com.realidadeAumentada.GPS.MyLocation;
+import br.com.realidadeAumentada.cadastroUsuario.DadosPerfil;
 import br.com.realidadeAumentada.cadastroUsuario.Usuario;
 import br.com.realidadeAumentada.maps.Marcador;
 import br.com.realidadeAumentada.util.EntityFactory;
@@ -29,12 +33,14 @@ import es.ucm.look.ar.util.LookARUtil;
 import es.ucm.look.data.EntityData;
 import es.ucm.look.data.LookData;
 
-public class RealidadeAumentadaActivity extends LookAR implements LocationListener {
+public class RealidadeAumentadaActivity extends LookAR{
 
 	private static Integer raio;
 	private LocationManager manager;
 	private static final int NOME_DIALOG_ID = 1;
 	private static int profundidade;
+	private LocationManagerHelper localizacao;
+	private MyLocation myLocation;
 	private List<EntityData> marcadoreList = new ArrayList<EntityData>(0);
 	
 	public RealidadeAumentadaActivity(){
@@ -51,11 +57,12 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
         
         LookData.getInstance().setWorldEntityFactory(new EntityFactory(this));
        
-        LocationManagerHelper.setContext(this); 
-		Location location = LocationManagerHelper.getLocation();
-		if (location != null){
+        myLocation = new MyLocation(this);
+        myLocation.enableMyLocation();
+        GeoPoint local = myLocation.getMyLocation();
+		if (local != null){
 			LookData.getInstance().setWorldEntityFactory(new EntityFactory(this));
-			carregaPontos(location);
+			carregaPontos(local);
         } else {}
         
 
@@ -107,12 +114,12 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
 								DialogInterface.OnClickListener() {
 									@SuppressLint("DefaultLocale")
 									public void onClick(DialogInterface dialog,int which) {
-										
 										String tituloMarcacao	= editTituloMarcacao.getText().toString();
 										String descricaoMarcacao	= editDescricaoMarcacao.getText().toString();
-										Location location = LocationManagerHelper.getLocation();
-										if (location != null){
-											boolean cadastrou = cadastrarMarcacao(tituloMarcacao,descricaoMarcacao,location);
+										 
+										GeoPoint local = myLocation.getMyLocation();
+										if (local != null){
+											boolean cadastrou = cadastrarMarcacao(tituloMarcacao,descricaoMarcacao,local);
 											if(cadastrou){
 //												map.invalidate();
 												Toast.makeText(RealidadeAumentadaActivity.this,"Marcação Cadastrada",Toast.LENGTH_LONG).show();
@@ -137,19 +144,21 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
 
     }
     
-    private boolean cadastrarMarcacao(String titulo,String descricao,Location location){
+    private boolean cadastrarMarcacao(String titulo,String descricao,GeoPoint minhaLocalizacao){
 		boolean teveSucesso = false;
 		if(descricao != null && descricao.length() > 0){
 			try{
 				MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 				chamaWBS.setMetodo(MetodosWBS.GRAVAR_MARCACAO_GPS);
-				
-				chamaWBS.addParametro(String.valueOf(Usuario.getUsuario_id()));
-				chamaWBS.addParametro(String.valueOf(location.getLatitude()));
-				chamaWBS.addParametro(String.valueOf(location.getLongitude()));
-				
-				chamaWBS.addParametro(titulo);
-				chamaWBS.addParametro(descricao);
+				StringBuilder dadosMarcacao = new StringBuilder();
+				Double latitude = Double.valueOf(Double.valueOf(minhaLocalizacao.getLatitudeE6()) / 1000000);
+	        	Double longitude = Double.valueOf(Double.valueOf(minhaLocalizacao.getLongitudeE6()) / 1000000);
+	        	dadosMarcacao.append(Usuario.getUsuarioLogado_id()+",");
+	        	dadosMarcacao.append(latitude+",");
+	        	dadosMarcacao.append(longitude+",");
+	        	dadosMarcacao.append(titulo+",");
+	        	dadosMarcacao.append(descricao);
+	        	chamaWBS.addParametro(dadosMarcacao.toString());
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 				if(spo.equals("ERRO")){
 					return false;
@@ -158,11 +167,11 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
 				EntityData data = null;
 				if(spo!=null){
 					String idMarcador = spo.toString();
-					String usuario = Usuario.getUsuario_id();
-					Marcador marcacao = new Marcador(location.getLatitude(),location.getLongitude(),titulo,descricao,usuario,idMarcador);
+					String usuario = Usuario.getUsuarioLogado_id();
+					Marcador marcacao = new Marcador(latitude,longitude,titulo,descricao,usuario,idMarcador);
 					Usuario.addMarcador(marcacao);
 					data = new EntityData();
-    				float x = EntityFactory.distanciaEntrePonto(location.getLatitude(),location.getLongitude());
+    				float x = EntityFactory.distanciaEntrePonto(latitude,longitude);
     				data.setLocation((-x),0,profundidade+2);
     				data.setPropertyValue(EntityFactory.NAME,titulo);
     				data.setPropertyValue(EntityFactory.COLOR,"green");  
@@ -178,26 +187,22 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
 		return teveSucesso;
 	}
     
-    public void carregaPontos(Location location){
+    public void carregaPontos(GeoPoint minhaLocalizacao){
     	try{
     		marcadoreList = new ArrayList<EntityData>(0);
 			MontandoChamadaWBS chamaWBS = new MontandoChamadaWBS();
 			chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
-//			Location local = LocationManagerHelper.getLocation();
-			manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-			manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
-	        Location local = getLocation();
-			if(local != null){
-				Double lat = local.getLatitude();
-	        	Double longi = local.getLongitude();
+			if(minhaLocalizacao != null){
+				Double lat = Double.valueOf(Double.valueOf(minhaLocalizacao.getLatitudeE6()) / 1000000);
+	        	Double longi = Double.valueOf(Double.valueOf(minhaLocalizacao.getLongitudeE6()) / 1000000);
 				chamaWBS.addParametro(String.valueOf(lat));
 				chamaWBS.addParametro(String.valueOf(longi));
 				if(raio == null){
-					chamaWBS.addParametro(String.valueOf(10)); // precisão de 5 metros
+					chamaWBS.addParametro(String.valueOf(50)); // precisão de 5 metros
 				}else{
 					chamaWBS.addParametro(String.valueOf(raio));
 				}
-				chamaWBS.addParametro(Usuario.getUsuario_id());
+				chamaWBS.addParametro(Usuario.getUsuarioLogado_id());
 
 				Object  spo = (Object) chamaWBS.iniciarWBS();
 	            LookData.getInstance().setWorldEntityFactory(new EntityFactory(this));
@@ -216,14 +221,16 @@ public class RealidadeAumentadaActivity extends LookAR implements LocationListen
 							percursos.append(listaPercursos[i]+",");
 						}else{
 							String[] localList = percursos.toString().split(",");
+							String titulo = localList[5];
 							String descricao = localList[2];
 							Double latitude  = Double.valueOf(localList[0]);
 		    				Double longitude = Double.valueOf(localList[1]);
+		    				
 		    				data = new EntityData();
 		    				float x = EntityFactory.distanciaEntrePonto(latitude,longitude);
 //		    				float x = distanciaEntrePonto(lat,longi,latitude,longitude);
 		    				data.setLocation((-x),0,profundidade+2);
-		    				data.setPropertyValue(EntityFactory.NAME,descricao);
+		    				data.setPropertyValue(EntityFactory.NAME,titulo);
 		    				data.setPropertyValue(EntityFactory.COLOR,"green");  
 		    				marcadoreList.add(data);
 							percursos = new StringBuilder();

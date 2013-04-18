@@ -26,7 +26,7 @@ public class LocationManagerHelper implements LocationListener {
     public LocationManagerHelper(Context c){
     	context = c;
     	mlocManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0,this);
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0,this);
     }
     
 	public static void setContext(Context c){
@@ -65,7 +65,7 @@ public class LocationManagerHelper implements LocationListener {
 		return date;
 	}
 
-	public static Location getLocation(){
+	public Location getLocation(){
 		if(local != null){
 			return local;
 		}
@@ -122,5 +122,10 @@ public class LocationManagerHelper implements LocationListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void removeUpdates(){
+		 mlocManager.removeUpdates(this);
+	}
+	
 	
 }

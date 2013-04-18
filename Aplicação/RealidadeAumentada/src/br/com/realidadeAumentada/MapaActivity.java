@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+import br.com.realidadeAumentada.GPS.MyLocation;
 import br.com.realidadeAumentada.maps.ItemOverlay;
 
 import com.google.android.maps.GeoPoint;
@@ -24,12 +25,13 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 
-public class MapaActivity extends  MapActivity implements LocationListener{
+public class MapaActivity extends  MapActivity{
 	MapView map;
 	MapController controller;
 	Location local;
 	LocationManager manager;
 	ItemOverlay markers;
+	MyLocation myLocation;
 
 	//definiï¿½ï¿½o das constantes utilizadas na criaï¿½ï¿½o do menu
 	private final int TIPOS_VISAO = 0;
@@ -59,17 +61,17 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         controller = map.getController();
         int latitude = 0;
         int longitude = 0;
-        manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
-        local = getLocation();
-        GeoPoint point = null;
+        myLocation = new MyLocation(this);
+        myLocation.enableMyLocation();
+        GeoPoint local = myLocation.getMyLocation();
+       
         if (local != null){
         	//Converte para micrograus
-        	latitude =  (int)(local.getLatitude() * 1000000);
-        	longitude = (int)(local.getLongitude() * 1000000);
+        	latitude =  (int)(local.getLatitudeE6());
+        	longitude = (int)(local.getLongitudeE6());
         	
         	//controller.setCenter(new GeoPoint(latitude,longitude));
-        	point = new GeoPoint(latitude,longitude);
+        	local = new GeoPoint(latitude,longitude);
         }
         if(markers.carregaTodosItensMapa(local,null)){
         	map.getOverlays().add(markers);
@@ -79,8 +81,8 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         
         if (savedInstanceState == null) {
 			final MapController mc = map.getController();
-			if(point != null)
-				mc.animateTo(point);
+			if(local != null)
+				mc.animateTo(local);
 			mc.setZoom(16);
 		} else {
 			int focused;
@@ -192,7 +194,7 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         									public void onClick(DialogInterface dialog,int which) {
         										String raio	= editNome.getText().toString();
         										if(ItemOverlay.getOverlay().alterarRaio(raio)){
-        											ItemOverlay.getOverlay().carregaItensAoRedorMapa(getLocation());
+        											ItemOverlay.getOverlay().carregaItensAoRedorMapa(myLocation.getMyLocation());
         											map.invalidate();
         											Toast.makeText(MapaActivity.this.getBaseContext(),"Exibindo pontos de interesse com aproximação de "+raio+" Metros",Toast.LENGTH_LONG).show();
         										}else{
@@ -214,7 +216,7 @@ public class MapaActivity extends  MapActivity implements LocationListener{
         			alert.show();
                 break;}   
             case EXIBE_TODOS_PONTOS:{ 
-            	ItemOverlay.getOverlay().carregaTodosItensMapa(getLocation(),null);
+            	ItemOverlay.getOverlay().carregaTodosItensMapa(myLocation.getMyLocation(),null);
             break;}
         }
         return true;
@@ -242,8 +244,8 @@ public class MapaActivity extends  MapActivity implements LocationListener{
     
     @Override
     protected void onDestroy() {
-    	if(this.manager != null){
-    		this.manager.removeUpdates(this);
+    	if(myLocation != null){
+    		myLocation.disableMyLocation();
     	}
     	super.onDestroy();
     }
@@ -276,7 +278,7 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 												map.invalidate();
 												Toast.makeText(MapaActivity.this,"Cadastro da marcação realizado com sucesso!",Toast.LENGTH_LONG).show();
 											}else{
-												Toast.makeText(MapaActivity.this,"Nãoo foi possível se conectar com o servidor.",Toast.LENGTH_LONG).show();
+												Toast.makeText(MapaActivity.this,"Não foi possível se conectar com o servidor.",Toast.LENGTH_LONG).show();
 											}
 										MapaActivity.this.removeDialog(NOME_DIALOG_ID);
 									}
@@ -293,17 +295,6 @@ public class MapaActivity extends  MapActivity implements LocationListener{
 			AlertDialog alert = dialog.create();
 			alert.show();
     }
-
-    // TODO Estava causando erro faltau ao alterar o raio de aproximaï¿½ï¿½o
-	public void onLocationChanged(Location location) {
-		manager.removeUpdates(this);
-		if(this.local != location && location != null){
-//			this.local = location;
-//			ItemOverlay.getOverlay().carregaItensAoRedorMapa(location);
-//			map.invalidate();
-//			Toast.makeText(TesteMapa.this.getBaseContext(),"Coordenada Atualizada.",Toast.LENGTH_LONG).show();
-		}
-	}
 
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub

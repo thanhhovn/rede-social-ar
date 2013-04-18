@@ -121,7 +121,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 		telaTipoRelacionamento.setOnClickListener(this);
 		escolaridade.setOnClickListener(this);
 		ocultarTeclado(profissao);
-		if(Usuario.getUsuario_id() != null && !Usuario.getUsuario_id().equals(null)){
+		if(Usuario.getUsuarioLogado_id() != null && !Usuario.getUsuarioLogado_id().equals(null)){
 			carregarDadosEdicao();
 		}else{
 			carregaData();
@@ -418,7 +418,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 			startActivityForResult(it,LISTA_NIVEL_ESCOLARIDADE_ID);
 		}
 		if(v == confirmar){
-			if(Usuario.getUsuario_id() == null){
+			if(Usuario.getUsuarioLogado_id() == null){
 				String nome_login = Usuario.dadosLogin.getNome_login();
 				String email = Usuario.dadosLogin.getEmail();
 				String senha = Usuario.dadosLogin.getSenha();
@@ -503,7 +503,7 @@ public class Perfil_usuarioActivity extends Activity implements OnClickListener,
 			dados.append(Usuario.dadosPerfil.getProfissao()+",");
 			dados.append(Usuario.dadosPerfil.getTelefone()+",");
 			dados.append(Usuario.dadosPerfil.getDt_nascimento()+",");
-			dados.append(Usuario.getUsuario_id());
+			dados.append(Usuario.getUsuarioLogado_id());
 
 			editarPerfilUsuario(dados.toString());
 		}

@@ -19,14 +19,16 @@
         android:layout_weight="1" >
 
          <ImageView
-            android:id="@+id/balloon_excluir"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_vertical"
-            android:paddingTop="3dip"
-            android:src="@drawable/balloon_disclosure"
-            android:visibility="visible"
-            android:onClick="excluirMarcacao" />
+             android:id="@+id/balloon_excluir"
+             android:layout_width="20dp"
+             android:layout_height="fill_parent"
+             android:layout_gravity="top"
+             android:layout_marginTop="0dp"
+             android:clickable="true"
+             android:paddingTop="4dp"
+             android:src="@drawable/excluir"
+             android:onClick="excluirMarcacao"
+             android:visibility="visible" />
                 
         <LinearLayout
             android:layout_width="0dp"

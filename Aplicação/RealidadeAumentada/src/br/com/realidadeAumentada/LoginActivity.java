@@ -58,6 +58,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 							String[] dadosUsuario = retorno.toString().split(",");
 							
 							Usuario.setUsuario_id(dadosUsuario[0]);
+							Usuario.setUsuarioLogado_id(dadosUsuario[0]);
 							Usuario.dadosLogin.setNome_login(dadosUsuario[1]);
 							Usuario.dadosLogin.setDataLogin(dadosUsuario[2]);
 							
@@ -86,6 +87,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 							Intent intent = new Intent("TELAPRINCIPAL");
 							intent.addCategory("APLICACAO");
 							startActivity(intent);
+							this.finish();
 						}else{
 							String msg="Usuário não cadastrado.";
 							Toast toast=Toast.makeText(context,msg,duration);

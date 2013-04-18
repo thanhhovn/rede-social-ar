@@ -96,6 +96,11 @@ public class BalloonOverlayView<Item extends OverlayItem> extends FrameLayout {
 		}
 	}
 	
+	public void excluirMarcacao(View v){
+		String nome = null;
+		String l = nome;
+	}
+	
 	private class LimitLinearLayout extends LinearLayout {
 
 	    private static final int MAX_WIDTH_DP = 280;

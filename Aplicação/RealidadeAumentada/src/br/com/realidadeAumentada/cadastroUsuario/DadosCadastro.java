@@ -28,7 +28,12 @@ public class DadosCadastro {
 		return dataLogin;
 	}
 	public  void setDataLogin(String dataLogin) {
-		this.dataLogin = dataLogin;
+		String dadosUsuario = dataLogin.toString().substring(0, 10);
+		String[] data = dadosUsuario.split("-");
+		String dia = data[2];
+		String mes = data[1];
+		String ano = data[0];
+		this.dataLogin = dia+"/"+mes+"/"+ano;
 	}
 	
 	public void clear(){
@@ -36,5 +41,9 @@ public class DadosCadastro {
 		senha = null;
 		nome_login = null;
 		dataLogin = null;
+	}
+	
+	public String getUltimoAcesso(){
+		return "Último acesso: "+this.dataLogin;
 	}
 }
