@@ -68,7 +68,7 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 		return carregaItensMapa(local,item);
 	}
 	
-	private boolean carregaItensMapa(GeoPoint location, OverlayItem item){
+	private boolean carregaItensMapa(GeoPoint minhaLocalizacao, OverlayItem item){
 		boolean flag = false;
 // Dados de Teste		
 /*		itens.add(new OverlayItem(new Ponto(-10.7483672,-37.49421661666667),"PE"," "));
@@ -85,8 +85,8 @@ public class ItemOverlay extends BalloonItemizedOverlay<OverlayItem>{
 			else{
 				chamaWBS.setMetodo(MetodosWBS.PONTOS_AO_REDOR);
 
-				int latitude = location.getLatitudeE6();
-	        	int longitude = location.getLongitudeE6();
+				Double latitude = Double.valueOf(Double.valueOf(minhaLocalizacao.getLatitudeE6()) / 1000000);
+	        	Double longitude = Double.valueOf(Double.valueOf(minhaLocalizacao.getLongitudeE6()) / 1000000);
 				chamaWBS.addParametro(String.valueOf(latitude));
 				chamaWBS.addParametro(String.valueOf(longitude));
 				if(raio == null){
