@@ -1,0 +1,1 @@
+Projeto que envolve a tecnológia de realidade aumentada e geoprocessamento para a criação de uma nova rede social.
